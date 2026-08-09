@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mrfentmen/wikidata-mcp",
+  "description": "Use this MCP server to Wikidata entity search and bounded structured knowledge queries. Tools include search entities, get entity, query knowledge",
+  "repository": {
+    "url": "https://github.com/mrfentmen/wikidata-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "wikidata-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
