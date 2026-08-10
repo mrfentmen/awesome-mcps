@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mrfentmen/defi-tvl-mcp",
+  "description": "Total value locked data for DeFi protocols and chains from DefiLlama. No key required.",
+  "repository": {
+    "url": "https://github.com/mrfentmen/defi-tvl-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "defi-tvl-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
