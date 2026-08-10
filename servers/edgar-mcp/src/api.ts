@@ -54,7 +54,9 @@ export async function companyFacts(args: { ticker?: string }): Promise<string> {
 
 export async function searchFilings(args: { query?: string; limit?: number }): Promise<string> {
   const q = encodeURIComponent(args.query ?? "")
-  const d = await request<any>(`https://efts.sec.gov/LATEST/search-index?q=${q}&dateRange=custom&startdt=2024-01-01&enddt=2030-12-31`)
+  const end = new Date().toISOString().slice(0, 10)
+  const start = new Date(Date.now() - 365 * 2 * 86400000).toISOString().slice(0, 10)
+  const d = await request<any>(`https://efts.sec.gov/LATEST/search-index?q=${q}&dateRange=custom&startdt=${start}&enddt=${end}`)
   const hits = d.hits?.hits ?? []
   const limit = Math.min(args.limit ?? 10, 25)
   return hits.slice(0, limit).map((h: any) => {

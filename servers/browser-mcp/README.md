@@ -19,3 +19,5 @@ node dist/index.js
 ```
 
 Chrome must be installed on the machine. The server launches its own headless instance with a private profile and closes it after each call.
+
+Security boundary: this server opens any URL the agent asks it to open, including localhost and intranet addresses. That is the point of an agent driven browser tool. Use it only in environments where the agent that calls it is trusted.

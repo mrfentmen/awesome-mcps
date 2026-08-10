@@ -19,4 +19,4 @@ npm run build
 node dist/index.js
 ```
 
-Set the NASA_API_KEY environment variable to your free key for higher rate limits. Without it, the demo key is used with strict limits.
+Set the NASA_API_KEY environment variable to your free key for higher rate limits. Without it, the shared demo key is used with strict limits. The demo key pool is used by everyone, so it can return 429 rate limit errors at busy times. The server retries with backoff and returns a clear message suggesting a real key. A real free NASA_API_KEY is strongly recommended for reliable use.

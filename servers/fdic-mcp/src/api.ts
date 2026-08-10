@@ -10,13 +10,17 @@ async function request<T>(path: string): Promise<T> {
   return (await res.json()) as T
 }
 
+function money(v: any): string {
+  const n = Number(v)
+  if (!Number.isFinite(n) || n <= 0) return "n/a"
+  return `$${(n * 1000).toLocaleString()}` // FDIC reports assets and deposits in thousands of dollars
+}
+
 function fmt(rows: any[]): string {
   return rows
     .map((r: any) => {
       const d = r.data ?? r
-      const asset = Number(d.ASSET ?? 0) * 1000
-      const dep = Number(d.DEP ?? 0) * 1000
-      return `${d.NAME ?? ""} | ${d.CITY ?? ""}, ${d.STNAME ?? ""}\n  Assets $${asset.toLocaleString()} | Deposits $${dep.toLocaleString()}`
+      return `${d.NAME ?? ""} | ${d.CITY ?? ""}, ${d.STNAME ?? ""}\n  Assets ${money(d.ASSET)} | Deposits ${money(d.DEP)}`
     })
     .join("\n\n")
 }
