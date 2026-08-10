@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrfentmen/cataas-mcp.git"
+  },
+  "bin": {
+    "cataas-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "server.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "npm run build && node dist/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "name": "cataas-mcp",
+  "description": "Random cat photos from Cataas. No key required.",
+  "mcpName": "io.github.mrfentmen/cataas-mcp",
+  "keywords": [
+    "mcp",
+    "cats",
+    "photos",
+    "images",
+    "fun"
+  ]
+}
