@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mrfentmen/aurora-forecast-mcp",
+  "description": "Current aurora activity and short term forecast from the NOAA Space Weather Prediction Center.",
+  "repository": {
+    "url": "https://github.com/mrfentmen/aurora-forecast-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "aurora-forecast-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
