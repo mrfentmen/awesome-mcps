@@ -1,0 +1,20 @@
+# Space Weather JSON MCP
+
+Solar x ray flux data from the public NOAA SWPC JSON feed. No key required.
+
+This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+
+## Tools
+
+
+* `xrays`  Recent x ray flux.
+
+## Usage
+
+```bash
+npm install
+npm run build
+node dist/index.js
+```
+
+Data comes from the public NOAA SWPC JSON feed.
