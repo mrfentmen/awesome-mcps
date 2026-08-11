@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **583 MCP servers** in [`servers/`](./servers)
+- **578 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -132,7 +132,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`dblp-mcp`](./servers/dblp-mcp)
 - [`deck-of-cards-mcp`](./servers/deck-of-cards-mcp)
 - [`deezer-mcp`](./servers/deezer-mcp)
-- [`defi-tvl-mcp`](./servers/defi-tvl-mcp)
 - [`defillama-mcp`](./servers/defillama-mcp)
 - [`dependency-drift-mcp`](./servers/dependency-drift-mcp)
 - [`dependency-license-change-mcp`](./servers/dependency-license-change-mcp)
@@ -212,7 +211,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`fruityvice-mcp`](./servers/fruityvice-mcp)
 - [`fuel-economy-mcp`](./servers/fuel-economy-mcp)
 - [`futurama-mcp`](./servers/futurama-mcp)
-- [`fx-rates-mcp`](./servers/fx-rates-mcp)
 - [`gamebanana-mcp`](./servers/gamebanana-mcp)
 - [`gateio-mcp`](./servers/gateio-mcp)
 - [`gbif-mcp`](./servers/gbif-mcp)
@@ -222,7 +220,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`genderize-mcp`](./servers/genderize-mcp)
 - [`genius-mcp`](./servers/genius-mcp)
 - [`genrenator-mcp`](./servers/genrenator-mcp)
-- [`geocoding-mcp`](./servers/geocoding-mcp)
 - [`geojs-mcp`](./servers/geojs-mcp)
 - [`geolocation-db-mcp`](./servers/geolocation-db-mcp)
 - [`ghibli-mcp`](./servers/ghibli-mcp)
@@ -330,7 +327,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`meme-generator-mcp`](./servers/meme-generator-mcp)
 - [`meowfacts-mcp`](./servers/meowfacts-mcp)
 - [`merge-conflict-forecaster-mcp`](./servers/merge-conflict-forecaster-mcp)
-- [`metal-prices-mcp`](./servers/metal-prices-mcp)
 - [`metmuseum-mcp`](./servers/metmuseum-mcp)
 - [`metronome-mcp`](./servers/metronome-mcp)
 - [`mexc-mcp`](./servers/mexc-mcp)
@@ -386,7 +382,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`opendota-mcp`](./servers/opendota-mcp)
 - [`openf1-mcp`](./servers/openf1-mcp)
 - [`openfda-mcp`](./servers/openfda-mcp)
-- [`openlibrary-mcp`](./servers/openlibrary-mcp)
 - [`openligadb-soccer-mcp`](./servers/openligadb-soccer-mcp)
 - [`openplaques-mcp`](./servers/openplaques-mcp)
 - [`opensearch-mcp`](./servers/opensearch-mcp)

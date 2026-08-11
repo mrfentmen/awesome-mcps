@@ -1,16 +1,18 @@
-# DefiLlama MCP
+# defillama-mcp
 
-DeFi TVL data from the public DefiLlama API. No key required.
+DefiLlama protocols, chains, and TVL (merged).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `chains` — TVL by chain.
+- `protocol` — TVL history for a protocol.
+- `top_protocols` — Get the top DeFi protocols by TVL.
+- `chain_tvl` — Get TVL for all chains.
+- `protocol_info` — Get details for a specific protocol.
 
-* `chains`  TVL by chain.
-* `protocol`  Protocol TVL.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +20,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public DefiLlama API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

@@ -1,20 +1,8 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/gold-prices-mcp",
-  "description": "Live gold, silver, and platinum prices from the Gold API. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/gold-prices-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "gold-prices-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "gold-prices-mcp",
+  "description": "Gold and metal prices from gold-api.com (merged).",
+  "tools": [
+    "price",
+    "all"
   ]
 }

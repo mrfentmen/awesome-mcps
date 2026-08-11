@@ -1,20 +1,11 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/defillama-mcp",
-  "description": "DeFi TVL data from DefiLlama. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/defillama-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "defillama-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "defillama-mcp",
+  "description": "DefiLlama protocols, chains, and TVL (merged).",
+  "tools": [
+    "chains",
+    "protocol",
+    "top_protocols",
+    "chain_tvl",
+    "protocol_info"
   ]
 }

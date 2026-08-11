@@ -1,15 +1,15 @@
-# Gold Prices MCP
+# gold-prices-mcp
 
-Live gold, silver, platinum, and palladium prices from the public Gold API. No key required.
+Gold and metal prices from gold-api.com (merged).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `price` — Current price for a metal.
+- `all` — Prices for all tracked metals.
 
-* `price`  Current price for a metal.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Prices come from the public Gold API and update throughout the day.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.
