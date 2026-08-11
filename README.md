@@ -639,3 +639,19 @@ Browser extensions are maintained separately in private repositories and are int
 * `myvariant-mcp`  MyVariant.info genetic variant annotation queries.
 * `codeforces-mcp`  Codeforces contests and user info.
 * `leetcode-mcp`  LeetCode problem database: list and search problems.
+* `yr-metno-mcp`  Norwegian Meteorological Institute weather forecasts and nowcasts.
+* `fcc-mcp`  FCC Census Block API: census geography for coordinates.
+* `yfinance-mcp`  Yahoo Finance quotes, price charts, and symbol search.
+* `htx-mcp`  HTX (Huobi) crypto exchange tickers and order book depth.
+* `bigdatacloud-mcp`  BigDataCloud client IP and reverse geocoding.
+* `cdc-data-mcp`  CDC public datasets via Socrata endpoints.
+* `repology-mcp`  Repology: package versions across software repositories.
+* `archlinux-mcp`  Arch Linux package search.
+* `mcstatus-mcp`  Minecraft server status via mcstatus.io.
+* `pixelfed-mcp`  Pixelfed instance info and public timelines.
+* `census-geo-mcp`  Census Bureau geocoding: address to coordinates and FIPS.
+* `timeapi-mcp`  TimeAPI.io current time and timezone conversion.
+* `enrico-mcp`  Enrico holiday API: public holidays by country and year.
+* `esm-mcp`  esm.sh CDN: resolve npm versions and browse module files.
+* `openplaques-mcp`  OpenPlaques commemorative plaque records.
+* `satnogs-mcp`  SatNOGS DB satellite transmitters.
