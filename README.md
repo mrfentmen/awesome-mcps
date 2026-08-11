@@ -622,3 +622,20 @@ Browser extensions are maintained separately in private repositories and are int
 
 - `node_modules/`, caches, coverage, editor metadata, and nested `.git` directories are excluded.
 - Private `.env` files and obvious key/certificate files are excluded.
+
+* `ethplorer-mcp`  Ethereum token explorer: token info, address holdings, transaction history.
+* `blockcypher-mcp`  Blockchain explorer for BTC, ETH, LTC, DOGE: blocks, balances, transactions.
+* `envirocar-mcp`  enviroCar open environmental car tracking data.
+* `themealdb-mcp`  TheMealDB free recipe database: search, categories, random meals.
+* `bored-mcp`  Bored API activity suggestions by type and participants.
+* `er-api-mcp`  Open Exchange Rates: free currency exchange rates and conversion.
+* `ipinfo-mcp`  IPinfo.io IP details: geolocation, ASN, org, carrier.
+* `nextbus-mcp`  NextBus real-time public transit predictions.
+* `nasa-tle-mcp`  NASA TLE satellite orbital data via tle.ivanstanojevic.me.
+* `gitea-mcp`  Gitea.com public API: search repos and users.
+* `dnstwister-mcp`  DNS Twister domain threat intelligence and typosquatting fuzz.
+* `ebi-search-mcp`  EBI Search API across EMBL-EBI biomedical databases.
+* `mygene-mcp`  MyGene.info gene annotation queries.
+* `myvariant-mcp`  MyVariant.info genetic variant annotation queries.
+* `codeforces-mcp`  Codeforces contests and user info.
+* `leetcode-mcp`  LeetCode problem database: list and search problems.
