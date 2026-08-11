@@ -22,24 +22,20 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "zod": "^3.23.8",
-    "pdf-lib": "^1.17.1",
-    "exceljs": "^4.4.0",
-    "qrcode": "^1.5.4",
-    "sharp": "^0.33.4"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
   "name": "holidays-mcp",
-  "description": "Public holidays for any country and year from Nager.Date. No key required.",
+  "description": "Public holidays in one place: Nager.Date and Open Holidays, plus supported countries. No key required.",
   "mcpName": "io.github.mrfentmen/holidays-mcp",
   "keywords": [
     "mcp",
     "holidays",
     "calendar",
-    "nager",
-    "dates"
+    "public holidays",
+    "countries"
   ]
 }

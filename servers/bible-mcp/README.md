@@ -1,14 +1,14 @@
 # Bible MCP
 
-Read Bible verses by reference from the public Bible API. No key required.
+Bible in one place: verse references, phrase search, and full KJV chapters. No key required.
 
 This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
 
 ## Tools
 
-
-* `verse`  Read a verse or passage.
-* `search`  Search for a phrase.
+* `verse`  Read verses by reference.
+* `search`  Search Bible text for a phrase.
+* `kjvChapter`  Read a full KJV chapter.
 
 ## Usage
 
@@ -18,4 +18,3 @@ npm run build
 node dist/index.js
 ```
 
-Text comes from the public Bible API.

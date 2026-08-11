@@ -1,16 +1,16 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/rss-mcp",
-  "description": "RSS in one place: direct feed parsing and rss2json conversion for any feed URL. No key required.",
+  "name": "io.github.mrfentmen/dog-mcp",
+  "description": "Dogs in one place: breed list, random photos by breed, breed image sets, facts, and random media. No key required.",
   "repository": {
-    "url": "https://github.com/mrfentmen/rss-mcp",
+    "url": "https://github.com/mrfentmen/dog-mcp",
     "source": "github"
   },
   "version": "1.0.0",
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "rss-mcp",
+      "identifier": "dog-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

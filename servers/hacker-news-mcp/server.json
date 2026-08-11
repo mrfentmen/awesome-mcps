@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/hacker-news-mcp",
-  "description": "Top stories, jobs, and ask threads from Hacker News with item detail lookup.",
+  "description": "Hacker News in one place: top, jobs, ask, item lookup, and Algolia search. No key required.",
   "repository": {
     "url": "https://github.com/mrfentmen/hacker-news-mcp",
     "source": "github"

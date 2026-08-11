@@ -3,10 +3,10 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrfentmen/quran-mcp.git"
+    "url": "https://github.com/mrfentmen/cat-mcp.git"
   },
   "bin": {
-    "quran-mcp": "./dist/index.js"
+    "cat-mcp": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "files": [
@@ -28,14 +28,16 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "quran-mcp",
-  "description": "Quran in one place: Arabic and English verses, surah info, and chapter details. No key required.",
-  "mcpName": "io.github.mrfentmen/quran-mcp",
+  "name": "cat-mcp",
+  "description": "Cats in one place: random facts, breed lists, breed details, and cat photos. No key required.",
+  "mcpName": "io.github.mrfentmen/cat-mcp",
   "keywords": [
     "mcp",
-    "quran",
-    "islam",
-    "religion",
-    "arabic"
+    "cats",
+    "cat",
+    "facts",
+    "breeds",
+    "photos",
+    "fun"
   ]
 }

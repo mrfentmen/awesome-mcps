@@ -3,10 +3,10 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrfentmen/quran-mcp.git"
+    "url": "https://github.com/mrfentmen/dog-mcp.git"
   },
   "bin": {
-    "quran-mcp": "./dist/index.js"
+    "dog-mcp": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "files": [
@@ -28,14 +28,16 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "quran-mcp",
-  "description": "Quran in one place: Arabic and English verses, surah info, and chapter details. No key required.",
-  "mcpName": "io.github.mrfentmen/quran-mcp",
+  "name": "dog-mcp",
+  "description": "Dogs in one place: breed list, random photos by breed, breed image sets, facts, and random media. No key required.",
+  "mcpName": "io.github.mrfentmen/dog-mcp",
   "keywords": [
     "mcp",
-    "quran",
-    "islam",
-    "religion",
-    "arabic"
+    "dogs",
+    "dog",
+    "breeds",
+    "facts",
+    "photos",
+    "fun"
   ]
 }

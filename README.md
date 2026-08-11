@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **608 MCP servers** in [`servers/`](./servers)
+- **626 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -24,6 +24,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`app-store-mcp`](./servers/app-store-mcp)
 - [`arbeitnow-mcp`](./servers/arbeitnow-mcp)
 - [`archive-org-mcp`](./servers/archive-org-mcp)
+- [`archlinux-mcp`](./servers/archlinux-mcp)
 - [`art-institute-mcp`](./servers/art-institute-mcp)
 - [`artic-mcp`](./servers/artic-mcp)
 - [`artifact-gauge-mcp`](./servers/artifact-gauge-mcp)
@@ -42,6 +43,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`baywheels-mcp`](./servers/baywheels-mcp)
 - [`berlin-bvg-mcp`](./servers/berlin-bvg-mcp)
 - [`bible-mcp`](./servers/bible-mcp)
+- [`bigdatacloud-mcp`](./servers/bigdatacloud-mcp)
 - [`bikeindex-mcp`](./servers/bikeindex-mcp)
 - [`binance-market-mcp`](./servers/binance-market-mcp)
 - [`bing-wallpaper-mcp`](./servers/bing-wallpaper-mcp)
@@ -55,9 +57,11 @@ Browser extensions are maintained separately in private repositories and are int
 - [`bitstamp-mcp`](./servers/bitstamp-mcp)
 - [`blockchain-mcp`](./servers/blockchain-mcp)
 - [`blockchair-mcp`](./servers/blockchair-mcp)
+- [`blockcypher-mcp`](./servers/blockcypher-mcp)
 - [`bls-mcp`](./servers/bls-mcp)
 - [`bluesky-mcp`](./servers/bluesky-mcp)
 - [`books-mcp`](./servers/books-mcp)
+- [`bored-mcp`](./servers/bored-mcp)
 - [`brainrot-mcp`](./servers/brainrot-mcp)
 - [`brawl-stars-mcp`](./servers/brawl-stars-mcp)
 - [`breweries-mcp`](./servers/breweries-mcp)
@@ -67,13 +71,12 @@ Browser extensions are maintained separately in private repositories and are int
 - [`bundlephobia-mcp`](./servers/bundlephobia-mcp)
 - [`car-recalls-mcp`](./servers/car-recalls-mcp)
 - [`carbon-intensity-mcp`](./servers/carbon-intensity-mcp)
-- [`cat-breeds-mcp`](./servers/cat-breeds-mcp)
-- [`cat-facts-mcp`](./servers/cat-facts-mcp)
-- [`cataas-mcp`](./servers/cataas-mcp)
-- [`catfact-mcp`](./servers/catfact-mcp)
+- [`cat-mcp`](./servers/cat-mcp)
 - [`cbr-mcp`](./servers/cbr-mcp)
+- [`cdc-data-mcp`](./servers/cdc-data-mcp)
 - [`cdnjs-mcp`](./servers/cdnjs-mcp)
 - [`celestrak-mcp`](./servers/celestrak-mcp)
+- [`census-geo-mcp`](./servers/census-geo-mcp)
 - [`census-mcp`](./servers/census-mcp)
 - [`certspotter-mcp`](./servers/certspotter-mcp)
 - [`cex-mcp`](./servers/cex-mcp)
@@ -95,6 +98,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`clinvar-mcp`](./servers/clinvar-mcp)
 - [`cocktails-mcp`](./servers/cocktails-mcp)
 - [`codeberg-mcp`](./servers/codeberg-mcp)
+- [`codeforces-mcp`](./servers/codeforces-mcp)
 - [`codepet-mcp`](./servers/codepet-mcp)
 - [`coffee-mcp`](./servers/coffee-mcp)
 - [`coinbase-mcp`](./servers/coinbase-mcp)
@@ -121,7 +125,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`cryptorank-mcp`](./servers/cryptorank-mcp)
 - [`csv-mcp`](./servers/csv-mcp)
 - [`currency-history-mcp`](./servers/currency-history-mcp)
-- [`dad-jokes-mcp`](./servers/dad-jokes-mcp)
 - [`daily-med-mcp`](./servers/daily-med-mcp)
 - [`dailymed-mcp`](./servers/dailymed-mcp)
 - [`dailymotion-mcp`](./servers/dailymotion-mcp)
@@ -151,13 +154,11 @@ Browser extensions are maintained separately in private repositories and are int
 - [`disney-mcp`](./servers/disney-mcp)
 - [`dnd5e-mcp`](./servers/dnd5e-mcp)
 - [`dns-lookup-mcp`](./servers/dns-lookup-mcp)
+- [`dnstwister-mcp`](./servers/dnstwister-mcp)
 - [`doaj-mcp`](./servers/doaj-mcp)
 - [`docker-hub-mcp`](./servers/docker-hub-mcp)
 - [`document-generator-mcp`](./servers/document-generator-mcp)
-- [`dog-breeds-mcp`](./servers/dog-breeds-mcp)
-- [`dog-ceo-mcp`](./servers/dog-ceo-mcp)
-- [`dog-facts-mcp`](./servers/dog-facts-mcp)
-- [`dog-images-mcp`](./servers/dog-images-mcp)
+- [`dog-mcp`](./servers/dog-mcp)
 - [`domain-info-mcp`](./servers/domain-info-mcp)
 - [`doomwiki-mcp`](./servers/doomwiki-mcp)
 - [`dragonball-mcp`](./servers/dragonball-mcp)
@@ -166,6 +167,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`dummyjson-mcp`](./servers/dummyjson-mcp)
 - [`dwarffortress-mcp`](./servers/dwarffortress-mcp)
 - [`earthquake-mcp`](./servers/earthquake-mcp)
+- [`ebi-search-mcp`](./servers/ebi-search-mcp)
 - [`ecb-rates-mcp`](./servers/ecb-rates-mcp)
 - [`edgar-mcp`](./servers/edgar-mcp)
 - [`electricitymap-mcp`](./servers/electricitymap-mcp)
@@ -174,14 +176,19 @@ Browser extensions are maintained separately in private repositories and are int
 - [`emoji-mcp`](./servers/emoji-mcp)
 - [`endoflife-mcp`](./servers/endoflife-mcp)
 - [`energy-climate-mcp`](./servers/energy-climate-mcp)
+- [`enrico-mcp`](./servers/enrico-mcp)
 - [`ensembl-mcp`](./servers/ensembl-mcp)
 - [`ensideas-mcp`](./servers/ensideas-mcp)
 - [`env-contract-mcp`](./servers/env-contract-mcp)
+- [`envirocar-mcp`](./servers/envirocar-mcp)
 - [`eol-mcp`](./servers/eol-mcp)
 - [`epa-frs-mcp`](./servers/epa-frs-mcp)
 - [`epic-free-games-mcp`](./servers/epic-free-games-mcp)
 - [`episodate-mcp`](./servers/episodate-mcp)
+- [`er-api-mcp`](./servers/er-api-mcp)
+- [`esm-mcp`](./servers/esm-mcp)
 - [`espn-core-mcp`](./servers/espn-core-mcp)
+- [`ethplorer-mcp`](./servers/ethplorer-mcp)
 - [`europepmc-mcp`](./servers/europepmc-mcp)
 - [`eurostat-mcp`](./servers/eurostat-mcp)
 - [`evidence-diff-mcp`](./servers/evidence-diff-mcp)
@@ -191,6 +198,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`facts-mcp`](./servers/facts-mcp)
 - [`fakestoreapi-mcp`](./servers/fakestoreapi-mcp)
 - [`favqs-mcp`](./servers/favqs-mcp)
+- [`fcc-mcp`](./servers/fcc-mcp)
 - [`fdic-mcp`](./servers/fdic-mcp)
 - [`fear-greed-mcp`](./servers/fear-greed-mcp)
 - [`fec-mcp`](./servers/fec-mcp)
@@ -228,10 +236,10 @@ Browser extensions are maintained separately in private repositories and are int
 - [`geocoding-mcp`](./servers/geocoding-mcp)
 - [`geojs-mcp`](./servers/geojs-mcp)
 - [`geolocation-db-mcp`](./servers/geolocation-db-mcp)
-- [`getbible-mcp`](./servers/getbible-mcp)
 - [`ghibli-mcp`](./servers/ghibli-mcp)
 - [`gimp-mcp`](./servers/gimp-mcp)
 - [`git-reflog-archaeologist-mcp`](./servers/git-reflog-archaeologist-mcp)
+- [`gitea-mcp`](./servers/gitea-mcp)
 - [`github-intel-mcp`](./servers/github-intel-mcp)
 - [`github-status-mcp`](./servers/github-status-mcp)
 - [`gitignore-mcp`](./servers/gitignore-mcp)
@@ -252,7 +260,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`gutendex-mcp`](./servers/gutendex-mcp)
 - [`gw2-mcp`](./servers/gw2-mcp)
 - [`hacker-news-mcp`](./servers/hacker-news-mcp)
-- [`hackernews-mcp`](./servers/hackernews-mcp)
 - [`harry-potter-mcp`](./servers/harry-potter-mcp)
 - [`hebcal-mcp`](./servers/hebcal-mcp)
 - [`hiddenpalace-mcp`](./servers/hiddenpalace-mcp)
@@ -264,6 +271,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`html-to-markdown-mcp`](./servers/html-to-markdown-mcp)
 - [`http-inspector-mcp`](./servers/http-inspector-mcp)
 - [`httpbin-mcp`](./servers/httpbin-mcp)
+- [`htx-mcp`](./servers/htx-mcp)
 - [`hudsonrock-mcp`](./servers/hudsonrock-mcp)
 - [`huggingface-mcp`](./servers/huggingface-mcp)
 - [`iana-tld-mcp`](./servers/iana-tld-mcp)
@@ -281,6 +289,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`ip-geo-mcp`](./servers/ip-geo-mcp)
 - [`ipapi-mcp`](./servers/ipapi-mcp)
 - [`ipify-mcp`](./servers/ipify-mcp)
+- [`ipinfo-mcp`](./servers/ipinfo-mcp)
 - [`ipma-mcp`](./servers/ipma-mcp)
 - [`ipwhois-mcp`](./servers/ipwhois-mcp)
 - [`irail-mcp`](./servers/irail-mcp)
@@ -292,7 +301,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`jisho-mcp`](./servers/jisho-mcp)
 - [`job-search-mcp`](./servers/job-search-mcp)
 - [`jobicy-mcp`](./servers/jobicy-mcp)
-- [`jokeapi-mcp`](./servers/jokeapi-mcp)
 - [`jokes-mcp`](./servers/jokes-mcp)
 - [`jolpica-mcp`](./servers/jolpica-mcp)
 - [`jpl-fireball-mcp`](./servers/jpl-fireball-mcp)
@@ -306,6 +314,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`kitsu-mcp`](./servers/kitsu-mcp)
 - [`kraken-mcp`](./servers/kraken-mcp)
 - [`launchlibrary-mcp`](./servers/launchlibrary-mcp)
+- [`leetcode-mcp`](./servers/leetcode-mcp)
 - [`lemmy-mcp`](./servers/lemmy-mcp)
 - [`lever-mcp`](./servers/lever-mcp)
 - [`librivox-mcp`](./servers/librivox-mcp)
@@ -332,6 +341,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`math-tools-mcp`](./servers/math-tools-mcp)
 - [`maven-info-mcp`](./servers/maven-info-mcp)
 - [`mbta-mcp`](./servers/mbta-mcp)
+- [`mcstatus-mcp`](./servers/mcstatus-mcp)
 - [`mdn-search-mcp`](./servers/mdn-search-mcp)
 - [`medrxiv-mcp`](./servers/medrxiv-mcp)
 - [`meilisearch-mcp`](./servers/meilisearch-mcp)
@@ -356,6 +366,8 @@ Browser extensions are maintained separately in private repositories and are int
 - [`mtg-mcp`](./servers/mtg-mcp)
 - [`muffinlabs-mcp`](./servers/muffinlabs-mcp)
 - [`musicbrainz-mcp`](./servers/musicbrainz-mcp)
+- [`mygene-mcp`](./servers/mygene-mcp)
+- [`myvariant-mcp`](./servers/myvariant-mcp)
 - [`nager-date-mcp`](./servers/nager-date-mcp)
 - [`name-age-mcp`](./servers/name-age-mcp)
 - [`name-generator-mcp`](./servers/name-generator-mcp)
@@ -366,8 +378,10 @@ Browser extensions are maintained separately in private repositories and are int
 - [`nasa-mcp`](./servers/nasa-mcp)
 - [`nasa-power-mcp`](./servers/nasa-power-mcp)
 - [`nasa-techport-mcp`](./servers/nasa-techport-mcp)
+- [`nasa-tle-mcp`](./servers/nasa-tle-mcp)
 - [`nationalize-mcp`](./servers/nationalize-mcp)
 - [`ndbc-buoy-mcp`](./servers/ndbc-buoy-mcp)
+- [`nextbus-mcp`](./servers/nextbus-mcp)
 - [`nhl-mcp`](./servers/nhl-mcp)
 - [`nix-packages-mcp`](./servers/nix-packages-mcp)
 - [`noaa-ncei-mcp`](./servers/noaa-ncei-mcp)
@@ -383,7 +397,6 @@ Browser extensions are maintained separately in private repositories and are int
 - [`okx-mcp`](./servers/okx-mcp)
 - [`on-this-day-mcp`](./servers/on-this-day-mcp)
 - [`open-food-facts-mcp`](./servers/open-food-facts-mcp)
-- [`open-holidays-mcp`](./servers/open-holidays-mcp)
 - [`open-library-mcp`](./servers/open-library-mcp)
 - [`open-meteo-mcp`](./servers/open-meteo-mcp)
 - [`open-notify-mcp`](./servers/open-notify-mcp)
@@ -396,6 +409,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`openfda-mcp`](./servers/openfda-mcp)
 - [`openlibrary-mcp`](./servers/openlibrary-mcp)
 - [`openligadb-soccer-mcp`](./servers/openligadb-soccer-mcp)
+- [`openplaques-mcp`](./servers/openplaques-mcp)
 - [`opensearch-mcp`](./servers/opensearch-mcp)
 - [`opensky-mcp`](./servers/opensky-mcp)
 - [`opentdb-mcp`](./servers/opentdb-mcp)
@@ -420,6 +434,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`phone-validator-mcp`](./servers/phone-validator-mcp)
 - [`photon-mcp`](./servers/photon-mcp)
 - [`picsum-mcp`](./servers/picsum-mcp)
+- [`pixelfed-mcp`](./servers/pixelfed-mcp)
 - [`placehold-mcp`](./servers/placehold-mcp)
 - [`placeholder-images-mcp`](./servers/placeholder-images-mcp)
 - [`plos-mcp`](./servers/plos-mcp)
@@ -442,13 +457,11 @@ Browser extensions are maintained separately in private repositories and are int
 - [`quotes-mcp`](./servers/quotes-mcp)
 - [`quotes-rest-mcp`](./servers/quotes-rest-mcp)
 - [`quran-mcp`](./servers/quran-mcp)
-- [`qurancom-mcp`](./servers/qurancom-mcp)
 - [`radio-browser-mcp`](./servers/radio-browser-mcp)
 - [`radio-garden-mcp`](./servers/radio-garden-mcp)
 - [`rain-radar-mcp`](./servers/rain-radar-mcp)
 - [`rainviewer-mcp`](./servers/rainviewer-mcp)
 - [`random-animals-mcp`](./servers/random-animals-mcp)
-- [`random-dog-mcp`](./servers/random-dog-mcp)
 - [`random-user-mcp`](./servers/random-user-mcp)
 - [`random-word-mcp`](./servers/random-word-mcp)
 - [`randomuser-mcp`](./servers/randomuser-mcp)
@@ -458,6 +471,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`release-notes-forge-mcp`](./servers/release-notes-forge-mcp)
 - [`remoteok-mcp`](./servers/remoteok-mcp)
 - [`repo-forensics-mcp`](./servers/repo-forensics-mcp)
+- [`repology-mcp`](./servers/repology-mcp)
 - [`restful-api-dev-mcp`](./servers/restful-api-dev-mcp)
 - [`rhymebrain-mcp`](./servers/rhymebrain-mcp)
 - [`rick-and-morty-mcp`](./servers/rick-and-morty-mcp)
@@ -467,11 +481,11 @@ Browser extensions are maintained separately in private repositories and are int
 - [`rom-mcp`](./servers/rom-mcp)
 - [`ron-swanson-mcp`](./servers/ron-swanson-mcp)
 - [`rss-mcp`](./servers/rss-mcp)
-- [`rss2json-mcp`](./servers/rss2json-mcp)
 - [`rubygems-mcp`](./servers/rubygems-mcp)
 - [`runescape-mcp`](./servers/runescape-mcp)
 - [`runtime-support-mcp`](./servers/runtime-support-mcp)
 - [`rxnav-mcp`](./servers/rxnav-mcp)
+- [`satnogs-mcp`](./servers/satnogs-mcp)
 - [`schema-compatibility-mcp`](./servers/schema-compatibility-mcp)
 - [`schema-sieve-mcp`](./servers/schema-sieve-mcp)
 - [`scrabble-mcp`](./servers/scrabble-mcp)
@@ -528,10 +542,12 @@ Browser extensions are maintained separately in private repositories and are int
 - [`the-trivia-api-mcp`](./servers/the-trivia-api-mcp)
 - [`theaudiodb-mcp`](./servers/theaudiodb-mcp)
 - [`theaudiodb-track-mcp`](./servers/theaudiodb-track-mcp)
+- [`themealdb-mcp`](./servers/themealdb-mcp)
 - [`themuse-mcp`](./servers/themuse-mcp)
 - [`thesportsdb-mcp`](./servers/thesportsdb-mcp)
 - [`tides-mcp`](./servers/tides-mcp)
 - [`time-tools-mcp`](./servers/time-tools-mcp)
+- [`timeapi-mcp`](./servers/timeapi-mcp)
 - [`timezone-mcp`](./servers/timezone-mcp)
 - [`tmdb-mcp`](./servers/tmdb-mcp)
 - [`toolchain-lens-mcp`](./servers/toolchain-lens-mcp)
@@ -613,45 +629,9 @@ Browser extensions are maintained separately in private repositories and are int
 - [`xkcd-mcp`](./servers/xkcd-mcp)
 - [`yaml-mcp`](./servers/yaml-mcp)
 - [`yesno-mcp`](./servers/yesno-mcp)
+- [`yfinance-mcp`](./servers/yfinance-mcp)
+- [`yr-metno-mcp`](./servers/yr-metno-mcp)
 - [`yugioh-mcp`](./servers/yugioh-mcp)
 - [`zenodo-mcp`](./servers/zenodo-mcp)
 - [`zip-codes-mcp`](./servers/zip-codes-mcp)
 - [`zork-mcp`](./servers/zork-mcp)
-
-## Safety
-
-- `node_modules/`, caches, coverage, editor metadata, and nested `.git` directories are excluded.
-- Private `.env` files and obvious key/certificate files are excluded.
-
-* `ethplorer-mcp`  Ethereum token explorer: token info, address holdings, transaction history.
-* `blockcypher-mcp`  Blockchain explorer for BTC, ETH, LTC, DOGE: blocks, balances, transactions.
-* `envirocar-mcp`  enviroCar open environmental car tracking data.
-* `themealdb-mcp`  TheMealDB free recipe database: search, categories, random meals.
-* `bored-mcp`  Bored API activity suggestions by type and participants.
-* `er-api-mcp`  Open Exchange Rates: free currency exchange rates and conversion.
-* `ipinfo-mcp`  IPinfo.io IP details: geolocation, ASN, org, carrier.
-* `nextbus-mcp`  NextBus real-time public transit predictions.
-* `nasa-tle-mcp`  NASA TLE satellite orbital data via tle.ivanstanojevic.me.
-* `gitea-mcp`  Gitea.com public API: search repos and users.
-* `dnstwister-mcp`  DNS Twister domain threat intelligence and typosquatting fuzz.
-* `ebi-search-mcp`  EBI Search API across EMBL-EBI biomedical databases.
-* `mygene-mcp`  MyGene.info gene annotation queries.
-* `myvariant-mcp`  MyVariant.info genetic variant annotation queries.
-* `codeforces-mcp`  Codeforces contests and user info.
-* `leetcode-mcp`  LeetCode problem database: list and search problems.
-* `yr-metno-mcp`  Norwegian Meteorological Institute weather forecasts and nowcasts.
-* `fcc-mcp`  FCC Census Block API: census geography for coordinates.
-* `yfinance-mcp`  Yahoo Finance quotes, price charts, and symbol search.
-* `htx-mcp`  HTX (Huobi) crypto exchange tickers and order book depth.
-* `bigdatacloud-mcp`  BigDataCloud client IP and reverse geocoding.
-* `cdc-data-mcp`  CDC public datasets via Socrata endpoints.
-* `repology-mcp`  Repology: package versions across software repositories.
-* `archlinux-mcp`  Arch Linux package search.
-* `mcstatus-mcp`  Minecraft server status via mcstatus.io.
-* `pixelfed-mcp`  Pixelfed instance info and public timelines.
-* `census-geo-mcp`  Census Bureau geocoding: address to coordinates and FIPS.
-* `timeapi-mcp`  TimeAPI.io current time and timezone conversion.
-* `enrico-mcp`  Enrico holiday API: public holidays by country and year.
-* `esm-mcp`  esm.sh CDN: resolve npm versions and browse module files.
-* `openplaques-mcp`  OpenPlaques commemorative plaque records.
-* `satnogs-mcp`  SatNOGS DB satellite transmitters.

@@ -1,14 +1,15 @@
 # Quran MCP
 
-Read Quran verses and chapters in Arabic and English from the public alQuran.cloud API. No key required.
+Quran in one place: Arabic and English verses, surah info, and chapter details. No key required.
 
 This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
 
 ## Tools
 
-
-* `verse`  A verse in Arabic and English.
-* `chapter_info`  Details for a chapter.
+* `verse`  Quran verse in Arabic and English.
+* `surahInfo`  Surah overview.
+* `chapters`  List all 114 chapters.
+* `chapter`  Chapter details.
 
 ## Usage
 
@@ -18,4 +19,3 @@ npm run build
 node dist/index.js
 ```
 
-Text comes from the public alQuran.cloud API.

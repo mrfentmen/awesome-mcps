@@ -29,13 +29,13 @@
     "typescript": "^5.6.0"
   },
   "name": "hacker-news-mcp",
-  "description": "Top stories, jobs, and ask threads from Hacker News with item detail lookup.",
+  "description": "Hacker News in one place: top, jobs, ask, item lookup, and Algolia search. No key required.",
   "mcpName": "io.github.mrfentmen/hacker-news-mcp",
   "keywords": [
     "mcp",
     "hacker news",
+    "hn",
     "news",
-    "tech",
-    "hn"
+    "algolia"
   ]
 }

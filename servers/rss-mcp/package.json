@@ -29,13 +29,13 @@
     "typescript": "^5.6.0"
   },
   "name": "rss-mcp",
-  "description": "Fetch and parse any RSS or Atom feed into readable entries. No key required.",
+  "description": "RSS in one place: direct feed parsing and rss2json conversion for any feed URL. No key required.",
   "mcpName": "io.github.mrfentmen/rss-mcp",
   "keywords": [
     "mcp",
     "rss",
     "atom",
-    "feed",
+    "feeds",
     "news"
   ]
 }

@@ -1,13 +1,13 @@
-# RSS MCP
+# Rss MCP
 
-Fetch and parse any RSS or Atom feed into readable entries. No key required.
+RSS in one place: direct feed parsing and rss2json conversion for any feed URL. No key required.
 
 This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
 
 ## Tools
 
-
-* `read_feed`  Read a feed URL.
+* `readFeed`  Fetch and parse any RSS or Atom feed.
+* `feedJson`  Convert any feed to JSON via rss2json.
 
 ## Usage
 
@@ -17,4 +17,3 @@ npm run build
 node dist/index.js
 ```
 
-The server fetches the feed directly and parses it locally. It reports honest errors for unreachable or malformed feeds.

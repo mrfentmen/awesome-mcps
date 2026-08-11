@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/jokes-mcp",
-  "description": "Fetch dad jokes from icanhazdadjoke.com. No key required.",
+  "description": "Jokes in one place: dad jokes, JokeAPI jokes by category, and category listing. No key required.",
   "repository": {
     "url": "https://github.com/mrfentmen/jokes-mcp",
     "source": "github"
