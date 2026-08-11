@@ -1,15 +1,16 @@
-# Open Brewery MCP
+# openbrewery-mcp
 
-Search breweries from the public Open Brewery DB API. No key required.
+Open Brewery DB search.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search breweries by name or city.
+- `byCity` — Breweries in a city.
+- `byState` — Breweries in a state.
 
-* `search`  Search breweries.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Open Brewery DB API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

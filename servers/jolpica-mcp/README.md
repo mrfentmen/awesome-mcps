@@ -1,17 +1,19 @@
-# Jolpica MCP
+# jolpica-mcp
 
-Formula 1 data from the public Jolpica API. No key required.
+Formula 1 data (Jolpica, the Ergast replacement).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `current` — Current F1 season summary.
+- `races` — Races in a season.
+- `drivers` — Drivers in a season.
+- `lastRace` — Results from the most recent race.
+- `driverStandings` — Current driver standings.
+- `seasonSchedule` — Race schedule for a season.
 
-* `current`  Current season.
-* `races`  Season races.
-* `drivers`  Season drivers.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -19,4 +21,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Jolpica API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

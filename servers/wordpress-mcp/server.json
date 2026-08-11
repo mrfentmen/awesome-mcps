@@ -1,0 +1,9 @@
+{
+  "name": "wordpress-mcp",
+  "description": "WordPress plugin and theme search from wordpress.org.",
+  "tools": [
+    "plugin_info",
+    "search_plugins",
+    "search"
+  ]
+}

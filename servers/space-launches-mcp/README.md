@@ -1,16 +1,18 @@
-# Space Launches MCP
+# space-launches-mcp
 
-Upcoming and next rocket launches from the Launch Library. No key required.
+Spaceflight launches, next launch, and astronauts.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `upcomingLaunches` — List upcoming rocket launches.
+- `nextLaunch` — The next scheduled launch.
+- `upcoming` — Upcoming launches (Launch Library).
+- `previous` — Previous launches.
+- `astronautList` — Astronaut profiles.
 
-* `upcoming_launches`  Upcoming launches.
-* `next_launch`  The next scheduled launch.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +20,6 @@ npm run build
 node dist/index.js
 ```
 
-Launch data comes from the Launch Library public API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

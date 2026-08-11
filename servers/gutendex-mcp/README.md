@@ -1,16 +1,17 @@
-# Gutendex MCP
+# gutendex-mcp
 
-Search public domain books in Project Gutenberg via the public Gutendex API. No key required.
+Project Gutenberg book search (Gutendex).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search Gutenberg books.
+- `book` — Details for one book.
+- `searchBooks` — Search Project Gutenberg books.
+- `bookInfo` — Details for a Gutenberg book.
 
-* `search`  Search books.
-* `book`  Details for one book.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Gutendex API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

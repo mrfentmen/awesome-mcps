@@ -1,20 +1,10 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/runescape-mcp",
-  "description": "RuneScape 3 hiscores. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/runescape-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "runescape-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "runescape-mcp",
+  "description": "RuneScape hiscores, OSRS stats, and Grand Exchange prices.",
+  "tools": [
+    "hiscore",
+    "getPlayerStats",
+    "getItemPrice",
+    "getHotItems"
   ]
 }

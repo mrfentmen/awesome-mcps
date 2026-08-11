@@ -1,15 +1,16 @@
-# Clinical Trials MCP
+# clinicaltrials-mcp
 
-Search clinical trials from the public ClinicalTrials.gov API. No key required.
+ClinicalTrials.gov search and PubMed.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search clinical trials.
+- `getTrial` — One clinical trial by NCT id.
+- `searchPubmed` — Search PubMed articles.
 
-* `search`  Search trials.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public ClinicalTrials.gov API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

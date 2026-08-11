@@ -1,15 +1,15 @@
-# Useless Facts MCP
+# uselessfacts-mcp
 
-Random useless facts from the public Useless Facts API. No key required.
+Useless Facts random facts.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `fact` — Random useless fact.
+- `randomFact` — Random interesting fact.
 
-* `fact`  Random fact.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Useless Facts API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

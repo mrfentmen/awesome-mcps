@@ -1,20 +1,8 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/rainviewer-mcp",
-  "description": "Rain radar tiles from RainViewer. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/rainviewer-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "rainviewer-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "rainviewer-mcp",
+  "description": "RainViewer radar tile timelines.",
+  "tools": [
+    "radar",
+    "timeline"
   ]
 }

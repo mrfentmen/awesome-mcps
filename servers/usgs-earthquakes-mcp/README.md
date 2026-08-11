@@ -1,15 +1,17 @@
-# USGS Earthquakes MCP
+# usgs-earthquakes-mcp
 
-Recent earthquakes from the public USGS feed. No key required.
+USGS earthquake feeds and queries.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `recent` — Recent earthquakes.
+- `byPlace` — Earthquakes near a place.
+- `latestQuakes` — Latest quakes from the USGS feed.
+- `queryQuakes` — Query quakes by magnitude and time.
 
-* `recent`  Recent earthquakes.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public USGS earthquake feed.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

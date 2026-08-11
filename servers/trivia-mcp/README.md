@@ -1,16 +1,17 @@
-# Trivia MCP
+# trivia-mcp
 
-Fetch trivia questions from the Open Trivia Database by category and difficulty. No key required.
+Open Trivia DB questions and categories.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `getQuestion` — Random trivia question.
+- `categories` — Available trivia categories.
+- `getCategories` — Every trivia category with id.
+- `getQuestions` — Trivia questions with answers.
 
-* `get_question`  A random trivia question.
-* `categories`  Available categories.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-Questions come from the public Open Trivia Database API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

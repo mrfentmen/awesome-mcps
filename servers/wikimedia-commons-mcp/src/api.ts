@@ -1,6 +1,12 @@
+
+export interface m1_RandomArgs {
+  limit?: number;
+}
+
+const m0 = (() => {
 const BASE = "https://commons.wikimedia.org/w/api.php"
 const UA = "mrfentmen-wikimedia-commons-mcp/1.0 (https://github.com/mrfentmen)"
-export class CommonsError extends Error {}
+class CommonsError extends Error {}
 
 async function get<T>(url: string): Promise<T> {
   const res = await fetch(url, {
@@ -16,7 +22,7 @@ function pagesFrom(d: any): any[] {
   return Object.values(pages) as any[]
 }
 
-export async function search(args: { query?: string; limit?: number }): Promise<string> {
+async function search(args: { query?: string; limit?: number }): Promise<string> {
   const q = (args.query ?? "").trim()
   if (!q) throw new CommonsError("Provide a search query")
   const limit = Math.min(args.limit ?? 8, 20)
@@ -33,7 +39,7 @@ export async function search(args: { query?: string; limit?: number }): Promise<
   }).join("\n")
 }
 
-export async function file(args: { title?: string }): Promise<string> {
+async function file(args: { title?: string }): Promise<string> {
   const title = (args.title ?? "").trim()
   if (!title) throw new CommonsError("Provide a file title like File:Example.jpg")
   const d = await get<any>(
@@ -54,3 +60,54 @@ export async function file(args: { title?: string }): Promise<string> {
   if (license) lines.push(`License: ${license}`)
   return lines.join("\n")
 }
+
+return { CommonsError, file, search };
+})();
+
+const m1 = (() => {
+const BASE = 'https://commons.wikimedia.org/w/api.php';
+
+
+async function random(args: m1_RandomArgs): Promise<string> {
+  const limit = Math.max(1, Math.min(args.limit ?? 5, 15));
+  const params = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    generator: 'random',
+    grnnamespace: '6',
+    grnlimit: String(limit),
+    prop: 'imageinfo',
+    iiprop: 'url|size|extmetadata',
+  });
+  const res = await fetch(`${BASE}?${params.toString()}`, {
+    headers: { 'User-Agent': 'mrfentmen-wikimedia-feed-mcp/1.0', Accept: 'application/json' },
+    signal: AbortSignal.timeout(25000),
+  });
+  if (!res.ok) throw new Error(`Wikimedia Commons returned ${res.status}`);
+  const data = (await res.json()) as { query?: { pages?: Record<string, unknown> } };
+  const pages = data.query?.pages ?? {};
+  const items = Object.values(pages).map((p) => {
+    const rec = p as Record<string, unknown>;
+    const info = Array.isArray(rec.imageinfo) ? (rec.imageinfo[0] as Record<string, unknown>) : {};
+    const meta = (info.extmetadata as Record<string, unknown>) ?? {};
+    const title = (meta.ImageDescription as Record<string, unknown>)?.value ?? rec.title ?? '';
+    const artist = (meta.Artist as Record<string, unknown>)?.value ?? '';
+    const clean = String(title).replace(/<[^>]*>/g, '').trim();
+    const by = String(artist).replace(/<[^>]*>/g, '').trim();
+    return `${clean}${by ? ` by ${by}` : ''}${info.descriptionurl ? `\n   ${info.descriptionurl}` : ''}`;
+  });
+  if (!items.length) return 'No random images returned.';
+  return `Random Wikimedia Commons images (${items.length} shown):\n` + items.map((s, i) => `${i + 1}. ${s}`).join('\n');
+}
+
+return { random };
+})();
+
+export const CommonsError = m0.CommonsError;
+export const file = m0.file;
+export const random = m1.random;
+export const search = m0.search;
+export const m0_file = m0.file;
+export const m0_search = m0.search;
+export const m0_CommonsError = m0.CommonsError;
+export const m1_random = m1.random;

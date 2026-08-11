@@ -1,16 +1,17 @@
-# USAspending MCP
+# usaspending-mcp
 
-Federal spending agencies and award searches from the public USAspending API. No key required.
+USAspending federal agencies and awards, plus nonprofit filings.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `agencies` — Top tier federal agencies.
+- `searchAwards` — Search federal awards by keyword.
+- `searchFederalAwards` — Search federal contract awards.
+- `searchNonprofits` — Search nonprofits and filings.
 
-* `agencies`  Top tier federal agencies.
-* `search_awards`  Search federal awards.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public USAspending API, the official federal spending transparency source.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

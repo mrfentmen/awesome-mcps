@@ -1,20 +1,8 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/yfinance-mcp",
-  "description": "Yahoo Finance chart API: stock quotes, prices, and basic chart data.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/yfinance-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "yfinance-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "yfinance-mcp",
+  "description": "Yahoo Finance quotes and symbol search.",
+  "tools": [
+    "quote",
+    "search"
   ]
 }

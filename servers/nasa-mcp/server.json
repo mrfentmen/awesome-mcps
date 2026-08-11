@@ -1,20 +1,12 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/nasa-mcp",
-  "description": "NASA open data: astronomy picture of the day, near earth objects, and Mars rover photos. Free NASA key or demo key.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/nasa-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "nasa-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "nasa-mcp",
+  "description": "Unified NASA server: APOD, asteroids (NEO), Mars rover photos, InSight weather, and TechPort projects.",
+  "tools": [
+    "apod",
+    "neo",
+    "marsPhotos",
+    "latestWeather",
+    "asteroids",
+    "techPort"
   ]
 }

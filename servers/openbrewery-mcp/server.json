@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/openbrewery-mcp",
-  "description": "Search breweries by city or name. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/openbrewery-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "openbrewery-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "openbrewery-mcp",
+  "description": "Open Brewery DB search.",
+  "tools": [
+    "search",
+    "byCity",
+    "byState"
   ]
 }

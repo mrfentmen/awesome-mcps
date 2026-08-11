@@ -1,16 +1,15 @@
-# Yfinance MCP
+# yfinance-mcp
 
-Yahoo Finance chart API: stock quotes, prices, and basic chart data. No key required.
+Yahoo Finance quotes and symbol search.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `quote` — Stock quote and recent price data.
+- `search` — Search stock symbols.
 
-* `quote`  Get a stock quote and recent price data.
-* `search`  Search stock symbols.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Yfinance API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

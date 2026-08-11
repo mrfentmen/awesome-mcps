@@ -1,16 +1,16 @@
-# Frankfurter MCP
+# frankfurter-mcp
 
-Daily currency conversion from the public Frankfurter API. No key required.
+ECB reference exchange rates (Frankfurter).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `latest` — Latest ECB reference rates.
+- `convert` — Convert an amount.
+- `history` — Rate history for a period.
 
-* `latest`  Latest rates.
-* `history`  Rate history.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Frankfurter API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

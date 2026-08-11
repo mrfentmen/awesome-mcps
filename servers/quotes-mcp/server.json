@@ -1,20 +1,14 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/quotes-mcp",
-  "description": "Daily and random quotes from public quote APIs. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/quotes-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "quotes-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "quotes-mcp",
+  "description": "Unified quotes server: FavQs, ZenQuotes, Stoic quotes, and Quotes REST.",
+  "tools": [
+    "qotd",
+    "search",
+    "zenRandom",
+    "today",
+    "zenQuotes",
+    "stoicRandom",
+    "stoicMany",
+    "dummyRandom"
   ]
 }

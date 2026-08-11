@@ -1,15 +1,5 @@
-const UA = "mrfentmen-meme-generator-mcp/1.0 (https://github.com/mrfentmen)"
-const BASE = "https://api.imgflip.com"
 
-export class MemeError extends Error {}
-
-async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, { headers: { "User-Agent": UA, Accept: "application/json" }, signal: AbortSignal.timeout(20000) })
-  if (!res.ok) throw new MemeError(`Imgflip returned HTTP ${res.status}`)
-  return (await res.json()) as T
-}
-
-interface MemeTemplate {
+interface m0_MemeTemplate {
   id: string
   name: string
   url: string
@@ -17,15 +7,32 @@ interface MemeTemplate {
   height: number
 }
 
-export async function templates(args: { limit?: number }): Promise<string> {
-  const data = await get<{ success: boolean; data: { memes: MemeTemplate[] } }>("/get_memes")
+export interface m1_TemplatesArgs {
+  limit?: number;
+}
+
+const m0 = (() => {
+const UA = "mrfentmen-meme-generator-mcp/1.0 (https://github.com/mrfentmen)"
+const BASE = "https://api.imgflip.com"
+
+class MemeError extends Error {}
+
+async function get<T>(path: string): Promise<T> {
+  const res = await fetch(`${BASE}${path}`, { headers: { "User-Agent": UA, Accept: "application/json" }, signal: AbortSignal.timeout(20000) })
+  if (!res.ok) throw new MemeError(`Imgflip returned HTTP ${res.status}`)
+  return (await res.json()) as T
+}
+
+
+async function templates(args: { limit?: number }): Promise<string> {
+  const data = await get<{ success: boolean; data: { memes: m0_MemeTemplate[] } }>("/get_memes")
   if (!data.success) throw new MemeError("Imgflip could not list templates")
   const limit = Math.min(args.limit ?? 15, 50)
   const list = data.data.memes.slice(0, limit)
   return list.map((m, i) => `${i + 1}. ${m.id} | ${m.name} | ${m.width}x${m.height}`).join("\n")
 }
 
-export async function caption(args: { template_id?: string; top?: string; bottom?: string }): Promise<string> {
+async function caption(args: { template_id?: string; top?: string; bottom?: string }): Promise<string> {
   const id = (args.template_id ?? "").trim()
   if (!id) throw new MemeError("Provide a template ID from the templates tool")
   const top = (args.top ?? "").trim()
@@ -36,3 +43,40 @@ export async function caption(args: { template_id?: string; top?: string; bottom
   if (!data.success || !data.data) throw new MemeError(data.error_message ?? "Caption failed")
   return `Meme ready:\n${data.data.url}`
 }
+
+return { MemeError, caption, templates };
+})();
+
+const m1 = (() => {
+const BASE = 'https://api.imgflip.com/get_memes';
+
+
+async function templates(args: m1_TemplatesArgs): Promise<string> {
+  const limit = Math.max(1, Math.min(args.limit ?? 20, 100));
+  const res = await fetch(BASE, {
+    headers: { 'User-Agent': 'mrfentmen-imgflip-mcp/1.0', Accept: 'application/json' },
+    signal: AbortSignal.timeout(20000),
+  });
+  if (!res.ok) throw new Error(`Imgflip returned ${res.status}`);
+  const d = (await res.json()) as { success?: boolean; data?: { memes?: Array<Record<string, unknown>> } };
+  const rows = (d.data?.memes ?? []).slice(0, limit);
+  if (!rows.length) return 'No meme templates returned.';
+  return `Imgflip meme templates (${rows.length} shown):\n` +
+    rows
+      .map((r, i) => {
+        const s = (k: string) => (r[k] != null ? String(r[k]) : '');
+        return `${i + 1}. ${s('name')} (id ${s('id')})${s('box_count') ? ` | boxes ${s('box_count')}` : ''}`;
+      })
+      .join('\n');
+}
+
+return { templates };
+})();
+
+export const MemeError = m0.MemeError;
+export const caption = m0.caption;
+export const templates = m0.templates;
+export const m0_MemeError = m0.MemeError;
+export const m0_templates = m0.templates;
+export const m0_caption = m0.caption;
+export const m1_templates = m1.templates;

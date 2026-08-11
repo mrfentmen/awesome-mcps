@@ -1,16 +1,15 @@
-# CoinGecko MCP
+# coingecko-mcp
 
-Crypto prices and market data from the public CoinGecko API. No key required.
+CoinGecko prices and trending coins.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `price` — Price for one or more coins.
+- `trending` — Trending coins on CoinGecko.
 
-* `price`  Price for one coin.
-* `trending`  Trending coins.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public CoinGecko API. Crypto data is a paid category built free.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

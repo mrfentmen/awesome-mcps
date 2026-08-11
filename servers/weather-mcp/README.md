@@ -1,17 +1,18 @@
-# Weather MCP
+# weather-mcp
 
-Read terrestrial weather and hazards: NWS forecasts, USGS earthquakes, and FEMA disaster declarations. No API key is required.
+Unified weather server: NWS forecasts and alerts, USGS earthquakes, and FEMA disasters.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `forecast` — NWS forecast for coordinates.
+- `activeAlerts` — Active NWS alerts for a state.
+- `alertsForPoint` — Active alerts near coordinates.
+- `earthquakes` — Recent USGS earthquakes.
+- `femaDisasters` — Recent FEMA disaster declarations.
 
-* `get_forecast`  NWS forecast for any coordinates.
-* `get_earthquakes`  Recent earthquakes from USGS.
-* `get_fema_disasters`  Recent FEMA disaster declarations.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -19,4 +20,6 @@ npm run build
 node dist/index.js
 ```
 
-This is the terrestrial companion to the existing NOAA space weather server.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

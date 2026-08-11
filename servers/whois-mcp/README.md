@@ -1,16 +1,16 @@
-# WHOIS MCP
+# whois-mcp
 
-Domain and IP registration records via the public RDAP network. No key required.
+RDAP whois records for domains and IPs.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `domain` — Registration record for a domain.
+- `ip` — Registration record for an IP.
+- `domainInfo` — Registration info for a domain.
 
-* `domain`  Domain registration record.
-* `ip`  IP registration record.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-WHOIS lookup products charge for this. RDAP is the modern public replacement and is free.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

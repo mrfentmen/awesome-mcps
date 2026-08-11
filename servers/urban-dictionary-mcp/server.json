@@ -1,20 +1,8 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/urban-dictionary-mcp",
-  "description": "Look up slang definitions and examples from Urban Dictionary. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/urban-dictionary-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "urban-dictionary-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "urban-dictionary-mcp",
+  "description": "Urban Dictionary definitions.",
+  "tools": [
+    "define",
+    "random"
   ]
 }

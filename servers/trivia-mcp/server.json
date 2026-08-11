@@ -1,20 +1,10 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/trivia-mcp",
-  "description": "Fetch trivia questions from the Open Trivia Database by category and difficulty. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/trivia-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "trivia-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "trivia-mcp",
+  "description": "Open Trivia DB questions and categories.",
+  "tools": [
+    "getQuestion",
+    "categories",
+    "getCategories",
+    "getQuestions"
   ]
 }

@@ -1,16 +1,15 @@
-# Go Proxy MCP
+# go-proxy-mcp
 
-Go module versions from the official public Go module proxy. No key required.
+Go module proxy versions.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `latest` — Latest version of a Go module.
+- `versions` — Available versions of a module.
 
-* `latest`  Latest module version.
-* `versions`  Available versions.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Go module proxy run by the Go team.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

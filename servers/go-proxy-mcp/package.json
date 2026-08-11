@@ -1,41 +1,20 @@
 {
+  "name": "go-proxy-mcp",
   "version": "1.0.0",
+  "description": "Go module proxy versions.",
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mrfentmen/go-proxy-mcp.git"
-  },
-  "bin": {
-    "go-proxy-mcp": "./dist/index.js"
-  },
-  "main": "./dist/index.js",
-  "files": [
-    "dist",
-    "server.json",
-    "README.md"
-  ],
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
-    "dev": "npm run build && node dist/index.js"
+    "start": "node dist/index.js"
   },
-  "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.4",
-    "zod": "^3.23.8"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
   },
-  "name": "go-proxy-mcp",
-  "description": "Go module versions from the official Go module proxy. No key required.",
-  "mcpName": "io.github.mrfentmen/go-proxy-mcp",
-  "keywords": [
-    "mcp",
-    "golang",
-    "modules",
-    "packages",
-    "devops"
-  ]
+  "license": "MIT"
 }

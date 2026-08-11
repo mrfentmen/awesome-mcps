@@ -1,15 +1,16 @@
-# Random User MCP
+# randomuser-mcp
 
-Random user profiles from the public Random User API. No key required.
+RandomUser profile generation.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `users` — Random user profiles.
+- `generate` — Generate random user profiles.
+- `seed` — Generate seeded profiles.
 
-* `users`  Random user profiles.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Random User Generator API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

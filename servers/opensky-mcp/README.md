@@ -1,15 +1,16 @@
-# OpenSky MCP
+# opensky-mcp
 
-Live flight positions from the public OpenSky API. No key required.
+OpenSky live aircraft positions.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `area` — Flights in a bounding box.
+- `flightsNear` — Aircraft within a radius.
+- `flightsInBox` — Aircraft inside a lat lon box.
 
-* `area`  Flights in an area.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public OpenSky API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

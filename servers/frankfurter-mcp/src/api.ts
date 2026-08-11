@@ -1,18 +1,28 @@
-const BASE = 'https://api.frankfurter.app';
 
-export interface LatestArgs {
+export interface m0_LatestArgs {
   from?: string;
   to?: string;
 }
 
-export interface HistoryArgs {
+export interface m0_HistoryArgs {
   from: string;
   to: string;
   start: string;
   end: string;
 }
 
-export async function latest(args: LatestArgs): Promise<string> {
+export interface m1_ConvertArgs {
+  amount: number;
+  from?: string;
+  to: string;
+}
+
+const m0 = (() => {
+const BASE = 'https://api.frankfurter.app';
+
+
+
+async function latest(args: m0_LatestArgs): Promise<string> {
   const from = (args.from ?? 'USD').toUpperCase();
   const to = (args.to ?? '').toUpperCase();
   const url = `${BASE}/latest?from=${encodeURIComponent(from)}${to ? `&to=${encodeURIComponent(to)}` : ''}`;
@@ -28,7 +38,7 @@ export async function latest(args: LatestArgs): Promise<string> {
     Object.entries(rates).slice(0, 20).map(([k, v]) => `${k}: ${String(v)}`).join('\n');
 }
 
-export async function history(args: HistoryArgs): Promise<string> {
+async function history(args: m0_HistoryArgs): Promise<string> {
   const from = (args.from ?? '').toUpperCase();
   const to = (args.to ?? '').toUpperCase();
   const start = (args.start ?? '').trim();
@@ -46,3 +56,52 @@ export async function history(args: HistoryArgs): Promise<string> {
   const rows = dates.map((dt) => `${dt}: ${String(rates[dt][to] ?? 'n/a')}`);
   return `Rate history ${from} -> ${to} (${dates.length} days):\n` + rows.join('\n');
 }
+
+return { history, latest };
+})();
+
+const m1 = (() => {
+const BASE = 'https://api.frankfurter.app';
+
+
+async function latest(_args: Record<string, never> = {}): Promise<string> {
+  const res = await fetch(`${BASE}/latest`, {
+    headers: { 'User-Agent': 'mrfentmen-ecb-rates-mcp/1.0', Accept: 'application/json' },
+    signal: AbortSignal.timeout(20000),
+  });
+  if (!res.ok) throw new Error(`Frankfurter returned ${res.status}`);
+  const data = (await res.json()) as { date?: string; rates?: Record<string, number> };
+  const rates = data.rates ?? {};
+  const entries = Object.entries(rates).slice(0, 30);
+  if (!entries.length) throw new Error('Frankfurter returned no rates');
+  return `ECB reference rates vs EUR (${data.date ?? ''}):\n` + entries.map(([code, rate], i) => `${i + 1}. ${code}: ${rate}`).join('\n');
+}
+
+async function convert(args: m1_ConvertArgs): Promise<string> {
+  const amount = Number(args.amount);
+  if (!Number.isFinite(amount) || amount < 0) return 'Provide a positive amount.';
+  const from = (args.from ?? 'EUR').toUpperCase();
+  const to = (args.to ?? '').trim().toUpperCase();
+  if (!to) return 'Provide a target currency code.';
+  const res = await fetch(`${BASE}/latest?from=${from}&to=${to}`, {
+    headers: { 'User-Agent': 'mrfentmen-ecb-rates-mcp/1.0', Accept: 'application/json' },
+    signal: AbortSignal.timeout(20000),
+  });
+  if (!res.ok) throw new Error(`Frankfurter returned ${res.status}`);
+  const data = (await res.json()) as { date?: string; rates?: Record<string, number> };
+  const rate = data.rates?.[to];
+  if (typeof rate !== 'number') return `No rate found for ${from} to ${to}.`;
+  const result = amount * rate;
+  return `${amount.toLocaleString()} ${from} = ${result.toLocaleString(undefined, { maximumFractionDigits: 2 })} ${to} (rate ${rate}, ${data.date ?? ''})`;
+}
+
+return { convert, latest };
+})();
+
+export const convert = m1.convert;
+export const history = m0.history;
+export const latest = m0.latest;
+export const m0_latest = m0.latest;
+export const m0_history = m0.history;
+export const m1_latest = m1.latest;
+export const m1_convert = m1.convert;

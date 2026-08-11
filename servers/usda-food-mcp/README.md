@@ -1,15 +1,15 @@
-# USDA Food MCP
+# usda-food-mcp
 
-Search USDA food composition data from the public FoodData Central API. No key required.
+USDA FoodData Central search.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search USDA foods.
+- `searchFood` — Search foods and get nutrition facts.
 
-* `search`  Search foods.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public USDA FoodData Central API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

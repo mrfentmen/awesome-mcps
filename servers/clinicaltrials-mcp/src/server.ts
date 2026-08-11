@@ -1,14 +1,24 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
-import { z } from "zod"
-import { search } from "./api.js"
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { z } from 'zod'
+import { m0_search, m1_clinicalTrials, m1_pubmed, m1_trial } from './api.js'
 
-const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const text = (value: string) => ({ content: [{ type: 'text' as const, text: value }] })
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
+const errorMessage = error
 
 export function createServer(): McpServer {
-  const server = new McpServer({ name: "clinicaltrials-mcp", version: "1.0.0" })
-  server.tool("search", "Search clinical trials.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await search(args)) } catch (e) { return text(error(e)) }
+  const server = new McpServer({ name: 'clinicaltrials-mcp', version: '1.0.0' })
+server.tool("search", "Search clinical trials.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
+    try { return text(await m0_search(args)) } catch (e) { return text(error(e)) }
+  })
+server.tool("search_clinical_trials", "Search clinical trials by condition or keyword.", { query: z.string().describe("Condition or keyword like diabetes."), limit: z.number().describe("Max results.").optional() }, async (args) => {
+    try { return text(await m1_clinicalTrials(args)) } catch (e) { return text(error(e)) }
+  })
+server.tool("get_trial", "Get one clinical trial by NCT id.", { nct_id: z.string().describe("NCT id like NCT00000123.") }, async (args) => {
+    try { return text(await m1_trial(args)) } catch (e) { return text(error(e)) }
+  })
+server.tool("search_pubmed", "Search PubMed research articles.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
+    try { return text(await m1_pubmed(args)) } catch (e) { return text(error(e)) }
   })
   return server
 }

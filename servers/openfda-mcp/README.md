@@ -1,17 +1,17 @@
-# openFDA MCP
+# openfda-mcp
 
-Read FDA openFDA data: drug recalls, adverse event reports, and approved drug applications. No API key is required.
+FDA open data: drug recalls, adverse events, and approved drugs.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `getDrugRecalls` — Recent FDA drug recalls.
+- `searchAdverseEvents` — FDA adverse event reports for a drug.
+- `searchApprovedDrugs` — Search approved drug applications.
+- `drugEvents` — Adverse event reports for a drug (daily med).
 
-* `get_drug_recalls`  Recent recalls by product or reason.
-* `search_adverse_events`  Adverse event reports by drug name.
-* `search_approved_drugs`  Approved drug applications.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -19,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-This server respects openFDA rate limits and keeps responses bounded.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

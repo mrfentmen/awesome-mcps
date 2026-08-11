@@ -1,15 +1,15 @@
-# RainViewer MCP
+# rainviewer-mcp
 
-Rain radar tile index from the public RainViewer API. No key required.
+RainViewer radar tile timelines.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `radar` — Current radar tile index.
+- `timeline` — Radar tile timeline with nowcast frames.
 
-* `radar`  Radar tile index.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public RainViewer API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/wikimedia-commons-mcp",
-  "description": "Search images and files on Wikimedia Commons. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/wikimedia-commons-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "wikimedia-commons-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "wikimedia-commons-mcp",
+  "description": "Wikimedia Commons file search.",
+  "tools": [
+    "search",
+    "file",
+    "random"
   ]
 }

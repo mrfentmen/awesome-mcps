@@ -1,15 +1,19 @@
-# iTunes MCP
+# itunes-mcp
 
-Search music, movies, apps, and more on the public iTunes Search API. No key required.
+iTunes Search API: apps, podcasts, and media.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search iTunes media.
+- `topFree` — Top free apps.
+- `topPaid` — Top paid apps.
+- `appLookup` — App details by App Store id.
+- `searchPodcasts` — Search podcasts by term.
+- `topPodcasts` — Top podcasts in a category.
 
-* `search`  Search iTunes media.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -17,4 +21,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public iTunes Search API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

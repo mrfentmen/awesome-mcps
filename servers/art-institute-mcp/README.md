@@ -1,16 +1,15 @@
-# Art Institute MCP
+# art-institute-mcp
 
-Search the Art Institute of Chicago collection from the public API. No key required.
+Art Institute of Chicago collection search.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search Art Institute of Chicago artworks.
+- `artwork` — Details for one artwork.
 
-* `search`  Search artworks.
-* `artwork`  Details for one artwork.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Art Institute of Chicago API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

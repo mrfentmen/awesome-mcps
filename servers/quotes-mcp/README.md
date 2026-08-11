@@ -1,16 +1,21 @@
-# Quotes MCP
+# quotes-mcp
 
-Daily and random quotes from public sources. No key required.
+Unified quotes server: FavQs, ZenQuotes, Stoic quotes, and Quotes REST.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `qotd` — Quote of the day from FavQs.
+- `search` — Search FavQs quotes.
+- `zenRandom` — Random quote from ZenQuotes.
+- `today` — Quote of the day from ZenQuotes.
+- `zenQuotes` — List quotes from ZenQuotes.
+- `stoicRandom` — Random Stoic quote.
+- `stoicMany` — Several Stoic quotes.
+- `dummyRandom` — Random quote from DummyJSON.
 
-* `quote_of_the_day`  Quote of the day.
-* `random_quote`  A random quote.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +23,6 @@ npm run build
 node dist/index.js
 ```
 
-Quotes come from the FavQs and ZenQuotes public APIs.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

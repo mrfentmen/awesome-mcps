@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/placeholder-images-mcp",
-  "description": "Generate placeholder image URLs and descriptions from picsum.photos. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/placeholder-images-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "placeholder-images-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "placeholder-images-mcp",
+  "description": "Placeholder image services (DummyImage, Picsum).",
+  "tools": [
+    "imageUrl",
+    "listImages",
+    "list"
   ]
 }

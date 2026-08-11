@@ -1,19 +1,22 @@
 # meme-generator-mcp
 
-List popular meme templates and build caption URLs with the free Imgflip API. Image rendering happens on the Imgflip side.
+ImgFlip meme templates and captions.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `templates` — List popular meme templates.
+- `caption` — Build a caption URL for a template.
 
-* `templates`  List popular meme templates.
-* `caption`  Build a caption URL for a template.
-
-## Usage
+## Run
 
 ```bash
 npm install
 npm run build
 node dist/index.js
 ```
+
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

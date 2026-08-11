@@ -1,12 +1,15 @@
-const BASE = 'https://api.openbrewerydb.org/v1/breweries';
 
-export interface SearchArgs {
+export interface m0_SearchArgs {
   query?: string;
   city?: string;
   limit?: number;
 }
 
-export async function search(args: SearchArgs = {}): Promise<string> {
+const m0 = (() => {
+const BASE = 'https://api.openbrewerydb.org/v1/breweries';
+
+
+async function search(args: m0_SearchArgs = {}): Promise<string> {
   const limit = Math.max(1, Math.min(args.limit ?? 10, 25));
   const params = new URLSearchParams({ per_page: String(limit) });
   if (args.query?.trim()) params.set('by_name', args.query.trim());
@@ -27,3 +30,64 @@ export async function search(args: SearchArgs = {}): Promise<string> {
       })
       .join('\n');
 }
+
+return { search };
+})();
+
+const m1 = (() => {
+const BASE = "https://api.openbrewerydb.org/v1/breweries"
+const UA = "mrfentmen-breweries-mcp/1.0 (https://github.com/mrfentmen)"
+class BreweryError extends Error {}
+
+async function get<T>(url: string): Promise<T> {
+  const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/json" }, signal: AbortSignal.timeout(25000) })
+  if (res.status === 429) throw new BreweryError("OpenBreweryDB rate limit hit, wait and retry")
+  if (!res.ok) throw new BreweryError(`OpenBreweryDB error ${res.status}`)
+  return (await res.json()) as T
+}
+
+function fmtB(b: any): string {
+  const parts = [b?.name ?? "Untitled", b?.brewery_type ? `(${b.brewery_type})` : ""].filter(Boolean).join(" ")
+  const loc = [b?.city, b?.state_province, b?.country].filter(Boolean).join(", ")
+  return `${parts}${loc ? `\n   ${loc}` : ""}${b?.website_url ? `\n   ${b.website_url}` : ""}`
+}
+
+async function byCity(args: { city?: string; limit?: number }): Promise<string> {
+  const city = (args.city ?? "").trim()
+  if (!city) throw new BreweryError("Provide a city name")
+  const limit = Math.min(args.limit ?? 10, 25)
+  const d = await get<any[]>(`${BASE}?by_city=${encodeURIComponent(city)}&per_page=${limit}`)
+  if (!d.length) return `No breweries in ${city}`
+  return d.map(fmtB).join("\n\n")
+}
+
+async function search(args: { query?: string; limit?: number }): Promise<string> {
+  const q = (args.query ?? "").trim()
+  if (!q) throw new BreweryError("Provide a brewery name")
+  const limit = Math.min(args.limit ?? 10, 25)
+  const d = await get<any[]>(`${BASE}?by_name=${encodeURIComponent(q)}&per_page=${limit}`)
+  if (!d.length) return "No breweries found"
+  return d.map(fmtB).join("\n\n")
+}
+
+async function byState(args: { state?: string; limit?: number }): Promise<string> {
+  const state = (args.state ?? "").trim()
+  if (!state) throw new BreweryError("Provide a state name")
+  const limit = Math.min(args.limit ?? 10, 25)
+  const d = await get<any[]>(`${BASE}?by_state=${encodeURIComponent(state)}&per_page=${limit}`)
+  if (!d.length) return `No breweries in ${state}`
+  return d.map(fmtB).join("\n\n")
+}
+
+return { BreweryError, byCity, byState, search };
+})();
+
+export const BreweryError = m1.BreweryError;
+export const byCity = m1.byCity;
+export const byState = m1.byState;
+export const search = m0.search;
+export const m0_search = m0.search;
+export const m1_search = m1.search;
+export const m1_byState = m1.byState;
+export const m1_BreweryError = m1.BreweryError;
+export const m1_byCity = m1.byCity;

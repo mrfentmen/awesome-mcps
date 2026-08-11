@@ -1,20 +1,13 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/themealdb-mcp",
-  "description": "TheMealDB free recipe database: search meals, categories, ingredients, random meal.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/themealdb-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "themealdb-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "themealdb-mcp",
+  "description": "TheMealDB recipes, categories, and ingredient filters.",
+  "tools": [
+    "search",
+    "random",
+    "categories",
+    "filterByIngredient",
+    "searchRecipes",
+    "byIngredient",
+    "recipeDetails"
   ]
 }

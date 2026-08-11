@@ -1,17 +1,18 @@
-# Holidays MCP
+# holidays-mcp
 
-Public holidays in one place: Nager.Date and Open Holidays, plus supported countries. No key required.
+Nager and Open Holidays public holidays.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
-* `publicHolidays`  Holidays for a country and year.
-* `nextHolidays`  Upcoming holidays.
-* `countries`  Supported Open Holidays countries.
-* `openHolidays`  Holidays from Open Holidays.
+- `publicHolidays` — Holidays for a country and year (Nager).
+- `nextHolidays` — Upcoming holidays (Nager).
+- `countries` — Supported Open Holidays countries.
+- `openHolidays` — Holidays from Open Holidays.
+- `holidays` — Public holidays for a country and year.
 
-## Usage
+## Run
 
 ```bash
 npm install
@@ -19,3 +20,6 @@ npm run build
 node dist/index.js
 ```
 
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

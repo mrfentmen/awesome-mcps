@@ -1,13 +1,17 @@
-# Open Library MCP
+# open-library-mcp
 
-Search books, authors, works, and editions through Open Library. No API key is required.
+Open Library search, works, authors, editions, and ISBN.
+
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
-* `search_books`
-* `get_work`
-* `get_author`
-* `list_editions`
+- `searchBooks` — Search Open Library.
+- `getWork` — Metadata for a work.
+- `getAuthor` — Metadata for an author.
+- `listEditions` — Editions of a work.
+- `isbnLookup` — Look up a book by ISBN.
+- `isbnValidate` — Validate an ISBN checksum.
 
 ## Run
 
@@ -17,29 +21,6 @@ npm run build
 node dist/index.js
 ```
 
-The client sends a descriptive User Agent and limits results to keep responses useful.
+## Source
 
-## Quick start
-
-```bash
-npm install
-npm run build
-node dist/index.js
-```
-
-The server uses stdio, so it can be connected to Claude Desktop, Cursor, VS Code, MCP Inspector, or another compatible MCP client.
-
-## Tools at a glance
-
-- `search_books`: Search Open Library for books, authors, subjects, or ISBNs.
-- `get_work`: Get detailed metadata for an Open Library work.
-- `get_author`: Get metadata for an Open Library author.
-- `list_editions`: List editions of an Open Library work.
-
-## Limits and privacy
-
-This project is intentionally narrow. It should be treated as a practical helper, not a complete certification or security audit. Check the implementation and the returned data before using it with sensitive material. No credentials are required unless the project explicitly says otherwise.
-
-## Try it
-
-After building, connect the server through your MCP client. The repository root also contains `smoke-test.mjs` for projects covered by the shared harness. A typical tool call starts with `search_books`.
+Public free APIs only. See `src/api.ts` for exact endpoints.

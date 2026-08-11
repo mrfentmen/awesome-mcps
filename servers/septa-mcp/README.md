@@ -1,16 +1,17 @@
-# SEPTA MCP
+# septa-mcp
 
-Philadelphia transit from the public SEPTA hackathon API. No key required.
+SEPTA transit arrivals and vehicle positions.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `next` — Next arrivals between two stations.
+- `stops` — Stops for a route.
+- `getNextArrivals` — Next train arrivals between stations.
+- `getTransitView` — Live SEPTA vehicle positions.
 
-* `next`  Next arrivals.
-* `stops`  Stops for a route.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +19,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public SEPTA API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

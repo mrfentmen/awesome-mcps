@@ -1,18 +1,20 @@
-# Themealdb MCP
+# themealdb-mcp
 
-TheMealDB free recipe database: search meals, categories, ingredients, random meal. No key required.
+TheMealDB recipes, categories, and ingredient filters.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search meals by name.
+- `random` — Random meal.
+- `categories` — Meal categories.
+- `filterByIngredient` — Meals by ingredient.
+- `searchRecipes` — Search recipes by name.
+- `byIngredient` — Recipes using an ingredient.
+- `recipeDetails` — Full recipe by id.
 
-* `search`  Search meals by name.
-* `random`  Get a random meal.
-* `categories`  List meal categories.
-* `filter_by_ingredient`  Find meals by ingredient.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -20,4 +22,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Themealdb API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

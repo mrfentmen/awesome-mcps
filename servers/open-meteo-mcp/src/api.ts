@@ -1,12 +1,5 @@
-/**
- * Open Meteo client. Free weather forecasts and geocoding, no API key.
- */
-const GEO = "https://geocoding-api.open-meteo.com/v1/search"
-const FC = "https://api.open-meteo.com/v1/forecast"
 
-export class MeteoError extends Error {}
-
-export interface Place {
+export interface m0_Place {
   name?: string
   latitude?: number
   longitude?: number
@@ -16,7 +9,7 @@ export interface Place {
   population?: number
 }
 
-export interface Forecast {
+export interface m0_Forecast {
   current?: {
     temperature?: number
     windspeed?: number
@@ -36,6 +29,17 @@ export interface Forecast {
   timezone?: string
 }
 
+const m0 = (() => {
+/**
+ * Open Meteo client. Free weather forecasts and geocoding, no API key.
+ */
+const GEO = "https://geocoding-api.open-meteo.com/v1/search"
+const FC = "https://api.open-meteo.com/v1/forecast"
+
+class MeteoError extends Error {}
+
+
+
 async function getJson(url: string): Promise<any> {
   const res = await fetch(url, {
     headers: { "User-Agent": "open-meteo-mcp/1.0" },
@@ -45,19 +49,19 @@ async function getJson(url: string): Promise<any> {
   return res.json()
 }
 
-export async function geocode(place: string, count = 5): Promise<Place[]> {
+async function geocode(place: string, count = 5): Promise<m0_Place[]> {
   const d = await getJson(`${GEO}?name=${encodeURIComponent(place)}&count=${count}`)
   return d?.results ?? []
 }
 
-export async function getForecast(latitude: number, longitude: number, days = 5): Promise<Forecast> {
+async function getForecast(latitude: number, longitude: number, days = 5): Promise<m0_Forecast> {
   const url = `${FC}?latitude=${latitude}&longitude=${longitude}` +
     `&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode` +
     `&timezone=auto&forecast_days=${Math.min(days, 14)}`
   return getJson(url)
 }
 
-export const WMO: Record<number, string> = {
+const WMO: Record<number, string> = {
   0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
   45: "Fog", 48: "Rime fog", 51: "Light drizzle", 53: "Drizzle", 55: "Dense drizzle",
   56: "Freezing drizzle", 57: "Dense freezing drizzle", 61: "Slight rain", 63: "Rain",
@@ -67,12 +71,12 @@ export const WMO: Record<number, string> = {
   95: "Thunderstorm", 96: "Thunderstorm with hail", 99: "Heavy thunderstorm with hail",
 }
 
-export function weatherName(code?: number): string {
+function weatherName(code?: number): string {
   if (code == null) return "Unknown"
   return WMO[code] ?? `Code ${code}`
 }
 
-export function formatPlace(p: Place): string {
+function formatPlace(p: m0_Place): string {
   const lines = [
     `${p.name ?? "?"}${p.admin1 ? `, ${p.admin1}` : ""}${p.country ? `, ${p.country}` : ""}`,
     `Coords: ${p.latitude}, ${p.longitude}`,
@@ -82,7 +86,7 @@ export function formatPlace(p: Place): string {
   return lines.join("\n")
 }
 
-export function formatForecast(f: Forecast, placeName: string): string {
+function formatForecast(f: m0_Forecast, placeName: string): string {
   const c = f.current
   const lines = [
     `Weather for ${placeName}${f.timezone ? ` (${f.timezone})` : ""}`,
@@ -94,7 +98,7 @@ export function formatForecast(f: Forecast, placeName: string): string {
 
   const d = f.daily
   if (d?.time) {
-    lines.push("", "Forecast:")
+    lines.push("", "m0_Forecast:")
     for (let i = 0; i < d.time.length; i++) {
       const max = d.temperature_2m_max?.[i]
       const min = d.temperature_2m_min?.[i]
@@ -107,3 +111,87 @@ export function formatForecast(f: Forecast, placeName: string): string {
   }
   return lines.join("\n")
 }
+
+return { MeteoError, formatForecast, formatPlace, geocode, getForecast, weatherName };
+})();
+
+const m1 = (() => {
+const BASE = "https://api.open-meteo.com/v1/elevation"
+const UA = "mrfentmen-elevation-mcp/1.0 (https://github.com/mrfentmen)"
+class ElevationError extends Error {}
+
+async function elevation(args: { lat?: number; lon?: number }): Promise<string> {
+  const lat = args.lat
+  const lon = args.lon
+  if (lat === undefined || lon === undefined || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+    throw new ElevationError("Provide valid latitude and longitude")
+  }
+  const res = await fetch(`${BASE}?latitude=${lat}&longitude=${lon}`, { headers: { "User-Agent": UA, Accept: "application/json" }, signal: AbortSignal.timeout(20000) })
+  if (res.status === 429) throw new ElevationError("Open-Meteo rate limit hit, wait and retry")
+  if (!res.ok) throw new ElevationError(`Open-Meteo error ${res.status}`)
+  const d = (await res.json()) as any
+  const el = d?.elevation?.[0]
+  if (el === undefined) throw new ElevationError("No elevation returned")
+  return `Elevation at ${lat}, ${lon}: ${el} meters (${(el * 3.28084).toFixed(0)} feet)`
+}
+
+return { ElevationError, elevation };
+})();
+
+const m2 = (() => {
+const BASE = "https://api.open-meteo.com/v1/forecast"
+const UA = "mrfentmen-uv-index-mcp/1.0 (https://github.com/mrfentmen)"
+class UvError extends Error {}
+
+async function get<T>(url: string): Promise<T> {
+  const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/json" }, signal: AbortSignal.timeout(25000) })
+  if (res.status === 429) throw new UvError("Open-Meteo rate limit hit, wait and retry")
+  if (!res.ok) throw new UvError(`Open-Meteo error ${res.status}`)
+  return (await res.json()) as T
+}
+
+function label(uv: number): string {
+  if (uv < 3) return "Low"
+  if (uv < 6) return "Moderate"
+  if (uv < 8) return "High"
+  if (uv < 11) return "Very high"
+  return "Extreme"
+}
+
+async function uvForecast(args: { lat?: number; lon?: number; days?: number }): Promise<string> {
+  const lat = args.lat
+  const lon = args.lon
+  if (lat === undefined || lon === undefined || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+    throw new UvError("Provide valid latitude and longitude")
+  }
+  const days = Math.min(Math.max(args.days ?? 3, 1), 16)
+  const d = await get<any>(`${BASE}?latitude=${lat}&longitude=${lon}&daily=uv_index_max&timezone=auto&forecast_days=${days}`)
+  const dates = d?.daily?.time ?? []
+  const uvs = d?.daily?.uv_index_max ?? []
+  if (!dates.length) return "No UV data returned"
+  return dates.map((date: string, i: number) => `${date}: UV ${uvs[i]} (${label(uvs[i])})`).join("\n")
+}
+
+return { UvError, uvForecast };
+})();
+
+export const ElevationError = m1.ElevationError;
+export const MeteoError = m0.MeteoError;
+export const UvError = m2.UvError;
+export const elevation = m1.elevation;
+export const formatForecast = m0.formatForecast;
+export const formatPlace = m0.formatPlace;
+export const geocode = m0.geocode;
+export const getForecast = m0.getForecast;
+export const uvForecast = m2.uvForecast;
+export const weatherName = m0.weatherName;
+export const m0_MeteoError = m0.MeteoError;
+export const m0_formatForecast = m0.formatForecast;
+export const m0_geocode = m0.geocode;
+export const m0_getForecast = m0.getForecast;
+export const m0_weatherName = m0.weatherName;
+export const m0_formatPlace = m0.formatPlace;
+export const m1_ElevationError = m1.ElevationError;
+export const m1_elevation = m1.elevation;
+export const m2_UvError = m2.UvError;
+export const m2_uvForecast = m2.uvForecast;

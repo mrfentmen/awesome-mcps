@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/opensky-mcp",
-  "description": "Live flight positions from OpenSky. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/opensky-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "opensky-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "opensky-mcp",
+  "description": "OpenSky live aircraft positions.",
+  "tools": [
+    "area",
+    "flightsNear",
+    "flightsInBox"
   ]
 }

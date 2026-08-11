@@ -1,30 +1,18 @@
-# archive org mcp
+# archive-org-mcp
 
-MCP server for the **Internet Archive**, the largest library on earth.
+Internet Archive search, item metadata, and Wayback snapshots.
+
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
-| Tool | What it does |
-|---|---|
-| `search_items` | Search ~200M items, filterable by media type (software, audio, movies, texts, web…) |
-| `get_item` | Full item details + file manifest with sizes/formats |
+- `searchItems` — Search the Internet Archive.
+- `getItem` — Details and file manifest for an item.
+- `getSnapshots` — Wayback snapshot history for a URL.
+- `getAvailability` — Closest Wayback snapshot for a URL.
+- `readSnapshot` — Read archived page text.
 
-## Usage
-
-```bash
-npm run build && node dist/index.js
-```
-
-Example:
-
-```
-search_items { query: "sonic the hedgehog prototype", mediatype: "software" }
-get_item { identifier: "sonic-the-hedgehog-triple-trouble-prototype-aug-161994..." }
-```
-
-Keyless. Great for abandoned CD ROM software, bootleg concert tapes, 78rpm records, Geocities snapshots, and old Flash games. Item entries include download counts; manifests show file sizes and formats.
-
-## Quick start
+## Run
 
 ```bash
 npm install
@@ -32,17 +20,6 @@ npm run build
 node dist/index.js
 ```
 
-The server uses stdio, so it can be connected to Claude Desktop, Cursor, VS Code, MCP Inspector, or another compatible MCP client.
+## Source
 
-## Tools at a glance
-
-- `search_items`: Search the Internet Archive - old software, abandoned CD-ROM games,
-- `get_item`: Get full details + file manifest for an archive.org item.
-
-## Limits and privacy
-
-This project is intentionally narrow. It should be treated as a practical helper, not a complete certification or security audit. Check the implementation and the returned data before using it with sensitive material. No credentials are required unless the project explicitly says otherwise.
-
-## Try it
-
-After building, connect the server through your MCP client. The repository root also contains `smoke-test.mjs` for projects covered by the shared harness. A typical tool call starts with `search_items`.
+Public free APIs only. See `src/api.ts` for exact endpoints.

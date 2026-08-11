@@ -1,16 +1,15 @@
-# Urban Dictionary MCP
+# urban-dictionary-mcp
 
-Look up slang definitions and examples from the public Urban Dictionary API. No key required.
+Urban Dictionary definitions.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `define` — Definitions for a term.
+- `random` — Random Urban Dictionary entry.
 
-* `define`  Definitions for a term.
-* `random`  A random entry.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +17,6 @@ npm run build
 node dist/index.js
 ```
 
-Entries come from the public Urban Dictionary API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/iss-mcp",
-  "description": "Live position, velocity, and altitude of the International Space Station. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/iss-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "iss-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "iss-mcp",
+  "description": "ISS live position and passes.",
+  "tools": [
+    "issNow",
+    "issPasses",
+    "position"
   ]
 }

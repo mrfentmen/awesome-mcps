@@ -1,16 +1,16 @@
-# Placeholder Images MCP
+# placeholder-images-mcp
 
-Generate placeholder image URLs from the public picsum.photos service. No key required.
+Placeholder image services (DummyImage, Picsum).
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `imageUrl` — Placeholder image URL.
+- `listImages` — List available placeholder images.
+- `list` — List recent Picsum photos.
 
-* `image_url`  A placeholder image URL.
-* `list_images`  List available images.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Images come from the public picsum.photos service.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

@@ -1,20 +1,11 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/holidays-mcp",
-  "description": "Public holidays in one place: Nager.Date and Open Holidays, plus supported countries. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/holidays-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "holidays-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "holidays-mcp",
+  "description": "Nager and Open Holidays public holidays.",
+  "tools": [
+    "publicHolidays",
+    "nextHolidays",
+    "countries",
+    "openHolidays",
+    "holidays"
   ]
 }

@@ -1,16 +1,20 @@
-const BASE = 'https://www3.septa.org/hackathon';
 
-export interface NextArgs {
+export interface m0_NextArgs {
   from: string;
   to: string;
   count?: number;
 }
 
-export interface RouteArgs {
+export interface m0_RouteArgs {
   route: string;
 }
 
-export async function next(args: NextArgs): Promise<string> {
+const m0 = (() => {
+const BASE = 'https://www3.septa.org/hackathon';
+
+
+
+async function next(args: m0_NextArgs): Promise<string> {
   const from = (args.from ?? '').trim();
   const to = (args.to ?? '').trim();
   if (!from || !to) return 'Provide origin and destination stations.';
@@ -29,7 +33,7 @@ export async function next(args: NextArgs): Promise<string> {
     }).join('\n');
 }
 
-export async function stops(args: RouteArgs): Promise<string> {
+async function stops(args: m0_RouteArgs): Promise<string> {
   const route = (args.route ?? '').trim();
   if (!route) return 'Provide a route id.';
   const res = await fetch(`${BASE}/Stops/${encodeURIComponent(route)}`, {
@@ -46,3 +50,50 @@ export async function stops(args: RouteArgs): Promise<string> {
       return `${i + 1}. ${s('stop_name')}`;
     }).join('\n');
 }
+
+return { next, stops };
+})();
+
+const m1 = (() => {
+const UA = "mrfentmen-transit-mcp/1.0 (https://github.com/mrfentmen)"
+class TransitError extends Error {}
+
+async function get<T>(url: string): Promise<T> {
+  const res = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(25000) })
+  if (!res.ok) throw new TransitError(`SEPTA error ${res.status}`)
+  return (await res.json()) as T
+}
+
+async function nextArrivals(args: { origin?: string; destination?: string }): Promise<string> {
+  const o = encodeURIComponent(args.origin ?? "")
+  const d = encodeURIComponent(args.destination ?? "")
+  const rows = await get<any[]>(`https://www3.septa.org/api/NextToArrive/index.php?req1=${o}&req2=${d}&req3=10`)
+  if (!rows?.length) return "No arrivals found"
+  return `Next arrivals ${args.origin} to ${args.destination}\n${rows.map((r: any) =>
+    `${r.orig_train ?? "?"} | ${r.orig_departure_time ?? ""} -> ${r.dest_arrival_time ?? ""} | ${r.status ?? ""}`
+  ).join("\n")}`
+}
+
+async function transitView(args: { route?: string }): Promise<string> {
+  const r = encodeURIComponent(args.route ?? "")
+  const d = await get<any>(`https://www3.septa.org/api/TransitView/index.php?route=${r}`)
+  const buses = d.bus ?? []
+  if (!buses.length) return `No live vehicles for route ${args.route}`
+  return `Live vehicles on route ${args.route}\n${buses.slice(0, 25).map((b: any) =>
+    `${b.label ?? "bus"} | ${b.block ?? ""} | ${b.lat ?? ""}, ${b.lng ?? ""} | ${b.direction ?? ""}`
+  ).join("\n")}`
+}
+
+return { TransitError, nextArrivals, transitView };
+})();
+
+export const TransitError = m1.TransitError;
+export const next = m0.next;
+export const nextArrivals = m1.nextArrivals;
+export const stops = m0.stops;
+export const transitView = m1.transitView;
+export const m0_stops = m0.stops;
+export const m0_next = m0.next;
+export const m1_nextArrivals = m1.nextArrivals;
+export const m1_TransitError = m1.TransitError;
+export const m1_transitView = m1.transitView;

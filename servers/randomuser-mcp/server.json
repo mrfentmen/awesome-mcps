@@ -1,20 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.mrfentmen/randomuser-mcp",
-  "description": "Random user profiles from Random User Generator. No key required.",
-  "repository": {
-    "url": "https://github.com/mrfentmen/randomuser-mcp",
-    "source": "github"
-  },
-  "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "randomuser-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      }
-    }
+  "name": "randomuser-mcp",
+  "description": "RandomUser profile generation.",
+  "tools": [
+    "users",
+    "generate",
+    "seed"
   ]
 }

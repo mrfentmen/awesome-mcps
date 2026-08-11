@@ -1,16 +1,16 @@
-# Wikimedia Commons MCP
+# wikimedia-commons-mcp
 
-Search images and files on Wikimedia Commons from the public MediaWiki API. No key required.
+Wikimedia Commons file search.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `search` — Search Commons files by text.
+- `file` — Details for one Commons file.
+- `random` — Random image files from Commons.
 
-* `search`  Search files.
-* `file`  Details for one file.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -18,4 +18,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public Wikimedia Commons API. Stock image search products charge for this.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

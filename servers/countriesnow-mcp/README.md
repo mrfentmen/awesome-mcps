@@ -1,17 +1,19 @@
-# CountriesNow MCP
+# countriesnow-mcp
 
-Country lists, cities, flags, and currencies from the public CountriesNow API. No key required.
+CountriesNow country, city, flag, and ISO data.
 
-This file is self contained. It reads public data only and never writes to the machine. All output is bounded and honest about what could not be fetched.
+A merged MCP server that consolidates duplicate single-purpose servers in this monorepo into one focused server.
 
 ## Tools
 
+- `countries` — List countries with ISO codes.
+- `cities` — Cities for a country.
+- `flag` — Flag image URL for a country.
+- `byName` — Country details by name.
+- `byCode` — Country details by code.
+- `search` — Search countries by partial name.
 
-* `countries`  List countries.
-* `cities`  Cities for a country.
-* `flag`  Flag image URL.
-
-## Usage
+## Run
 
 ```bash
 npm install
@@ -19,4 +21,6 @@ npm run build
 node dist/index.js
 ```
 
-Data comes from the public CountriesNow API.
+## Source
+
+Public free APIs only. See `src/api.ts` for exact endpoints.

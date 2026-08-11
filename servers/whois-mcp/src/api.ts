@@ -1,6 +1,7 @@
+const m0 = (() => {
 const RDAP = "https://rdap.org"
 const UA = "mrfentmen-whois-mcp/1.0 (https://github.com/mrfentmen)"
-export class WhoisError extends Error {}
+class WhoisError extends Error {}
 
 async function get<T>(url: string): Promise<T> {
   const res = await fetch(url, {
@@ -24,7 +25,7 @@ function dates(d: any): { created?: string; updated?: string; expires?: string }
   return out
 }
 
-export async function domain(args: { domain?: string }): Promise<string> {
+async function domain(args: { domain?: string }): Promise<string> {
   const dname = (args.domain ?? "").trim().toLowerCase().replace(/^https?:\/\//, "").split("/")[0]
   if (!dname || !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(dname)) throw new WhoisError("Provide a valid domain like example.com")
   const d = await get<any>(`${RDAP}/domain/${encodeURIComponent(dname)}`)
@@ -43,7 +44,7 @@ export async function domain(args: { domain?: string }): Promise<string> {
   return lines.join("\n")
 }
 
-export async function ip(args: { ip?: string }): Promise<string> {
+async function ip(args: { ip?: string }): Promise<string> {
   const addr = (args.ip ?? "").trim()
   if (!addr) throw new WhoisError("Provide an IP address")
   const d = await get<any>(`${RDAP}/ip/${encodeURIComponent(addr)}`)
@@ -62,3 +63,57 @@ export async function ip(args: { ip?: string }): Promise<string> {
   }
   return lines.join("\n")
 }
+
+return { WhoisError, domain, ip };
+})();
+
+const m1 = (() => {
+const BASE = "https://rdap.org"
+const UA = "mrfentmen-domain-info-mcp/1.0 (https://github.com/mrfentmen)"
+class DomainError extends Error {}
+
+async function domainInfo(args: { domain?: string }): Promise<string> {
+  const domain = (args.domain ?? "").trim().toLowerCase()
+  if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(domain)) throw new DomainError("Provide a valid domain like example.com")
+  const res = await fetch(`${BASE}/domain/${encodeURIComponent(domain)}`, {
+    headers: { "User-Agent": UA, Accept: "application/rdap+json" },
+    redirect: "follow",
+    signal: AbortSignal.timeout(25000),
+  })
+  if (res.status === 404) throw new DomainError(`No RDAP data for ${domain}`)
+  if (!res.ok) throw new DomainError(`RDAP error ${res.status}`)
+  const d = await res.json()
+  const ns = (d.nameservers ?? []).map((n: any) => n.ldhName ?? n.fqdn ?? "").join(", ")
+  const status = (d.status ?? []).join(", ")
+  const events: Record<string, string> = {}
+  for (const e of d.events ?? []) {
+    if (e.eventAction && e.eventDate) events[e.eventAction] = String(e.eventDate).slice(0, 10)
+  }
+  const registrant = d.entities?.find((x: any) => x.roles?.includes("registrant"))?.vcardArray?.[1]
+  const name = registrant?.find((r: any) => r[0] === "fn")?.[3] ?? "n/a"
+  const handle = d.handle ?? ""
+  return [
+    `Domain: ${d.ldhName ?? domain}`,
+    handle ? `Handle: ${handle}` : "",
+    events.registration ? `Registered: ${events.registration}` : "",
+    events.expiration ? `Expires: ${events.expiration}` : "",
+    events.last_changed ? `Last changed: ${events.last_changed}` : "",
+    status ? `Status: ${status}` : "",
+    ns ? `Nameservers: ${ns}` : "",
+    `Registrant: ${name}`,
+  ].filter(Boolean).join("\n")
+}
+
+return { DomainError, domainInfo };
+})();
+
+export const DomainError = m1.DomainError;
+export const WhoisError = m0.WhoisError;
+export const domain = m0.domain;
+export const domainInfo = m1.domainInfo;
+export const ip = m0.ip;
+export const m0_domain = m0.domain;
+export const m0_ip = m0.ip;
+export const m0_WhoisError = m0.WhoisError;
+export const m1_domainInfo = m1.domainInfo;
+export const m1_DomainError = m1.DomainError;
