@@ -1,0 +1,76 @@
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+import { BggError, formatDetails, formatSummary, getGame, hotGames, searchGames } from "./api.js";
+const text = (t) => ({ content: [{ type: "text", text: t }] });
+const textError = (t) => ({ content: [{ type: "text", text: t }], isError: true });
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true };
+export function createServer() {
+    const server = new McpServer({
+        name: "boardgamegeek-mcp",
+        version: "1.0.0",
+    });
+    server.registerTool("search_games", {
+        title: "Search board games",
+        description: "Search BoardGameGeek for board games and expansions by title.",
+        inputSchema: z.object({
+            query: z.string().describe("Game title to search, e.g. 'Catan'"),
+            exact: z.boolean().default(false).describe("Match the title exactly"),
+            limit: z.number().int().min(1).max(20).default(5),
+        }),
+        annotations: READ_ONLY,
+    }, async ({ query, exact, limit }) => {
+        try {
+            const results = await searchGames(query, exact, limit);
+            if (results.length === 0)
+                return text(`No BoardGameGeek games match "${query}".`);
+            return text(`BoardGameGeek results for "${query}":\n\n${results.map((g, i) => formatSummary(g, i)).join("\n")}`);
+        }
+        catch (e) {
+            return textError(errorMessage(e));
+        }
+    });
+    server.registerTool("get_game", {
+        title: "Get game details",
+        description: "Get full BoardGameGeek details for one game: description, players, play time, categories, mechanics, designers, ratings, rank.",
+        inputSchema: z.object({
+            id: z.string().describe("Numeric BGG id, e.g. '174430' (use search_games to find it)"),
+        }),
+        annotations: READ_ONLY,
+    }, async ({ id }) => {
+        try {
+            const g = await getGame(id);
+            if (!g)
+                return text(`No BoardGameGeek game with id ${id}.`);
+            return text(formatDetails(g));
+        }
+        catch (e) {
+            return textError(errorMessage(e));
+        }
+    });
+    server.registerTool("hot_games", {
+        title: "BGG Hotness chart",
+        description: "List the current BoardGameGeek Hotness chart (most talked-about board games).",
+        inputSchema: z.object({
+            limit: z.number().int().min(1).max(20).default(10),
+        }),
+        annotations: READ_ONLY,
+    }, async ({ limit }) => {
+        try {
+            const results = await hotGames(limit);
+            if (results.length === 0)
+                return text("No hot games right now.");
+            return text(`BoardGameGeek Hotness:\n\n${results.map((g, i) => formatSummary(g, i)).join("\n")}`);
+        }
+        catch (e) {
+            return textError(errorMessage(e));
+        }
+    });
+    return server;
+}
+function errorMessage(e) {
+    if (e instanceof BggError)
+        return `Error: ${e.message}`;
+    if (e instanceof Error)
+        return `Error: ${e.message}`;
+    return `Error: ${String(e)}`;
+}

@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **578 MCP servers** in [`servers/`](./servers)
+- **585 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -60,6 +60,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`blockcypher-mcp`](./servers/blockcypher-mcp)
 - [`bls-mcp`](./servers/bls-mcp)
 - [`bluesky-mcp`](./servers/bluesky-mcp)
+- [`boardgamegeek-mcp`](./servers/boardgamegeek-mcp)
 - [`books-mcp`](./servers/books-mcp)
 - [`bored-mcp`](./servers/bored-mcp)
 - [`brainrot-mcp`](./servers/brainrot-mcp)
@@ -67,6 +68,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`brightsky-mcp`](./servers/brightsky-mcp)
 - [`browser-mcp`](./servers/browser-mcp)
 - [`build-cache-mcp`](./servers/build-cache-mcp)
+- [`bulbapedia-mcp`](./servers/bulbapedia-mcp)
 - [`bundlephobia-mcp`](./servers/bundlephobia-mcp)
 - [`car-recalls-mcp`](./servers/car-recalls-mcp)
 - [`carbon-intensity-mcp`](./servers/carbon-intensity-mcp)
@@ -113,6 +115,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`countriesnow-mcp`](./servers/countriesnow-mcp)
 - [`countryflags-mcp`](./servers/countryflags-mcp)
 - [`court-records-mcp`](./servers/court-records-mcp)
+- [`coverartarchive-mcp`](./servers/coverartarchive-mcp)
 - [`covid-data-mcp`](./servers/covid-data-mcp)
 - [`crates-io-mcp`](./servers/crates-io-mcp)
 - [`cron-mcp`](./servers/cron-mcp)
@@ -133,6 +136,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`deck-of-cards-mcp`](./servers/deck-of-cards-mcp)
 - [`deezer-mcp`](./servers/deezer-mcp)
 - [`defillama-mcp`](./servers/defillama-mcp)
+- [`demozoo-mcp`](./servers/demozoo-mcp)
 - [`dependency-drift-mcp`](./servers/dependency-drift-mcp)
 - [`dependency-license-change-mcp`](./servers/dependency-license-change-mcp)
 - [`deps-dev-mcp`](./servers/deps-dev-mcp)
@@ -307,6 +311,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`lockstep-mcp`](./servers/lockstep-mcp)
 - [`lol-datadragon-mcp`](./servers/lol-datadragon-mcp)
 - [`lorem-mcp`](./servers/lorem-mcp)
+- [`lostmedia-mcp`](./servers/lostmedia-mcp)
 - [`lotr-mcp`](./servers/lotr-mcp)
 - [`luchtmeetnet-mcp`](./servers/luchtmeetnet-mcp)
 - [`lyrics-mcp`](./servers/lyrics-mcp)
@@ -484,6 +489,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`ssl-labs-mcp`](./servers/ssl-labs-mcp)
 - [`stackexchange-mcp`](./servers/stackexchange-mcp)
 - [`star-wars-mcp`](./servers/star-wars-mcp)
+- [`stardew-wiki-mcp`](./servers/stardew-wiki-mcp)
 - [`steam-mcp`](./servers/steam-mcp)
 - [`steamspy-mcp`](./servers/steamspy-mcp)
 - [`stellar-mcp`](./servers/stellar-mcp)
@@ -578,6 +584,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`worktree-orbit-mcp`](./servers/worktree-orbit-mcp)
 - [`worldbank-mcp`](./servers/worldbank-mcp)
 - [`wttr-mcp`](./servers/wttr-mcp)
+- [`wynncraft-mcp`](./servers/wynncraft-mcp)
 - [`xkcd-mcp`](./servers/xkcd-mcp)
 - [`yaml-mcp`](./servers/yaml-mcp)
 - [`yesno-mcp`](./servers/yesno-mcp)
