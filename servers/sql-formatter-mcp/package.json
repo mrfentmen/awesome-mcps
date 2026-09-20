@@ -40,5 +40,8 @@
     "formatter",
     "database",
     "query"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

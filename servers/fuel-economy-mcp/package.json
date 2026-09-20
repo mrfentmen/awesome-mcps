@@ -38,5 +38,8 @@
     "mpg",
     "epa",
     "car"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "campaign finance",
     "elections",
     "government"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

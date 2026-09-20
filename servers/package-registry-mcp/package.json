@@ -41,5 +41,8 @@
     "pypi",
     "package",
     "registry"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

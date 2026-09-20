@@ -37,5 +37,8 @@
     "users",
     "gaming",
     "profiles"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

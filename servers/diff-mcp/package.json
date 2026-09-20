@@ -44,5 +44,8 @@
     "compare",
     "text",
     "files"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

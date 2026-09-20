@@ -37,5 +37,8 @@
     "wiktionary",
     "words",
     "etymology"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "crypto",
     "australia",
     "prices"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

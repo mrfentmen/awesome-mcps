@@ -36,5 +36,8 @@
     "competitive",
     "programming",
     "contests"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

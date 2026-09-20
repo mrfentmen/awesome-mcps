@@ -37,5 +37,8 @@
     "shorten",
     "link",
     "isgd"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

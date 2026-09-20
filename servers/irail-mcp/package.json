@@ -36,5 +36,8 @@
     "belgium",
     "rail",
     "train"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "transit",
     "bay-area",
     "train"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

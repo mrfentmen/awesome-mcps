@@ -36,5 +36,8 @@
     "crypto",
     "mexico",
     "prices"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "status",
     "uptime",
     "incidents"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

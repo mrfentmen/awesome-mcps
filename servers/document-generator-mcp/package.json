@@ -41,5 +41,8 @@
     "word",
     "document",
     "generator"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

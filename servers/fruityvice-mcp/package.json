@@ -37,5 +37,8 @@
     "fruit",
     "nutrition",
     "food"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

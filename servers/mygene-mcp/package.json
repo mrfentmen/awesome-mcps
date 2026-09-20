@@ -36,5 +36,8 @@
     "gene",
     "genomics",
     "annotation"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

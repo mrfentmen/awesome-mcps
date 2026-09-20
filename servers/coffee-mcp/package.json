@@ -36,5 +36,8 @@
     "coffee",
     "recipes",
     "drinks"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

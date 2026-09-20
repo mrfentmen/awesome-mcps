@@ -37,5 +37,8 @@
     "paleontology",
     "science",
     "pbdb"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

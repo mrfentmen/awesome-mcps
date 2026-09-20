@@ -10,6 +10,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -17,25 +19,35 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_cards",
-    "Search Yu-Gi-Oh! cards by exact name.",
-    { name: z.string().describe("Card name, e.g. 'Blue-Eyes White Dragon'") },
+    {
+      title: "Search cards",
+      description: "Search Yu-Gi-Oh! cards by exact name.",
+      inputSchema: z.object(
+    { name: z.string().describe("Card name, e.g. 'Blue-Eyes White Dragon'") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const cards = await searchCardsByName(name)
         if (cards.length === 0) return text(`No Yu-Gi-Oh! card named "${name}".`)
         return text(`Cards matching "${name}":\n\n${cards.map((c, i) => formatCard(c, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_by_archetype",
-    "Search Yu-Gi-Oh! cards by archetype (e.g. 'Blue-Eyes', 'Dark Magician', 'Branded').",
-    { archetype: z.string().describe("Archetype name"), limit: z.number().int().min(1).max(30).default(10) },
+    {
+      title: "Search by archetype",
+      description: "Search Yu-Gi-Oh! cards by archetype (e.g. 'Blue-Eyes', 'Dark Magician', 'Branded').",
+      inputSchema: z.object(
+    { archetype: z.string().describe("Archetype name"), limit: z.number().int().min(1).max(30).default(10) }),
+      annotations: READ_ONLY,
+    },
     async ({ archetype, limit }) => {
       try {
         const cards = await searchCardsByArchetype(archetype)
@@ -45,30 +57,40 @@ export function createServer(): McpServer {
             cards.slice(0, limit).map((c, i) => formatCard(c, i)).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_card",
-    "Get a single card by numeric id (from search results).",
-    { id: z.number().int().describe("Card id, e.g. 89631139") },
+    {
+      title: "Get card",
+      description: "Get a single card by numeric id (from search results).",
+      inputSchema: z.object(
+    { id: z.number().int().describe("Card id, e.g. 89631139") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const card = await getCardById(id)
         if (!card) return text(`No Yu-Gi-Oh! card with id ${id}.`)
         return text(formatCard(card))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_banlist",
-    "Get the current TCG/OCG forbidden & limited list.",
-    { format: z.enum(["tcg", "ocg", "goat"]).default("tcg").describe("Banlist format") },
+    {
+      title: "Get banlist",
+      description: "Get the current TCG/OCG forbidden & limited list.",
+      inputSchema: z.object(
+    { format: z.enum(["tcg", "ocg", "goat"]).default("tcg").describe("Banlist format") }),
+      annotations: READ_ONLY,
+    },
     async ({ format }) => {
       try {
         const list = await getBanlist(format)
@@ -86,7 +108,7 @@ export function createServer(): McpServer {
         }
         return text(`${format.toUpperCase()} banlist:\n\n${out.join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

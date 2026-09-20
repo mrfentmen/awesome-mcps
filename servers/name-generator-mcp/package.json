@@ -41,5 +41,8 @@
     "generator",
     "username",
     "codename"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

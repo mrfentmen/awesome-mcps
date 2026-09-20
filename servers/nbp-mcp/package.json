@@ -38,5 +38,8 @@
     "exchange",
     "gold",
     "fx"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

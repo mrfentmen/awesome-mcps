@@ -37,5 +37,8 @@
     "opengraph",
     "preview",
     "web"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

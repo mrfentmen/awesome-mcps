@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,15 +20,20 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_mods",
-    "Search Modrinth for Minecraft mods/modpacks/plugins, optionally " +
+    {
+      title: "Search mods",
+      description: "Search Modrinth for Minecraft mods/modpacks/plugins, optionally " +
       "filtered by loader (fabric/forge/neoforge/quilt) and game version.",
+      inputSchema: z.object(
     {
       query: z.string().describe("e.g. 'sodium', 'create', 'journeymap'"),
       loader: z.string().optional().describe("e.g. 'fabric', 'forge', 'neoforge'"),
       gameVersion: z.string().optional().describe("e.g. '1.20.1', '1.21'"),
       limit: z.number().int().min(1).max(20).default(10).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ query, loader, gameVersion, limit }) => {
       try {
@@ -39,36 +46,46 @@ export function createServer(): McpServer {
           (gameVersion ? ` (MC ${gameVersion})` : "") + ":\n"
         return text(head + hits.map((h, i) => formatHit(h, i + 1)).join("\n\n"))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_mod",
-    "Get full details for a Modrinth project by slug: description, " +
+    {
+      title: "Get mod",
+      description: "Get full details for a Modrinth project by slug: description, " +
       "loaders, supported game versions, stats.",
-    { slug: z.string().describe("Mod slug, e.g. 'sodium' or 'create'") },
+      inputSchema: z.object(
+    { slug: z.string().describe("Mod slug, e.g. 'sodium' or 'create'") }),
+      annotations: READ_ONLY,
+    },
     async ({ slug }) => {
       try {
         const project = await getProject(slug)
         if (!project) return text(`No Modrinth project "${slug}".`)
         return text(formatProject(project))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_mod_versions",
-    "List versions of a mod, optionally filtered by loader and game " +
+    {
+      title: "Get mod versions",
+      description: "List versions of a mod, optionally filtered by loader and game " +
       "version, with download links and required dependencies.",
+      inputSchema: z.object(
     {
       slug: z.string().describe("Mod slug, e.g. 'sodium'"),
       loader: z.string().optional().describe("e.g. 'fabric', 'forge'"),
       gameVersion: z.string().optional().describe("e.g. '1.20.1'"),
       limit: z.number().int().min(1).max(20).default(5).describe("Max versions"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ slug, loader, gameVersion, limit }) => {
       try {
@@ -83,7 +100,7 @@ export function createServer(): McpServer {
             versions.map((v, i) => formatVersion(v, i + 1)).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

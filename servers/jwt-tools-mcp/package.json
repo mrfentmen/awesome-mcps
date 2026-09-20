@@ -38,5 +38,8 @@
     "tokens",
     "auth",
     "security"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

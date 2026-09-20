@@ -40,5 +40,8 @@
     "parse",
     "data",
     "spreadsheet"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

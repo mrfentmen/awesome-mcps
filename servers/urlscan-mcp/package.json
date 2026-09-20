@@ -36,5 +36,8 @@
     "security",
     "url",
     "scan"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

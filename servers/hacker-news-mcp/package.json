@@ -37,5 +37,8 @@
     "hn",
     "news",
     "algolia"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -41,5 +41,8 @@
     "words",
     "letters",
     "game"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

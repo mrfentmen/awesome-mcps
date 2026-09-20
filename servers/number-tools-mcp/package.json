@@ -37,5 +37,8 @@
     "bases",
     "roman",
     "converter"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

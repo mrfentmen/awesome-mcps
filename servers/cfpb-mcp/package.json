@@ -36,5 +36,8 @@
     "consumer",
     "complaints",
     "finance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

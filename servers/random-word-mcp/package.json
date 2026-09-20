@@ -37,5 +37,8 @@
     "random",
     "writing",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "tle",
     "satellite",
     "orbit"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

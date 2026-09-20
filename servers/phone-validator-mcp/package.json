@@ -42,5 +42,8 @@
     "validator",
     "e164",
     "telephony"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "ip",
     "geolocation",
     "reverse-geocode"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

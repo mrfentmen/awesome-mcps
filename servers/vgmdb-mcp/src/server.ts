@@ -13,6 +13,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -20,11 +22,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_albums",
-    "Search for video game soundtrack albums by game or composer name. " +
+    {
+      title: "Search albums",
+      description: "Search for video game soundtrack albums by game or composer name. " +
       "Returns album ids for get_album.",
-    { query: z.string().describe("e.g. 'Chrono Trigger OST' or 'NieR soundtrack'") },
+      inputSchema: z.object(
+    { query: z.string().describe("e.g. 'Chrono Trigger OST' or 'NieR soundtrack'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const albums = await searchAlbums(query)
@@ -34,30 +41,40 @@ export function createServer(): McpServer {
             albums.map((a, i) => `${i + 1}. ${formatAlbumSearch(a)}`).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_album",
-    "Get full album details: full tracklist with timings, release date, genre.",
-    { id: z.string().describe("Album numeric id from search_albums") },
+    {
+      title: "Get album",
+      description: "Get full album details: full tracklist with timings, release date, genre.",
+      inputSchema: z.object(
+    { id: z.string().describe("Album numeric id from search_albums") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const album = await getAlbum(id)
         if (!album) return text(`No album with id "${id}".`)
         return text(formatAlbumDetail(album))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_artists",
-    "Search for video game composers / performers by name.",
-    { query: z.string().describe("e.g. 'Yasunori Mitsuda' or 'Nobuo Uematsu'") },
+    {
+      title: "Search artists",
+      description: "Search for video game composers / performers by name.",
+      inputSchema: z.object(
+    { query: z.string().describe("e.g. 'Yasunori Mitsuda' or 'Nobuo Uematsu'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const artists = await searchArtists(query)
@@ -67,22 +84,27 @@ export function createServer(): McpServer {
             artists.map((a, i) => `${i + 1}. ${formatArtistSearch(a)}`).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_artist",
-    "Get a composer's/artist's discography (albums).",
-    { id: z.string().describe("Artist numeric id from search_artists") },
+    {
+      title: "Get artist",
+      description: "Get a composer's/artist's discography (albums).",
+      inputSchema: z.object(
+    { id: z.string().describe("Artist numeric id from search_artists") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const artist = await getArtist(id)
         if (!artist) return text(`No artist with id "${id}".`)
         return text(formatArtistDetail(artist))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

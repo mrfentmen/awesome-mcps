@@ -37,5 +37,8 @@
     "dad jokes",
     "humor",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

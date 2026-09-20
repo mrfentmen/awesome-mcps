@@ -37,5 +37,8 @@
     "token",
     "erc20",
     "wallet"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

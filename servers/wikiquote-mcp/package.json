@@ -37,5 +37,8 @@
     "wikiquote",
     "famous",
     "sayings"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

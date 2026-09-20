@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,11 +20,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_artist",
-    "Search Setlist.fm for an artist by name. Returns MusicBrainz IDs (mbid) " +
+    {
+      title: "Search artist",
+      description: "Search Setlist.fm for an artist by name. Returns MusicBrainz IDs (mbid) " +
       "needed by the other tools.",
-    { name: z.string().describe("Artist name, e.g. 'Radiohead' or 'Playboi Carti'") },
+      inputSchema: z.object(
+    { name: z.string().describe("Artist name, e.g. 'Radiohead' or 'Playboi Carti'") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const results = await searchArtists(name)
@@ -37,18 +44,23 @@ export function createServer(): McpServer {
         )
         return text(`Artists matching "${name}":\n${lines.join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_artist_setlists",
-    "Fetch recent concert setlists for an artist by MusicBrainz ID.",
+    {
+      title: "Get artist setlists",
+      description: "Fetch recent concert setlists for an artist by MusicBrainz ID.",
+      inputSchema: z.object(
     {
       artistMbid: z.string().describe("MusicBrainz artist ID from search_artist"),
       page: z.number().int().min(1).default(1).describe("Page number"),
       year: z.number().int().optional().describe("Filter to a single year"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ artistMbid, page, year }) => {
       try {
@@ -66,33 +78,43 @@ export function createServer(): McpServer {
           .join("\n")
         return text(head + body)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_setlist_detail",
-    "Get the full song-by-song setlist for a specific concert.",
-    { setlistId: z.string().describe("Setlist ID (from get_artist_setlists)") },
+    {
+      title: "Get setlist detail",
+      description: "Get the full song-by-song setlist for a specific concert.",
+      inputSchema: z.object(
+    { setlistId: z.string().describe("Setlist ID (from get_artist_setlists)") }),
+      annotations: READ_ONLY,
+    },
     async ({ setlistId }) => {
       try {
         const s = await getSetlist(setlistId)
         return text(formatSetlist(s))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "count_song_plays",
-    "Count how many times an artist has played a specific song live, " +
+    {
+      title: "Count song plays",
+      description: "Count how many times an artist has played a specific song live, " +
       "with a few example shows.",
+      inputSchema: z.object(
     {
       artistMbid: z.string().describe("MusicBrainz artist ID"),
       songName: z.string().describe("Song title, e.g. 'Creep'"),
       maxPages: z.number().int().min(1).max(10).default(3).describe("Pages to scan (each = ~20 shows)"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ artistMbid, songName, maxPages }) => {
       try {
@@ -117,7 +139,7 @@ export function createServer(): McpServer {
           : "No live plays found in the scanned pages."
         return text(head + tail)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

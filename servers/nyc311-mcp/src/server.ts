@@ -3,6 +3,8 @@ import { z } from "zod"
 import { countRequests, format, searchRequests } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const errorText = (error: unknown) => text(`Error: ${error instanceof Error ? error.message : String(error)}`)
 const date = z.string().regex(/^\\d{4}-\\d{2}-\\d{2}/).optional()
 
@@ -15,17 +17,35 @@ export function createServer() {
     start: date,
     end: date,
   }
-  server.tool("search_requests", "Search recent public NYC 311 requests using non-location-identifying fields. Addresses and coordinates are intentionally excluded.", {
+  server.registerTool(
+    "search_requests",
+    {
+      title: "Search requests",
+      description: "Search recent public NYC 311 requests using non-location-identifying fields. Addresses and coordinates are intentionally excluded.",
+      inputSchema: z.object( {
     ...filters,
     limit: z.number().int().min(1).max(50).default(20),
-  }, async ({ complaintType, borough, agency, start, end, limit }) => {
+  }),
+      annotations: READ_ONLY,
+    },
+    async ({ complaintType, borough, agency, start, end, limit }) => {
     try { return text(format(await searchRequests(complaintType, borough, agency, start, end, limit))) } catch (error) { return errorText(error) }
-  })
-  server.tool("count_requests", "Count NYC 311 requests grouped by complaint type with optional date, borough, and agency filters.", {
+  }
+  )
+  server.registerTool(
+    "count_requests",
+    {
+      title: "Count requests",
+      description: "Count NYC 311 requests grouped by complaint type with optional date, borough, and agency filters.",
+      inputSchema: z.object( {
     ...filters,
     limit: z.number().int().min(1).max(100).default(50),
-  }, async ({ complaintType, borough, agency, start, end, limit }) => {
+  }),
+      annotations: READ_ONLY,
+    },
+    async ({ complaintType, borough, agency, start, end, limit }) => {
     try { return text(format(await countRequests(complaintType, borough, agency, start, end, limit))) } catch (error) { return errorText(error) }
-  })
+  }
+  )
   return server
 }

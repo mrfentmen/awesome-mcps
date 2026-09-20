@@ -37,5 +37,8 @@
     "stock",
     "images",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

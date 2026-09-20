@@ -37,5 +37,8 @@
     "f1",
     "formula-1",
     "telemetry"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

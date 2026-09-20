@@ -3,12 +3,23 @@ import { z } from "zod"
 import { formula } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "homebrew-mcp", version: "1.0.0" })
-  server.tool("formula", "Details for one Homebrew formula.", { name: z.string().describe("Formula name like git.") }, async (args) => {
-    try { return text(await formula(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "formula",
+    {
+      title: "Formula",
+      description: "Details for one Homebrew formula.",
+      inputSchema: z.object( { name: z.string().describe("Formula name like git.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await formula(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

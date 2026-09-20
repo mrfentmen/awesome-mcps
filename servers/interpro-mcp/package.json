@@ -37,5 +37,8 @@
     "protein",
     "domains",
     "bioinformatics"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -38,5 +38,8 @@
     "pollution",
     "aqi",
     "environment"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

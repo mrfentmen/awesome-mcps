@@ -36,5 +36,8 @@
     "game",
     "state",
     "alerts"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

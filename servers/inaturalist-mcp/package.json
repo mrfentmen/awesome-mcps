@@ -41,5 +41,8 @@
     "species",
     "observations",
     "biodiversity"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "testing",
     "objects",
     "dev"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

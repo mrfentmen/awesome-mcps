@@ -37,5 +37,8 @@
     "packagist",
     "packages",
     "composer"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

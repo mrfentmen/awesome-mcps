@@ -37,5 +37,8 @@
     "bank",
     "finance",
     "institutions"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

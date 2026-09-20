@@ -37,5 +37,8 @@
     "vocaloid",
     "music",
     "songs"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

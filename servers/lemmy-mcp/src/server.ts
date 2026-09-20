@@ -3,12 +3,23 @@ import { z } from "zod"
 import { communities } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "lemmy-mcp", version: "1.0.0" })
-  server.tool("communities", "Public communities on an instance.", { limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await communities(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "communities",
+    {
+      title: "Communities",
+      description: "Public communities on an instance.",
+      inputSchema: z.object( { limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await communities(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

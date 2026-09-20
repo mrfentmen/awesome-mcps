@@ -37,5 +37,8 @@
     "wikipedia",
     "on-this-day",
     "events"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

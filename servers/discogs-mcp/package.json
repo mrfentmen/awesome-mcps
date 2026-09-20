@@ -37,5 +37,8 @@
     "music",
     "records",
     "vinyl"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

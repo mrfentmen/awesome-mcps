@@ -37,5 +37,8 @@
     "collection",
     "museum",
     "catalogue"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

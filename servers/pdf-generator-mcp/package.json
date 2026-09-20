@@ -38,5 +38,8 @@
     "document",
     "generator",
     "report"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

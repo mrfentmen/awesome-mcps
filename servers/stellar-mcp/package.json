@@ -37,5 +37,8 @@
     "horizon",
     "crypto",
     "ledger"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

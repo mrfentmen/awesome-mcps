@@ -37,5 +37,8 @@
     "pharmacy",
     "rxnorm",
     "health"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

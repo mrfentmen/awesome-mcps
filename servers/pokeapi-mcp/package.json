@@ -37,5 +37,8 @@
     "pokedex",
     "games",
     "creatures"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

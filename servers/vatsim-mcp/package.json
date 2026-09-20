@@ -37,5 +37,8 @@
     "flight-sim",
     "pilots",
     "atc"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

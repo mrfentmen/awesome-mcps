@@ -36,5 +36,8 @@
     "jobs",
     "boards",
     "work"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

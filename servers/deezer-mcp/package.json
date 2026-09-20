@@ -37,5 +37,8 @@
     "music",
     "tracks",
     "albums"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

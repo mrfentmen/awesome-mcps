@@ -37,5 +37,8 @@
     "earth",
     "photos",
     "space"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

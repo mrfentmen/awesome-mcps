@@ -37,5 +37,8 @@
     "wanted",
     "law",
     "public safety"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -4,6 +4,8 @@ import { Adventure } from "./engine.js"
 import { describeGames, GAMES } from "./games.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 // A stdio MCP server talks to a single client, so a single in-memory
 // game session is the right shape.
@@ -24,23 +26,32 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "list_games",
-    "List the text-adventure games available to play.",
-    {},
+    {
+      title: "List games",
+      description: "List the text-adventure games available to play.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => text(`Available games:\n${describeGames()}`)
   )
 
-  server.tool(
+  server.registerTool(
     "start_game",
-    "Start (or restart) a text-adventure game. The AI is the player — " +
+    {
+      title: "Start game",
+      description: "Start (or restart) a text-adventure game. The AI is the player — " +
       "explore with 'look', move with 'go north' etc., take items, and " +
       "collect treasures to win.",
+      inputSchema: z.object(
     {
       gameId: z
         .string()
         .default("colossal-dungeon")
         .describe("Game id from list_games (default: colossal-dungeon)"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ gameId }) => {
       const game = GAMES[gameId]
@@ -54,50 +65,63 @@ export function createServer(): McpServer {
     }
   )
 
-  server.tool(
+  server.registerTool(
     "act",
-    "Send a command to the current game: move, look, take, use, examine... " +
+    {
+      title: "Act",
+      description: "Send a command to the current game: move, look, take, use, examine... " +
       "Returns the game's response.",
+      inputSchema: z.object(
     {
       command: z.string().describe(
         "Natural-language command, e.g. 'go north', 'take the lantern', " +
           "'use lantern', 'look', 'inventory'"
       ),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ command }) => {
       try {
         const game = requireGame()
         return text(game.act(command))
       } catch (e) {
-        return text(`Error: ${(e as Error).message}`)
+        return textError(`Error: ${(e as Error).message}`)
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "hint",
-    "Get a hint for the current room.",
-    {},
+    {
+      title: "Hint",
+      description: "Get a hint for the current room.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const game = requireGame()
         return text(game.hint())
       } catch (e) {
-        return text(`Error: ${(e as Error).message}`)
+        return textError(`Error: ${(e as Error).message}`)
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "score",
-    "Show your current score, treasures collected, and move count.",
-    {},
+    {
+      title: "Score",
+      description: "Show your current score, treasures collected, and move count.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const game = requireGame()
         return text(game.doScore())
       } catch (e) {
-        return text(`Error: ${(e as Error).message}`)
+        return textError(`Error: ${(e as Error).message}`)
       }
     }
   )

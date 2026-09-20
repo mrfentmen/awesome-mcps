@@ -3,12 +3,23 @@ import { z } from "zod"
 import { matches } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "openligadb-soccer-mcp", version: "1.0.0" })
-  server.tool("matches", "Matches for a league and season.", { league: z.string().describe("League like bl1.").optional(), season: z.number().describe("Season year.").optional() }, async (args) => {
-    try { return text(await matches(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "matches",
+    {
+      title: "Matches",
+      description: "Matches for a league and season.",
+      inputSchema: z.object( { league: z.string().describe("League like bl1.").optional(), season: z.number().describe("Season year.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await matches(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

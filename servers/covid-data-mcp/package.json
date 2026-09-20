@@ -37,5 +37,8 @@
     "health",
     "statistics",
     "pandemic"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

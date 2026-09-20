@@ -37,5 +37,8 @@
     "collections",
     "roles",
     "devops"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

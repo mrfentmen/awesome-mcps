@@ -12,6 +12,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -19,44 +21,59 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_games",
-    "Search speedrun.com for a game. Returns game ids used by the other tools.",
-    { query: z.string().describe("Game title, e.g. 'Ocarina of Time' or 'Super Mario 64'") },
+    {
+      title: "Search games",
+      description: "Search speedrun.com for a game. Returns game ids used by the other tools.",
+      inputSchema: z.object(
+    { query: z.string().describe("Game title, e.g. 'Ocarina of Time' or 'Super Mario 64'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const games = await searchGames(query)
         if (games.length === 0) return text(`No speedrun.com games match "${query}".`)
         return text(`Games matching "${query}":\n${games.map((g, i) => formatGame(g, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_world_records",
-    "Get the current world records for a game — every category with the " +
+    {
+      title: "Get world records",
+      description: "Get the current world records for a game — every category with the " +
       "top 3 runs each.",
-    { gameId: z.string().describe("Game id from search_games") },
+      inputSchema: z.object(
+    { gameId: z.string().describe("Game id from search_games") }),
+      annotations: READ_ONLY,
+    },
     async ({ gameId }) => {
       try {
         const records = await getWorldRecords(gameId)
         if (records.length === 0) return text(`No records found for game ${gameId}.`)
         return text(`World records for ${gameId}:\n\n${records.map(formatRecordCategory).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_leaderboard",
-    "Get a leaderboard for a specific game category.",
+    {
+      title: "Get leaderboard",
+      description: "Get a leaderboard for a specific game category.",
+      inputSchema: z.object(
     {
       gameId: z.string().describe("Game id from search_games"),
       categoryId: z.string().describe("Category id from get_categories"),
       top: z.number().int().min(1).max(25).default(10),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ gameId, categoryId, top }) => {
       try {
@@ -75,15 +92,20 @@ export function createServer(): McpServer {
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_categories",
-    "List a game's speedrun categories (Any%, 100%, glitchless, etc.).",
-    { gameId: z.string().describe("Game id from search_games") },
+    {
+      title: "Get categories",
+      description: "List a game's speedrun categories (Any%, 100%, glitchless, etc.).",
+      inputSchema: z.object(
+    { gameId: z.string().describe("Game id from search_games") }),
+      annotations: READ_ONLY,
+    },
     async ({ gameId }) => {
       try {
         const cats = await getCategories(gameId)
@@ -95,15 +117,20 @@ export function createServer(): McpServer {
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_runner",
-    "Look up a speedrunner profile by user id.",
-    { userId: z.string().describe("User id (e.g. from a record's player link)") },
+    {
+      title: "Get runner",
+      description: "Look up a speedrunner profile by user id.",
+      inputSchema: z.object(
+    { userId: z.string().describe("User id (e.g. from a record's player link)") }),
+      annotations: READ_ONLY,
+    },
     async ({ userId }) => {
       try {
         const u = await getRunner(userId)
@@ -116,7 +143,7 @@ export function createServer(): McpServer {
             `${u.runCount !== undefined ? `Runs on profile: ${u.runCount}` : ""}`
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

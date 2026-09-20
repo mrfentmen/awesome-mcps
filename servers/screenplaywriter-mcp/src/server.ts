@@ -4,18 +4,26 @@ import { writeFile, mkdir, readFile } from "node:fs/promises"
 import { dirname } from "node:path"
 import { astToFountain, estimateRuntime, getSceneBreakdown, parseFountain, sceneToFountain } from "./parser.js"
 import type { SceneNode, ScreenplayAST } from "./types.js"
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
+const WRITE = { readOnlyHint: false, openWorldHint: true } as const
 
 const store = new Map<string, ScreenplayAST>()
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "screenplaywriter", version: "1.0.0" })
 
-  server.tool(
+  server.registerTool(
     "parse_screenplay",
-    "Parse a Fountain screenplay from text or file into a structured AST. This is the first step before any analysis or editing.",
+    {
+      title: "Parse screenplay",
+      description: "Parse a Fountain screenplay from text or file into a structured AST. This is the first step before any analysis or editing.",
+      inputSchema: z.object(
     {
       content: z.string().describe("The Fountain screenplay text content"),
       name: z.string().optional().describe("Name to store the parsed screenplay under for later reference"),
+    }),
+      annotations: READ_ONLY,
     },
     // @ts-ignore - SDK overload resolution depth
     async (args: { content: string; name?: string }) => {
@@ -44,17 +52,22 @@ export function createServer(): McpServer {
 
         return { content: [{ type: "text" as const, text }] }
       } catch (err) {
-        return { content: [{ type: "text" as const, text: `Parse error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text" as const, text: `Parse error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "load_screenplay_file",
-    "Load a Fountain screenplay from a file path on disk and parse it.",
+    {
+      title: "Load screenplay file",
+      description: "Load a Fountain screenplay from a file path on disk and parse it.",
+      inputSchema: z.object(
     {
       path: z.string().describe("Path to the .fountain file"),
       name: z.string().optional().describe("Name to store under"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { path: string; name?: string }) => {
       try {
@@ -75,18 +88,23 @@ export function createServer(): McpServer {
           ],
         }
       } catch (err) {
-        return { content: [{ type: "text" as const, text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text" as const, text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "write_screenplay",
-    "Write a new screenplay in Fountain format. The LLM should provide proper Fountain syntax. Saves to disk.",
+    {
+      title: "Write screenplay",
+      description: "Write a new screenplay in Fountain format. The LLM should provide proper Fountain syntax. Saves to disk.",
+      inputSchema: z.object(
     {
       filename: z.string().describe("Output filename (e.g., 'my_screenplay.fountain')"),
       content: z.string().describe("The screenplay in Fountain format"),
       output_dir: z.string().describe("Directory to save to"),
+    }),
+      annotations: WRITE,
     },
     async (args: { filename: string; content: string; output_dir: string }) => {
       try {
@@ -106,17 +124,22 @@ export function createServer(): McpServer {
           ],
         }
       } catch (err) {
-        return { content: [{ type: "text" as const, text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text" as const, text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_scene",
-    "Get a specific scene from a stored screenplay by number.",
+    {
+      title: "Get scene",
+      description: "Get a specific scene from a stored screenplay by number.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID from parse_screenplay"),
       scene_number: z.number().describe("Scene number (1-indexed)"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { screenplay_id: string; scene_number: number }) => {
       const ast = store.get(args.screenplay_id)
@@ -132,17 +155,22 @@ export function createServer(): McpServer {
       }
 
       return { content: [{ type: "text" as const, text: sceneToFountain(scene) }] }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "edit_scene",
-    "Replace a scene in a stored screenplay. Writes the modified screenplay to disk.",
+    {
+      title: "Edit scene",
+      description: "Replace a scene in a stored screenplay. Writes the modified screenplay to disk.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
       scene_number: z.number().describe("Scene number to replace"),
       new_content: z.string().describe("New scene in Fountain format (including heading)"),
       output_path: z.string().describe("Where to save the modified screenplay"),
+    }),
+      annotations: WRITE,
     },
     async (args: { screenplay_id: string; scene_number: number; new_content: string; output_path: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -165,17 +193,22 @@ export function createServer(): McpServer {
       return {
         content: [{ type: "text" as const, text: `Scene ${args.scene_number} updated. Saved to ${args.output_path}` }],
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "add_scene",
-    "Add a new scene to a stored screenplay. Writes the modified screenplay to disk.",
+    {
+      title: "Add scene",
+      description: "Add a new scene to a stored screenplay. Writes the modified screenplay to disk.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
       after_scene: z.number().describe("Insert after this scene number (0 = beginning)"),
       scene_content: z.string().describe("New scene in Fountain format (including heading)"),
       output_path: z.string().describe("Where to save the modified screenplay"),
+    }),
+      annotations: WRITE,
     },
     async (args: { screenplay_id: string; after_scene: number; scene_content: string; output_path: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -198,16 +231,21 @@ export function createServer(): McpServer {
           },
         ],
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "remove_scene",
-    "Remove a scene from a stored screenplay.",
+    {
+      title: "Remove scene",
+      description: "Remove a scene from a stored screenplay.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
       scene_number: z.number().describe("Scene number to remove"),
       output_path: z.string().describe("Where to save the modified screenplay"),
+    }),
+      annotations: WRITE,
     },
     async (args: { screenplay_id: string; scene_number: number; output_path: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -232,14 +270,19 @@ export function createServer(): McpServer {
           },
         ],
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "character_report",
-    "Get detailed stats for all characters in a stored screenplay.",
+    {
+      title: "Character report",
+      description: "Get detailed stats for all characters in a stored screenplay.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { screenplay_id: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -258,14 +301,19 @@ export function createServer(): McpServer {
       }
 
       return { content: [{ type: "text" as const, text: lines.join("\n") }] }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "scene_breakdown",
-    "Get a production breakdown of all scenes: characters, action/dialogue lines, estimated pages.",
+    {
+      title: "Scene breakdown",
+      description: "Get a production breakdown of all scenes: characters, action/dialogue lines, estimated pages.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { screenplay_id: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -288,14 +336,19 @@ export function createServer(): McpServer {
       lines.push(`**Total estimated pages: ${Math.round(totalPages * 10) / 10}**`)
 
       return { content: [{ type: "text" as const, text: lines.join("\n") }] }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "runtime_estimate",
-    "Estimate the runtime of a stored screenplay based on page count (1 page ≈ 1 minute).",
+    {
+      title: "Runtime estimate",
+      description: "Estimate the runtime of a stored screenplay based on page count (1 page ≈ 1 minute).",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { screenplay_id: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -325,15 +378,20 @@ export function createServer(): McpServer {
       ].join("\n")
 
       return { content: [{ type: "text" as const, text }] }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "export_fountain",
-    "Export a stored screenplay back to Fountain format and save to disk.",
+    {
+      title: "Export fountain",
+      description: "Export a stored screenplay back to Fountain format and save to disk.",
+      inputSchema: z.object(
     {
       screenplay_id: z.string().describe("The screenplay name/ID"),
       output_path: z.string().describe("Where to save the .fountain file"),
+    }),
+      annotations: WRITE,
     },
     async (args: { screenplay_id: string; output_path: string }) => {
       const ast = store.get(args.screenplay_id)
@@ -344,10 +402,18 @@ export function createServer(): McpServer {
       await writeFile(args.output_path, fountain, "utf-8")
 
       return { content: [{ type: "text" as const, text: `Exported to ${args.output_path}` }] }
-    },
+    }
   )
 
-  server.tool("list_screenplays", "List all currently loaded screenplays in memory.", async (_args: {}) => {
+  server.registerTool(
+    "list_screenplays",
+    {
+      title: "List screenplays",
+      description: "List all currently loaded screenplays in memory.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
+    async (_args: {}) => {
     const ids = Array.from(store.keys())
     if (ids.length === 0) return { content: [{ type: "text" as const, text: "No screenplays loaded" }] }
 
@@ -357,7 +423,8 @@ export function createServer(): McpServer {
     })
 
     return { content: [{ type: "text" as const, text: `# Loaded Screenplays\n\n${lines.join("\n")}` }] }
-  })
+  }
+  )
 
   return server
 }

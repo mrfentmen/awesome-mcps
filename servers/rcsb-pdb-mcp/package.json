@@ -37,5 +37,8 @@
     "protein",
     "structures",
     "biology"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

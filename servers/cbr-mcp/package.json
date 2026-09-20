@@ -36,5 +36,8 @@
     "russia",
     "currency",
     "rates"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

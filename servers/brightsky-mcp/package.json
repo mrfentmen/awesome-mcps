@@ -36,5 +36,8 @@
     "dwd",
     "germany",
     "weather"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -41,5 +41,8 @@
     "tempo",
     "bpm",
     "music"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

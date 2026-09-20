@@ -37,5 +37,8 @@
     "tv",
     "tmdb",
     "entertainment"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

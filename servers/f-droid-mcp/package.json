@@ -37,5 +37,8 @@
     "android",
     "apps",
     "open source"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

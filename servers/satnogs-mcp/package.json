@@ -36,5 +36,8 @@
     "satellite",
     "transmitters",
     "space"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

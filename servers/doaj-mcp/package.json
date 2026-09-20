@@ -37,5 +37,8 @@
     "journals",
     "open-access",
     "research"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

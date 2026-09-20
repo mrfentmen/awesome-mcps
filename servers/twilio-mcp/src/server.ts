@@ -1,6 +1,9 @@
 // @ts-nocheck
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { z } from "zod"
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
+const WRITE = { readOnlyHint: false, openWorldHint: true } as const
 
 const TWILIO_API = "https://api.twilio.com/2010-04-01"
 
@@ -156,154 +159,199 @@ async function handleSearchNumbers(areaCode: string, limit: number) {
 export function createServer(): McpServer {
   const server = new McpServer({ name: "twilio-mcp", version: "1.0.0" })
 
-  server.tool(
+  server.registerTool(
     "send_sms",
-    "Send an SMS text message to a phone number.",
     {
-      to: z.string().description("Destination phone number in E.164 format (e.g. +1234567890)"),
-      from: z.string().description("Your Twilio phone number in E.164 format"),
-      body: z.string().description("Message text to send"),
+      title: "Send sms",
+      description: "Send an SMS text message to a phone number.",
+      inputSchema: z.object(
+    {
+      to: z.string().describe("Destination phone number in E.164 format (e.g. +1234567890)"),
+      from: z.string().describe("Your Twilio phone number in E.164 format"),
+      body: z.string().describe("Message text to send"),
+    }),
+      annotations: WRITE,
     },
     async (args: any) => {
       try {
         const text = await handleSendSMS(args.to, args.from, args.body)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "send_mms",
-    "Send an MMS message with an image or media attachment.",
     {
-      to: z.string().description("Destination phone number"),
-      from: z.string().description("Your Twilio phone number"),
-      body: z.string().description("Message text"),
-      media_url: z.string().description("URL of the media file to attach"),
+      title: "Send mms",
+      description: "Send an MMS message with an image or media attachment.",
+      inputSchema: z.object(
+    {
+      to: z.string().describe("Destination phone number"),
+      from: z.string().describe("Your Twilio phone number"),
+      body: z.string().describe("Message text"),
+      media_url: z.string().describe("URL of the media file to attach"),
+    }),
+      annotations: WRITE,
     },
     async (args: any) => {
       try {
         const text = await handleSendMMS(args.to, args.from, args.body, args.media_url)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "send_whatsapp",
-    "Send a WhatsApp message using Twilio.",
     {
-      to: z.string().description("Recipient WhatsApp number (e.g. +1234567890)"),
-      from: z.string().description("Your Twilio WhatsApp number"),
-      body: z.string().description("Message text"),
+      title: "Send whatsapp",
+      description: "Send a WhatsApp message using Twilio.",
+      inputSchema: z.object(
+    {
+      to: z.string().describe("Recipient WhatsApp number (e.g. +1234567890)"),
+      from: z.string().describe("Your Twilio WhatsApp number"),
+      body: z.string().describe("Message text"),
+    }),
+      annotations: WRITE,
     },
     async (args: any) => {
       try {
         const text = await handleSendWhatsApp(args.to, args.from, args.body)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_message_status",
-    "Check the delivery status of a sent message.",
-    { message_sid: z.string().description("The message SID from a send operation") },
+    {
+      title: "Get message status",
+      description: "Check the delivery status of a sent message.",
+      inputSchema: z.object(
+    { message_sid: z.string().describe("The message SID from a send operation") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleMessageStatus(args.message_sid)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "list_messages",
-    "List recent messages with optional filters.",
+    {
+      title: "List messages",
+      description: "List recent messages with optional filters.",
+      inputSchema: z.object(
     {
       limit: z.number().min(1).max(100).optional().describe("Max messages to return"),
       to: z.string().optional().describe("Filter by destination number"),
       from: z.string().optional().describe("Filter by source number"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleListMessages(args.limit ?? 20, args.to, args.from)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "make_call",
-    "Initiate a voice call. Requires a TwiML URL for call handling.",
     {
-      to: z.string().description("Destination phone number"),
-      from: z.string().description("Your Twilio phone number"),
-      url: z.string().description("TwiML URL that controls the call flow"),
+      title: "Make call",
+      description: "Initiate a voice call. Requires a TwiML URL for call handling.",
+      inputSchema: z.object(
+    {
+      to: z.string().describe("Destination phone number"),
+      from: z.string().describe("Your Twilio phone number"),
+      url: z.string().describe("TwiML URL that controls the call flow"),
+    }),
+      annotations: WRITE,
     },
     async (args: any) => {
       try {
         const text = await handleMakeCall(args.to, args.from, args.url)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "list_calls",
-    "List recent voice calls.",
-    { limit: z.number().min(1).max(100).optional().describe("Max calls to return") },
+    {
+      title: "List calls",
+      description: "List recent voice calls.",
+      inputSchema: z.object(
+    { limit: z.number().min(1).max(100).optional().describe("Max calls to return") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleListCalls(args.limit ?? 20)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "list_numbers",
-    "List your Twilio phone numbers.",
-    { limit: z.number().min(1).max(100).optional().describe("Max numbers to return") },
+    {
+      title: "List numbers",
+      description: "List your Twilio phone numbers.",
+      inputSchema: z.object(
+    { limit: z.number().min(1).max(100).optional().describe("Max numbers to return") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleListNumbers(args.limit ?? 20)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_numbers",
-    "Search available phone numbers for purchase by area code.",
+    {
+      title: "Search numbers",
+      description: "Search available phone numbers for purchase by area code.",
+      inputSchema: z.object(
     {
       area_code: z.string().describe("US area code to search (e.g. 415)"),
       limit: z.number().min(1).max(50).optional().describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchNumbers(args.area_code, args.limit ?? 10)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
   return server

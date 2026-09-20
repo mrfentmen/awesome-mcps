@@ -37,5 +37,8 @@
     "npm",
     "bundle",
     "performance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

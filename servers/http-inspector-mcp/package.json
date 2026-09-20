@@ -37,5 +37,8 @@
     "headers",
     "status",
     "inspect"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

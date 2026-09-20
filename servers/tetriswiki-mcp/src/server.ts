@@ -3,6 +3,8 @@ import { z } from "zod"
 import { TetrisError, getPage, searchPages, wikiTextToPlain } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -10,10 +12,15 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_pages",
-    "Search the Tetris wiki for games, pieces, and techniques.",
-    { query: z.string().describe("Search terms, e.g. 'T-spin' or 'Tetris Attack'") },
+    {
+      title: "Search pages",
+      description: "Search the Tetris wiki for games, pieces, and techniques.",
+      inputSchema: z.object(
+    { query: z.string().describe("Search terms, e.g. 'T-spin' or 'Tetris Attack'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const pages = await searchPages(query)
@@ -28,17 +35,22 @@ export function createServer(): McpServer {
               .join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_page",
-    "Read a Tetris wiki page as plain text.",
+    {
+      title: "Get page",
+      description: "Read a Tetris wiki page as plain text.",
+      inputSchema: z.object(
     {
       title: z.string().describe("Exact page title from search_pages"),
       maxChars: z.number().int().min(500).max(30000).default(12000),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ title, maxChars }) => {
       try {
@@ -47,7 +59,7 @@ export function createServer(): McpServer {
         const plain = wikiTextToPlain(page.wikitext, maxChars)
         return text(`${page.title}\n${page.url}\n\n${plain || "(no readable content)"}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

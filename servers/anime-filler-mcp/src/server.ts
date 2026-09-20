@@ -3,6 +3,8 @@ import { z } from "zod"
 import { ScrapeError, getShow, searchAnime, verdict } from "./scraper.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -10,11 +12,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_anime",
-    "Search for an anime on animefillerlist.com and return its slug " +
+    {
+      title: "Search anime",
+      description: "Search for an anime on animefillerlist.com and return its slug " +
       "for the other tools.",
-    { query: z.string().describe("Anime title, e.g. 'Naruto Shippuden' or 'One Piece'") },
+      inputSchema: z.object(
+    { query: z.string().describe("Anime title, e.g. 'Naruto Shippuden' or 'One Piece'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const results = await searchAnime(query)
@@ -26,15 +33,20 @@ export function createServer(): McpServer {
             results.map((r, i) => `${i + 1}. ${r.title}\n   ${r.url} (slug: ${r.slug})`).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_episode_lists",
-    "Get the full canon/filler episode breakdown for an anime by slug.",
-    { slug: z.string().describe("Anime slug from search_anime, e.g. 'naruto-shippuden'") },
+    {
+      title: "Get episode lists",
+      description: "Get the full canon/filler episode breakdown for an anime by slug.",
+      inputSchema: z.object(
+    { slug: z.string().describe("Anime slug from search_anime, e.g. 'naruto-shippuden'") }),
+      annotations: READ_ONLY,
+    },
     async ({ slug }) => {
       try {
         const info = await getShow(slug)
@@ -58,24 +70,29 @@ export function createServer(): McpServer {
             : ""
         return text(head + "\n" + body + sample)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "is_episode_filler",
-    "Ask whether a specific episode is filler or canon. The question every weeb asks.",
+    {
+      title: "Is episode filler",
+      description: "Ask whether a specific episode is filler or canon. The question every weeb asks.",
+      inputSchema: z.object(
     {
       slug: z.string().describe("Anime slug from search_anime"),
       episode: z.number().int().min(1).describe("Episode number"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ slug, episode }) => {
       try {
         const info = await getShow(slug)
         return text(verdict(info, episode))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

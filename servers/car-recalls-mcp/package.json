@@ -38,5 +38,8 @@
     "vehicle",
     "safety",
     "nhtsa"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "energy",
     "climate",
     "grid"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

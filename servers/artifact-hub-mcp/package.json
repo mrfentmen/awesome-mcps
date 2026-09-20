@@ -37,5 +37,8 @@
     "charts",
     "kubernetes",
     "packages"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

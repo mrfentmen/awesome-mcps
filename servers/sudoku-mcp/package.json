@@ -41,5 +41,8 @@
     "puzzles",
     "games",
     "logic"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

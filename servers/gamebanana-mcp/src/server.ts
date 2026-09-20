@@ -13,6 +13,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -20,10 +22,15 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_mods",
-    "Search GameBanana for mods across all games.",
-    { query: z.string().describe("Mod name, e.g. 'Brutal Doom' or 'randomizer'") },
+    {
+      title: "Search mods",
+      description: "Search GameBanana for mods across all games.",
+      inputSchema: z.object(
+    { query: z.string().describe("Mod name, e.g. 'Brutal Doom' or 'randomizer'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const results = await searchMods(query)
@@ -33,30 +40,40 @@ export function createServer(): McpServer {
             results.map((r, i) => formatSearchResult(r, i + 1)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_mod",
-    "Get a GameBanana mod page: description, author, downloads, size, category.",
-    { id: z.number().int().describe("Mod id from search_mods or get_game_mods") },
+    {
+      title: "Get mod",
+      description: "Get a GameBanana mod page: description, author, downloads, size, category.",
+      inputSchema: z.object(
+    { id: z.number().int().describe("Mod id from search_mods or get_game_mods") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const mod = await getMod(id)
         if (!mod) return text(`No mod with id ${id}.`)
         return text(formatMod(mod))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_games",
-    "Search GameBanana for games by title.",
-    { query: z.string().describe("Game title, e.g. 'Doom' or 'Half-Life'") },
+    {
+      title: "Search games",
+      description: "Search GameBanana for games by title.",
+      inputSchema: z.object(
+    { query: z.string().describe("Game title, e.g. 'Doom' or 'Half-Life'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const results = await searchGames(query)
@@ -66,17 +83,22 @@ export function createServer(): McpServer {
             results.map((r, i) => formatSearchResult(r, i + 1)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_game_mods",
-    "List the latest mods for a game on GameBanana.",
+    {
+      title: "Get game mods",
+      description: "List the latest mods for a game on GameBanana.",
+      inputSchema: z.object(
     {
       gameId: z.number().int().describe("Game id from search_games"),
       limit: z.number().int().min(1).max(25).default(10).describe("Max mods"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ gameId, limit }) => {
       try {
@@ -94,7 +116,7 @@ export function createServer(): McpServer {
           .join("\n")
         return text(head + body)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

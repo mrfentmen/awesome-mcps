@@ -37,5 +37,8 @@
     "football",
     "bundesliga",
     "sports"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

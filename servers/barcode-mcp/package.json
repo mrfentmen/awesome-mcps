@@ -38,5 +38,8 @@
     "ean",
     "code128",
     "image"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

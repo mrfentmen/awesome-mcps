@@ -36,5 +36,8 @@
     "lorem",
     "ipsum",
     "text"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

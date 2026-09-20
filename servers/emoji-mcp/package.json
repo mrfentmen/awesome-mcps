@@ -41,5 +41,8 @@
     "symbols",
     "search",
     "unicode"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

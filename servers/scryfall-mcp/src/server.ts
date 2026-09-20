@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,42 +20,57 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_cards",
-    "Search Magic: The Gathering cards by Scryfall syntax — card name, " +
+    {
+      title: "Search cards",
+      description: "Search Magic: The Gathering cards by Scryfall syntax — card name, " +
       "oracle text, color, type, e.g. 'c:red type:dragon', " +
       "'o:\"when ~ enters\" legendary creature'.",
-    { query: z.string().describe("Scryfall search query") },
+      inputSchema: z.object(
+    { query: z.string().describe("Scryfall search query") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const cards = await searchCards(query)
         if (cards.length === 0) return text(`No cards match "${query}".`)
         return text(`Cards matching "${query}":\n\n${cards.map((c, i) => formatCard(c, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_card",
-    "Get a single card by fuzzy name (e.g. 'bolas citadel' → Bolas's Citadel).",
-    { name: z.string().describe("Card name (fuzzy match ok)") },
+    {
+      title: "Get card",
+      description: "Get a single card by fuzzy name (e.g. 'bolas citadel' → Bolas's Citadel).",
+      inputSchema: z.object(
+    { name: z.string().describe("Card name (fuzzy match ok)") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const card = await getCardByFuzzyName(name)
         if (!card) return text(`No card named "${name}".`)
         return text(formatCard(card))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_rulings",
-    "Get official Gatherer rulings for a card by fuzzy name.",
-    { name: z.string().describe("Card name") },
+    {
+      title: "Get rulings",
+      description: "Get official Gatherer rulings for a card by fuzzy name.",
+      inputSchema: z.object(
+    { name: z.string().describe("Card name") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const card = await getCardByFuzzyName(name)
@@ -62,15 +79,19 @@ export function createServer(): McpServer {
         if (rulings.length === 0) return text(`${card.name} has no rulings on file.`)
         return text(`Rulings for ${card.name}:\n${rulings.map(formatRuling).join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "list_sets",
-    "List recent Magic sets with release dates and card counts.",
-    {},
+    {
+      title: "List sets",
+      description: "List recent Magic sets with release dates and card counts.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const sets = await getSets()
@@ -86,7 +107,7 @@ export function createServer(): McpServer {
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

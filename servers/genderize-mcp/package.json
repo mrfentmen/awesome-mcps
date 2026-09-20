@@ -37,5 +37,8 @@
     "gender",
     "demographics",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

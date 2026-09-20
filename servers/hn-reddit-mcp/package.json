@@ -37,5 +37,8 @@
     "reddit",
     "news",
     "trending"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

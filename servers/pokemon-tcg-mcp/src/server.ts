@@ -12,6 +12,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -19,13 +21,18 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_cards",
-    "Search Pokémon TCG cards by name, optionally filtered by rarity.",
+    {
+      title: "Search cards",
+      description: "Search Pokémon TCG cards by name, optionally filtered by rarity.",
+      inputSchema: z.object(
     {
       name: z.string().describe("Card name, e.g. 'Charizard' or 'Pikachu'"),
       rarity: z.string().optional().describe("e.g. 'Rare Holo', 'Common', 'Rare Holo EX'"),
       limit: z.number().int().min(1).max(25).default(12).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ name, rarity, limit }) => {
       try {
@@ -38,31 +45,40 @@ export function createServer(): McpServer {
             cards.map((c, i) => `${i + 1}. ${formatCardSummary(c)}`).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_card",
-    "Get a single card's full detail: attacks, abilities, weakness, " +
+    {
+      title: "Get card",
+      description: "Get a single card's full detail: attacks, abilities, weakness, " +
       "variants, and market prices when available.",
-    { id: z.string().describe("Card id from search_cards, e.g. 'swsh4-25'") },
+      inputSchema: z.object(
+    { id: z.string().describe("Card id from search_cards, e.g. 'swsh4-25'") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const card = await getCard(id)
         if (!card) return text(`No card with id "${id}".`)
         return text(formatCardDetail(card))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "list_sets",
-    "List Pokémon TCG sets (newest first).",
-    {},
+    {
+      title: "List sets",
+      description: "List Pokémon TCG sets (newest first).",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const sets = await listSets()
@@ -72,15 +88,20 @@ export function createServer(): McpServer {
             sets.slice(0, 20).map((s, i) => `${i + 1}. ${formatSet(s)}`).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_set",
-    "Get a Pokémon TCG set and its card list.",
-    { id: z.string().describe("Set id from list_sets, e.g. 'swsh4' or 'base1'") },
+    {
+      title: "Get set",
+      description: "Get a Pokémon TCG set and its card list.",
+      inputSchema: z.object(
+    { id: z.string().describe("Set id from list_sets, e.g. 'swsh4' or 'base1'") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const set = await getSet(id)
@@ -93,7 +114,7 @@ export function createServer(): McpServer {
         const tail = set.cards.length > 25 ? `\n…and ${set.cards.length - 25} more` : ""
         return text(head + body + tail)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

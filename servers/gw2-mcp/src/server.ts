@@ -13,6 +13,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -20,70 +22,94 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_items",
-    "Search Guild Wars 2 items by name.",
-    { name: z.string().describe("Item name, e.g. 'Zojja' or 'Eternal Forge'"), limit: z.number().int().min(1).max(20).default(10) },
+    {
+      title: "Search items",
+      description: "Search Guild Wars 2 items by name.",
+      inputSchema: z.object(
+    { name: z.string().describe("Item name, e.g. 'Zojja' or 'Eternal Forge'"), limit: z.number().int().min(1).max(20).default(10) }),
+      annotations: READ_ONLY,
+    },
     async ({ name, limit }) => {
       try {
         const items = await searchItems(name, limit)
         if (items.length === 0) return text(`No GW2 items match "${name}".`)
         return text(`Items matching "${name}":\n\n${items.map((i) => formatItem(i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_item",
-    "Get a GW2 item by id.",
-    { id: z.number().int().describe("Item id from search_items") },
+    {
+      title: "Get item",
+      description: "Get a GW2 item by id.",
+      inputSchema: z.object(
+    { id: z.number().int().describe("Item id from search_items") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const item = await getItem(id)
         if (!item) return text(`No item ${id}.`)
         return text(formatItem(item))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_item_price",
-    "Trading Post buy and sell prices for an item.",
-    { id: z.number().int().describe("Item id") },
+    {
+      title: "Get item price",
+      description: "Trading Post buy and sell prices for an item.",
+      inputSchema: z.object(
+    { id: z.number().int().describe("Item id") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const price = await getItemPrice(id)
         if (!price) return text(`No trading data for item ${id}.`)
         return text(`Trading Post for ${id}:\n${formatPrice(price)}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_achievement",
-    "Get a GW2 achievement by id.",
-    { id: z.number().int().describe("Achievement id") },
+    {
+      title: "Get achievement",
+      description: "Get a GW2 achievement by id.",
+      inputSchema: z.object(
+    { id: z.number().int().describe("Achievement id") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const a = await getAchievement(id)
         if (!a) return text(`No achievement ${id}.`)
         return text(formatAchievement(a))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_daily_achievements",
-    "Today's PvE daily achievements.",
-    {},
+    {
+      title: "Get daily achievements",
+      description: "Today's PvE daily achievements.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const daily = await getDailyAchievements()
@@ -95,7 +121,7 @@ export function createServer(): McpServer {
         }
         return text(`Today's GW2 dailies:\n${out.join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

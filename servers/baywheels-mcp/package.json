@@ -37,5 +37,8 @@
     "bike share",
     "san francisco",
     "stations"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

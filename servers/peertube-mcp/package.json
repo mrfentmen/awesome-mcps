@@ -37,5 +37,8 @@
     "video",
     "federated",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

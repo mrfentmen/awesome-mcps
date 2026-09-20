@@ -37,5 +37,8 @@
     "chuck norris",
     "fun",
     "quotes"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

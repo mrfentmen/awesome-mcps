@@ -37,5 +37,8 @@
     "papers",
     "scholarly",
     "publisher"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

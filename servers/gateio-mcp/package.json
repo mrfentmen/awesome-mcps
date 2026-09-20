@@ -37,5 +37,8 @@
     "gateio",
     "prices",
     "finance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

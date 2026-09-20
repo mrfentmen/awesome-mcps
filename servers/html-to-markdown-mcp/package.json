@@ -43,5 +43,8 @@
     "markdown",
     "convert",
     "scrape"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

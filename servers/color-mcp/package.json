@@ -37,5 +37,8 @@
     "design",
     "hex",
     "palette"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

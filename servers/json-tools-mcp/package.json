@@ -41,5 +41,8 @@
     "validate",
     "format",
     "tools"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

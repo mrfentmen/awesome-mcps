@@ -36,5 +36,8 @@
     "bitcoin",
     "fees",
     "mempool"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

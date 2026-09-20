@@ -41,5 +41,8 @@
     "converter",
     "measurement",
     "metric"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

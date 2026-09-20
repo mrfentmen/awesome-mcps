@@ -36,5 +36,8 @@
     "crypto",
     "korea",
     "prices"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

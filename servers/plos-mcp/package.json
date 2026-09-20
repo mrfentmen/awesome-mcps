@@ -37,5 +37,8 @@
     "papers",
     "research",
     "science"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

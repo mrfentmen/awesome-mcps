@@ -19,6 +19,9 @@ import {
   verifyChecksum,
 } from "./romdb.js"
 import type { RomSearchResult } from "./types.js"
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
+const WRITE = { readOnlyHint: false, openWorldHint: true } as const
 
 function formatResults(results: RomSearchResult[], query: string): string {
   if (results.length === 0) return `No ROMs found for "${query}"`
@@ -149,228 +152,298 @@ async function handleDownload(identifier: string, filename: string, outputDir: s
 export function createServer(): McpServer {
   const server = new McpServer({ name: "rom-mcp", version: "1.1.0" })
 
-  server.tool(
+  server.registerTool(
     "search_rom",
-    "Search Internet Archive for game ROMs by title, console, or keyword. Returns download links and metadata.",
+    {
+      title: "Search rom",
+      description: "Search Internet Archive for game ROMs by title, console, or keyword. Returns download links and metadata.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
       max_results: z.number().min(1).max(50).optional().describe("Maximum results to return"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearch(args.query, args.max_results ?? 20)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "verify_rom",
-    "Verify a ROM file against known checksums. Computes MD5, SHA1 and checks against databases.",
-    { filepath: z.string().describe("Path to the ROM file on disk") },
+    {
+      title: "Verify rom",
+      description: "Verify a ROM file against known checksums. Computes MD5, SHA1 and checks against databases.",
+      inputSchema: z.object(
+    { filepath: z.string().describe("Path to the ROM file on disk") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleVerify(args.filepath)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Verify error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Verify error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "match_by_checksum",
-    "Identify a game by providing its MD5, SHA1, or CRC32 hash.",
+    {
+      title: "Match by checksum",
+      description: "Identify a game by providing its MD5, SHA1, or CRC32 hash.",
+      inputSchema: z.object(
     {
       md5: z.string().optional().describe("MD5 hash of the ROM"),
       sha1: z.string().optional().describe("SHA1 hash of the ROM"),
       crc32: z.string().optional().describe("CRC32 hash of the ROM"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleMatch(args.md5, args.sha1, args.crc32)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Match error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Match error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "parse_save_file",
-    "Read and parse an emulator save file (.sav, .srm, .states).",
-    { filepath: z.string().describe("Path to the save file") },
+    {
+      title: "Parse save file",
+      description: "Read and parse an emulator save file (.sav, .srm, .states).",
+      inputSchema: z.object(
+    { filepath: z.string().describe("Path to the save file") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleParseSave(args.filepath)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Parse error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Parse error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "scan_collection",
-    "Scan a directory of ROMs and identify all game files, compute checksums.",
-    { directory: z.string().describe("Path to the ROM collection directory") },
+    {
+      title: "Scan collection",
+      description: "Scan a directory of ROMs and identify all game files, compute checksums.",
+      inputSchema: z.object(
+    { directory: z.string().describe("Path to the ROM collection directory") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       try {
         const text = await handleScan(args.directory)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Scan error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Scan error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_download_link",
-    "Get the direct download URL for a ROM from Internet Archive.",
+    {
+      title: "Get download link",
+      description: "Get the direct download URL for a ROM from Internet Archive.",
+      inputSchema: z.object(
     {
       identifier: z.string().describe("The Internet Archive identifier"),
       filename: z.string().optional().describe("Specific filename to download"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleDownloadLink(args.identifier, args.filename)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "download_rom",
-    "Download a ROM from Internet Archive to a local directory.",
+    {
+      title: "Download rom",
+      description: "Download a ROM from Internet Archive to a local directory.",
+      inputSchema: z.object(
     {
       identifier: z.string().describe("Internet Archive identifier"),
       filename: z.string().describe("Filename to save as"),
       output_dir: z.string().describe("Directory to save the ROM into"),
+    }),
+      annotations: WRITE,
     },
     async (args: any) => {
       try {
         const text = await handleDownload(args.identifier, args.filename, args.output_dir)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Download error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Download error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_all_sources",
-    "Search across all ROM sources: Internet Archive, ROMsgames.net, CoolROM, Arcade Punks, ROMsFun, and Reddit r/Roms.",
+    {
+      title: "Search all sources",
+      description: "Search across all ROM sources: Internet Archive, ROMsgames.net, CoolROM, Arcade Punks, ROMsFun, and Reddit r/Roms.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
       console_filter: z.string().optional().describe("Console type to filter by (e.g. 'nes', 'snes', 'gba')"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchAll(args.query, args.console_filter)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_romsgames",
-    "Search ROMsgames.net for game ROMs.",
+    {
+      title: "Search romsgames",
+      description: "Search ROMsgames.net for game ROMs.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
       console_filter: z.string().optional().describe("Console type to filter by"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchRomsGames(args.query, args.console_filter)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_coolrom",
-    "Search CoolROM for game ROMs.",
+    {
+      title: "Search coolrom",
+      description: "Search CoolROM for game ROMs.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchCoolrom(args.query)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_arcadepunks",
-    "Search Arcade Punks for ROMs and related content.",
+    {
+      title: "Search arcadepunks",
+      description: "Search Arcade Punks for ROMs and related content.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchArcadePunks(args.query)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_romsfun",
-    "Search ROMsFun for game ROMs.",
+    {
+      title: "Search romsfun",
+      description: "Search ROMsFun for game ROMs.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Game title or keyword to search for"),
       console_filter: z.string().optional().describe("Console type to filter by"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchRomsFun(args.query, args.console_filter)
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "search_reddit_roms",
-    "Search Reddit r/Roms for community discussions and recommendations about ROMs.",
+    {
+      title: "Search reddit roms",
+      description: "Search Reddit r/Roms for community discussions and recommendations about ROMs.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Search term for Reddit r/Roms"),
       sort: z.enum(["relevance", "new", "top", "comments"]).optional().describe("Sort order"),
       time: z.enum(["hour", "day", "week", "month", "year", "all"]).optional().describe("Time filter"),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: any) => {
       try {
         const text = await handleSearchRedditRoms(args.query, args.sort ?? "relevance", args.time ?? "all")
         return { content: [{ type: "text", text }] }
       } catch (err) {
-        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] }
+        return { content: [{ type: "text", text: `Search error: ${(err as Error).message}` }] , isError: true }
       }
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "detect_console",
-    "Detect the likely game console from a filename or path.",
-    { filepath: z.string().describe("Filename or path to detect console from") },
+    {
+      title: "Detect console",
+      description: "Detect the likely game console from a filename or path.",
+      inputSchema: z.object(
+    { filepath: z.string().describe("Filename or path to detect console from") }),
+      annotations: READ_ONLY,
+    },
     async (args: any) => {
       const { detectConsoleFromPath } = await import("./romdb.js")
       const text = detectConsoleFromPath(args.filepath)
       return { content: [{ type: "text", text }] }
-    },
+    }
   )
 
   return server

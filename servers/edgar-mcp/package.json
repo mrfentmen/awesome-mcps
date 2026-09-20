@@ -38,5 +38,8 @@
     "filings",
     "xbrl",
     "finance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

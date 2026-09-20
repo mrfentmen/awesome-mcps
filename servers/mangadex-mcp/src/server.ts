@@ -12,6 +12,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -19,12 +21,17 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_manga",
-    "Search MangaDex for manga by title.",
+    {
+      title: "Search manga",
+      description: "Search MangaDex for manga by title.",
+      inputSchema: z.object(
     {
       title: z.string().describe("Manga title, e.g. 'Berserk' or 'Kaguya-sama'"),
       limit: z.number().int().min(1).max(15).default(8).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ title, limit }) => {
       try {
@@ -35,34 +42,44 @@ export function createServer(): McpServer {
             results.map((m, i) => `${i + 1}. ${formatManga(m)}`).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_manga",
-    "Get full details for a manga by its MangaDex UUID.",
-    { id: z.string().describe("Manga UUID from search_manga") },
+    {
+      title: "Get manga",
+      description: "Get full details for a manga by its MangaDex UUID.",
+      inputSchema: z.object(
+    { id: z.string().describe("Manga UUID from search_manga") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const m = await getManga(id)
         if (!m) return text(`No manga with id "${id}".`)
         return text(formatManga(m))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "list_chapters",
-    "List chapters of a manga, newest or oldest first.",
+    {
+      title: "List chapters",
+      description: "List chapters of a manga, newest or oldest first.",
+      inputSchema: z.object(
     {
       mangaId: z.string().describe("Manga UUID from search_manga"),
       lang: z.string().default("en").describe("Translated language code, e.g. 'en', 'ja', 'es'"),
       limit: z.number().int().min(1).max(50).default(20).describe("Max chapters"),
       oldestFirst: z.boolean().default(true).describe("Sort by chapter number ascending"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ mangaId, lang, limit, oldestFirst }) => {
       try {
@@ -73,15 +90,20 @@ export function createServer(): McpServer {
         const head = `Chapters (${lang})${oldestFirst ? " oldest first" : " newest first"}:\n`
         return text(head + chapters.map((c) => `• ${formatChapter(c)}`).join("\n"))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_author",
-    "Search MangaDex for authors/mangaka by name.",
-    { name: z.string().describe("Author name, e.g. 'Miura' or 'Oda'") },
+    {
+      title: "Search author",
+      description: "Search MangaDex for authors/mangaka by name.",
+      inputSchema: z.object(
+    { name: z.string().describe("Author name, e.g. 'Miura' or 'Oda'") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const authors = await searchAuthor(name)
@@ -98,15 +120,19 @@ export function createServer(): McpServer {
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "list_tags",
-    "List all MangaDex content tags grouped by category — useful for building search filters.",
-    {},
+    {
+      title: "List tags",
+      description: "List all MangaDex content tags grouped by category — useful for building search filters.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const tags = await getTags()
@@ -121,7 +147,7 @@ export function createServer(): McpServer {
         )
         return text(`MangaDex tags:\n\n${lines.join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

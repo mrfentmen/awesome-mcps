@@ -36,5 +36,8 @@
     "history",
     "plaques",
     "heritage"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

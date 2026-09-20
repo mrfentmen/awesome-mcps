@@ -37,5 +37,8 @@
     "space",
     "tle",
     "orbits"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

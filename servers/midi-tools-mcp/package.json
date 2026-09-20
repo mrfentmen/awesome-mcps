@@ -41,5 +41,8 @@
     "music",
     "note",
     "frequency"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

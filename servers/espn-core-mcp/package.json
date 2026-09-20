@@ -37,5 +37,8 @@
     "sports",
     "teams",
     "leagues"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

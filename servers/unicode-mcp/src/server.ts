@@ -3,18 +3,47 @@ import { z } from "zod"
 import { character, emojiSearch, format, searchBlocks } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const errorText = (error: unknown) => text(`Error: ${error instanceof Error ? error.message : String(error)}`)
 
 export function createServer() {
   const server = new McpServer({ name: "unicode-mcp", version: "1.0.0" })
-  server.tool("get_character", "Get official UnicodeData metadata for a code point such as U+1F600 or 0041.", { codePoint: z.string().min(1).max(12) }, async ({ codePoint }) => {
+  server.registerTool(
+    "get_character",
+    {
+      title: "Get character",
+      description: "Get official UnicodeData metadata for a code point such as U+1F600 or 0041.",
+      inputSchema: z.object( { codePoint: z.string().min(1).max(12) }),
+      annotations: READ_ONLY,
+    },
+    async ({ codePoint }) => {
     try { const result = await character(codePoint); return text(result ? format(result) : `No UnicodeData entry found for ${codePoint}.`) } catch (error) { return errorText(error) }
-  })
-  server.tool("search_blocks", "Search official Unicode block names and ranges.", { query: z.string().min(1).max(100) }, async ({ query }) => {
+  }
+  )
+  server.registerTool(
+    "search_blocks",
+    {
+      title: "Search blocks",
+      description: "Search official Unicode block names and ranges.",
+      inputSchema: z.object( { query: z.string().min(1).max(100) }),
+      annotations: READ_ONLY,
+    },
+    async ({ query }) => {
     try { return text(format(await searchBlocks(query))) } catch (error) { return errorText(error) }
-  })
-  server.tool("search_emoji", "Search the official Unicode emoji test data by annotation or emoji name.", { query: z.string().min(1).max(100) }, async ({ query }) => {
+  }
+  )
+  server.registerTool(
+    "search_emoji",
+    {
+      title: "Search emoji",
+      description: "Search the official Unicode emoji test data by annotation or emoji name.",
+      inputSchema: z.object( { query: z.string().min(1).max(100) }),
+      annotations: READ_ONLY,
+    },
+    async ({ query }) => {
     try { return text(format(await emojiSearch(query))) } catch (error) { return errorText(error) }
-  })
+  }
+  )
   return server
 }

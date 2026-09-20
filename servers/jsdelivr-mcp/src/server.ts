@@ -4,15 +4,35 @@ import { packageInfo } from "./api.js"
 import { stats } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "jsdelivr-mcp", version: "1.0.0" })
-  server.tool("package", "Versions for an npm package.", { name: z.string().describe("Package name like lodash.") }, async (args) => {
-    try { return text(await packageInfo(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("stats", "CDN usage statistics for an npm package.", { name: z.string().describe("Package name.") }, async (args) => {
-    try { return text(await stats(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "package",
+    {
+      title: "Package",
+      description: "Versions for an npm package.",
+      inputSchema: z.object( { name: z.string().describe("Package name like lodash.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await packageInfo(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "stats",
+    {
+      title: "Stats",
+      description: "CDN usage statistics for an npm package.",
+      inputSchema: z.object( { name: z.string().describe("Package name.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await stats(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

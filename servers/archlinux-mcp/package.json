@@ -36,5 +36,8 @@
     "arch",
     "packages",
     "linux"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

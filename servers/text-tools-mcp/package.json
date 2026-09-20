@@ -37,5 +37,8 @@
     "slug",
     "case",
     "base64"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

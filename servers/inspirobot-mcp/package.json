@@ -37,5 +37,8 @@
     "inspiration",
     "images",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

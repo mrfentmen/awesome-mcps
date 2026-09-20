@@ -41,5 +41,8 @@
     "resize",
     "compress",
     "exif"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

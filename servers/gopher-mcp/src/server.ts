@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,16 +20,21 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "open_menu",
-    "Open a Gopher menu (directory) and list its items. The default " +
+    {
+      title: "Open menu",
+      description: "Open a Gopher menu (directory) and list its items. The default " +
       "server is gopher.floodgap.com — one of the oldest still-running " +
       "gopher servers. Pass a selector like '/' for the root, or a path " +
       "like '/1/floodgap'.",
+      inputSchema: z.object(
     {
       host: z.string().default(DEFAULT_GHOST).describe("Gopher host (no scheme)"),
       selector: z.string().default("/").describe("Menu selector, e.g. '/' or '/1/floodgap'"),
       port: z.number().int().default(DEFAULT_PORT).describe("Gopher port, usually 70"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ host, selector, port }) => {
       try {
@@ -39,19 +46,24 @@ export function createServer(): McpServer {
             items.map((it, i) => formatItem(it, i)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "read_textfile",
-    "Read a plain-text file from gopherspace (gopher type 0). Useful for " +
+    {
+      title: "Read textfile",
+      description: "Read a plain-text file from gopherspace (gopher type 0). Useful for " +
       "the floodgap texts, old FAQ collections, and historical documents.",
+      inputSchema: z.object(
     {
       host: z.string().default(DEFAULT_GHOST),
       selector: z.string().describe("File selector, e.g. '/0/floodgap/new'"),
       maxChars: z.number().int().min(500).max(50000).default(10000),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ host, selector, maxChars }) => {
       try {
@@ -60,21 +72,26 @@ export function createServer(): McpServer {
         if (!cleaned.trim()) return text(`Empty file at gopher://${host}/${selector}`)
         return text(cleaned.slice(0, maxChars))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_veronica",
-    "Run a Gopher search (type 7) — e.g. a Veronica-2 search on " +
+    {
+      title: "Search veronica",
+      description: "Run a Gopher search (type 7) — e.g. a Veronica-2 search on " +
       "gopher.floodgap.com (selector '/7/v2/vs'). Returns matching items " +
       "as a menu.",
+      inputSchema: z.object(
     {
       host: z.string().default(DEFAULT_GHOST),
       selector: z.string().default("/v2/vs").describe("Search selector, typically /v2/vs on floodgap"),
       query: z.string().describe("Search terms"),
       port: z.number().int().default(DEFAULT_PORT),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ host, selector, query, port }) => {
       try {
@@ -86,7 +103,7 @@ export function createServer(): McpServer {
             items.slice(0, 40).map((it, i) => formatItem(it, i)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

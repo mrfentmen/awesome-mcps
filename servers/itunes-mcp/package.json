@@ -16,5 +16,8 @@
     "typescript": "^5.5.0",
     "@types/node": "^20.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
 }

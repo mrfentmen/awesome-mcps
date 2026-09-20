@@ -37,5 +37,8 @@
     "wikivoyage",
     "guides",
     "places"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

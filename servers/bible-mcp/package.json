@@ -37,5 +37,8 @@
     "scripture",
     "kjv",
     "religion"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

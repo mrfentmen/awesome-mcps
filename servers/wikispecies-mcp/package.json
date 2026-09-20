@@ -37,5 +37,8 @@
     "biology",
     "wikispecies",
     "taxonomy"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

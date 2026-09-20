@@ -38,5 +38,8 @@
     "words",
     "scores",
     "games"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

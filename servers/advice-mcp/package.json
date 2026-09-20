@@ -37,5 +37,8 @@
     "quotes",
     "fun",
     "wisdom"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

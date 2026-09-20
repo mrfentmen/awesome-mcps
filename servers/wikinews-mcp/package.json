@@ -37,5 +37,8 @@
     "wikinews",
     "articles",
     "media"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

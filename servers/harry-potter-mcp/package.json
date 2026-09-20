@@ -37,5 +37,8 @@
     "books",
     "movies",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

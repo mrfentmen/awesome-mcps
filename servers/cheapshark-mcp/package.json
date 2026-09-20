@@ -37,5 +37,8 @@
     "deals",
     "prices",
     "cheapshark"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

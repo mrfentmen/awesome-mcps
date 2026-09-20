@@ -41,5 +41,8 @@
     "ipsum",
     "filler",
     "text"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "vat",
     "tax",
     "rates"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

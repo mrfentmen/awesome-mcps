@@ -37,5 +37,8 @@
     "games",
     "free",
     "gaming"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

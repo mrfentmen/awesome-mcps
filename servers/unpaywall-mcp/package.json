@@ -37,5 +37,8 @@
     "open-access",
     "papers",
     "doi"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

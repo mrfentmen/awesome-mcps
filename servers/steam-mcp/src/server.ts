@@ -10,6 +10,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -17,11 +19,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_games",
-    "Search the Steam store by title. Returns appids with current prices " +
+    {
+      title: "Search games",
+      description: "Search the Steam store by title. Returns appids with current prices " +
       "and discounts.",
-    { query: z.string().describe("Game title, e.g. 'Helldivers' or 'Baldur'") },
+      inputSchema: z.object(
+    { query: z.string().describe("Game title, e.g. 'Helldivers' or 'Baldur'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const items = await searchStore(query)
@@ -31,33 +38,43 @@ export function createServer(): McpServer {
             items.map((i, n) => `${n + 1}. ${formatStoreItem(i)}`).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_game_details",
-    "Get details for a Steam app: price/discount, release date, " +
+    {
+      title: "Get game details",
+      description: "Get details for a Steam app: price/discount, release date, " +
       "developers, genres, Metacritic, description.",
-    { appid: z.number().int().describe("Steam app id from search_games") },
+      inputSchema: z.object(
+    { appid: z.number().int().describe("Steam app id from search_games") }),
+      annotations: READ_ONLY,
+    },
     async ({ appid }) => {
       try {
         const detail = await getAppDetail(appid)
         if (!detail) return text(`No Steam app with id ${appid}.`)
         return text(formatAppDetail(detail))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_game_news",
-    "Fetch recent Steam news posts for a game.",
+    {
+      title: "Get game news",
+      description: "Fetch recent Steam news posts for a game.",
+      inputSchema: z.object(
     {
       appid: z.number().int().describe("Steam app id"),
       count: z.number().int().min(1).max(20).default(5).describe("Number of posts"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ appid, count }) => {
       try {
@@ -76,7 +93,7 @@ export function createServer(): McpServer {
               .join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

@@ -37,5 +37,8 @@
     "islam",
     "times",
     "calendar"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

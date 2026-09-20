@@ -37,5 +37,8 @@
     "cards",
     "divination",
     "esoteric"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

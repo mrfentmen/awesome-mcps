@@ -37,5 +37,8 @@
     "pageviews",
     "analytics",
     "data"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

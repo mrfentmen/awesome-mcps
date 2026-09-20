@@ -37,5 +37,8 @@
     "geolocation",
     "location",
     "tools"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -39,5 +39,8 @@
     "ics",
     "event",
     "ics-file"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -10,6 +10,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -17,10 +19,14 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "list_boards",
-    "List all 4chan boards with titles and SFW flags.",
-    {},
+    {
+      title: "List boards",
+      description: "List all 4chan boards with titles and SFW flags.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const boards = await listBoards()
@@ -31,15 +37,20 @@ export function createServer(): McpServer {
             `NSFW boards:\n${nsfw.map((b) => `  /${b.board}/ — ${b.title}`).join("\n")}`
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_catalog",
-    "Get the catalog (all live threads) for a board.",
-    { board: z.string().describe("Board, e.g. 'g', 'v', 'biz', 'pol'"), limit: z.number().int().min(1).max(50).default(20) },
+    {
+      title: "Get catalog",
+      description: "Get the catalog (all live threads) for a board.",
+      inputSchema: z.object(
+    { board: z.string().describe("Board, e.g. 'g', 'v', 'biz', 'pol'"), limit: z.number().int().min(1).max(50).default(20) }),
+      annotations: READ_ONLY,
+    },
     async ({ board, limit }) => {
       try {
         const threads = await getCatalog(board)
@@ -50,15 +61,20 @@ export function createServer(): McpServer {
             sorted.map((t, i) => formatThreadSummary(t, i)).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_thread",
-    "Read a thread's posts by thread number.",
-    { board: z.string().describe("Board, e.g. 'g'"), threadNo: z.number().int().describe("Thread number from get_catalog") },
+    {
+      title: "Get thread",
+      description: "Read a thread's posts by thread number.",
+      inputSchema: z.object(
+    { board: z.string().describe("Board, e.g. 'g'"), threadNo: z.number().int().describe("Thread number from get_catalog") }),
+      annotations: READ_ONLY,
+    },
     async ({ board, threadNo }) => {
       try {
         const posts = await getThread(board, threadNo)
@@ -69,7 +85,7 @@ export function createServer(): McpServer {
             posts.slice(0, max).map(formatPost).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

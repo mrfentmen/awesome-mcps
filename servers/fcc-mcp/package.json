@@ -36,5 +36,8 @@
     "census",
     "block",
     "geolocation"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

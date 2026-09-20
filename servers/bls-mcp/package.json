@@ -36,5 +36,8 @@
     "labor",
     "employment",
     "statistics"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "products",
     "store",
     "demo"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

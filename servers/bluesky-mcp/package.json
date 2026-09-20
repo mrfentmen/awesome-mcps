@@ -37,5 +37,8 @@
     "atproto",
     "social",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

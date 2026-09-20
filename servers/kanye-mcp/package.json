@@ -37,5 +37,8 @@
     "kanye",
     "fun",
     "culture"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

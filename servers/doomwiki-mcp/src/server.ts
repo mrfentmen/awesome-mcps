@@ -3,6 +3,8 @@ import { z } from "zod"
 import { categoryMembers, cleanWikiText, DoomWikiError, getPage, searchPages } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -10,46 +12,61 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_pages",
-    "Search the Doom Wiki for pages about demons, weapons, levels, and lore.",
-    { query: z.string().describe("Search term, e.g. 'cyberdemon' or 'BFG 9000'"), limit: z.number().int().min(1).max(20).default(8) },
+    {
+      title: "Search pages",
+      description: "Search the Doom Wiki for pages about demons, weapons, levels, and lore.",
+      inputSchema: z.object(
+    { query: z.string().describe("Search term, e.g. 'cyberdemon' or 'BFG 9000'"), limit: z.number().int().min(1).max(20).default(8) }),
+      annotations: READ_ONLY,
+    },
     async ({ query, limit }) => {
       try {
         const hits = await searchPages(query, limit)
         if (hits.length === 0) return text(`No Doom Wiki pages match "${query}".`)
         return text(`Doom Wiki pages matching "${query}":\n${hits.map((h, i) => `${i + 1}. ${h.title}${h.pageid ? ` (id ${h.pageid})` : ""}`).join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_page",
-    "Get a Doom Wiki page as cleaned text.",
-    { title: z.string().describe("Exact page title, e.g. 'Cyberdemon'"), maxChars: z.number().int().min(500).max(12000).default(4000) },
+    {
+      title: "Get page",
+      description: "Get a Doom Wiki page as cleaned text.",
+      inputSchema: z.object(
+    { title: z.string().describe("Exact page title, e.g. 'Cyberdemon'"), maxChars: z.number().int().min(500).max(12000).default(4000) }),
+      annotations: READ_ONLY,
+    },
     async ({ title, maxChars }) => {
       try {
         const wt = await getPage(title)
         return text(`# ${title}\n\n${cleanWikiText(wt, maxChars)}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_category",
-    "List pages in a Doom Wiki category.",
-    { category: z.string().describe("Category name without the prefix, e.g. 'Weapons'"), limit: z.number().int().min(1).max(50).default(20) },
+    {
+      title: "Get category",
+      description: "List pages in a Doom Wiki category.",
+      inputSchema: z.object(
+    { category: z.string().describe("Category name without the prefix, e.g. 'Weapons'"), limit: z.number().int().min(1).max(50).default(20) }),
+      annotations: READ_ONLY,
+    },
     async ({ category, limit }) => {
       try {
         const hits = await categoryMembers(category, limit)
         if (hits.length === 0) return text(`No pages in category "${category}".`)
         return text(`Doom Wiki category ${category}:\n${hits.map((h, i) => `${i + 1}. ${h.title}`).join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

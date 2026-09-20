@@ -37,5 +37,8 @@
     "biomedical",
     "ensembl",
     "uniprot"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

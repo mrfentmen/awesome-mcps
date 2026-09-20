@@ -36,5 +36,8 @@
     "affirmations",
     "motivation",
     "wellness"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

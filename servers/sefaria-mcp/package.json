@@ -36,5 +36,8 @@
     "torah",
     "talmud",
     "texts"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

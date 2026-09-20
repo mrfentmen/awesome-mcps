@@ -37,5 +37,8 @@
     "islam",
     "religion",
     "arabic"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

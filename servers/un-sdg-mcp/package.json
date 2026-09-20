@@ -36,5 +36,8 @@
     "sustainable",
     "development",
     "goals"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

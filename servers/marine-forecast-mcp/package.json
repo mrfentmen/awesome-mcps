@@ -37,5 +37,8 @@
     "waves",
     "ocean",
     "surf"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

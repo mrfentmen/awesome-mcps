@@ -37,5 +37,8 @@
     "openverse",
     "creative-commons",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

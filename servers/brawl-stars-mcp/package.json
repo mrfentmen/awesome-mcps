@@ -37,5 +37,8 @@
     "brawlers",
     "gaming",
     "supercell"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

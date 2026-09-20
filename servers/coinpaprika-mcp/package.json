@@ -37,5 +37,8 @@
     "crypto",
     "coins",
     "market"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

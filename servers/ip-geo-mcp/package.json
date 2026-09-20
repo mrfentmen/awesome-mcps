@@ -37,5 +37,8 @@
     "geo",
     "geolocation",
     "whois"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

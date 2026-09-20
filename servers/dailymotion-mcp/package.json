@@ -37,5 +37,8 @@
     "videos",
     "media",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

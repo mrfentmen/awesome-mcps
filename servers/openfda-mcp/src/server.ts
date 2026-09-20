@@ -3,22 +3,60 @@ import { z } from 'zod'
 import { m0_adverseEvents, m0_approvedDrugs, m0_drugRecalls, m1_events } from './api.js'
 
 const text = (value: string) => ({ content: [{ type: 'text' as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 const errorMessage = error
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: 'openfda-mcp', version: '1.0.0' })
-server.tool("get_drug_recalls", "Get recent FDA drug recalls, optionally filtered by product or reason.", { search: z.string().describe("Optional search terms like salmonella.").optional(), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await m0_drugRecalls(args)) } catch (e) { return text(error(e)) }
-  })
-server.tool("search_adverse_events", "Search FDA adverse event reports by drug name.", { drug: z.string().describe("Drug name."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await m0_adverseEvents(args)) } catch (e) { return text(error(e)) }
-  })
-server.tool("search_approved_drugs", "Search approved drug applications.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await m0_approvedDrugs(args)) } catch (e) { return text(error(e)) }
-  })
-server.tool("events", "Drug adverse event reports for a drug.", { drug: z.string().describe("Brand name."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await m1_events(args)) } catch (e) { return text(error(e)) }
-  })
+server.registerTool(
+    "get_drug_recalls",
+    {
+      title: "Get drug recalls",
+      description: "Get recent FDA drug recalls, optionally filtered by product or reason.",
+      inputSchema: z.object( { search: z.string().describe("Optional search terms like salmonella.").optional(), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m0_drugRecalls(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+server.registerTool(
+    "search_adverse_events",
+    {
+      title: "Search adverse events",
+      description: "Search FDA adverse event reports by drug name.",
+      inputSchema: z.object( { drug: z.string().describe("Drug name."), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m0_adverseEvents(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+server.registerTool(
+    "search_approved_drugs",
+    {
+      title: "Search approved drugs",
+      description: "Search approved drug applications.",
+      inputSchema: z.object( { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m0_approvedDrugs(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+server.registerTool(
+    "events",
+    {
+      title: "Events",
+      description: "Drug adverse event reports for a drug.",
+      inputSchema: z.object( { drug: z.string().describe("Brand name."), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m1_events(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

@@ -37,5 +37,8 @@
     "countries",
     "images",
     "design"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

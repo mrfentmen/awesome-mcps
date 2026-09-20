@@ -37,5 +37,8 @@
     "version",
     "npm",
     "release"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

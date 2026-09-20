@@ -37,5 +37,8 @@
     "uk",
     "address",
     "geo"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "articles",
     "blog",
     "developers"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

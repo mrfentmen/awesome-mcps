@@ -37,5 +37,8 @@
     "featured",
     "most-read",
     "daily"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

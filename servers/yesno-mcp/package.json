@@ -37,5 +37,8 @@
     "no",
     "fun",
     "decisions"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

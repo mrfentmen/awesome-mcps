@@ -36,5 +36,8 @@
     "mcstatus",
     "server",
     "status"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

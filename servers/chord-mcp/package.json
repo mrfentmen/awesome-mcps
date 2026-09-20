@@ -41,5 +41,8 @@
     "music",
     "scale",
     "theory"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

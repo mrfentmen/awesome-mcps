@@ -37,5 +37,8 @@
     "anime",
     "films",
     "movies"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

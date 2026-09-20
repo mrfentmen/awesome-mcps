@@ -36,5 +36,8 @@
     "remote",
     "jobs",
     "work"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "barcode",
     "products",
     "upc"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

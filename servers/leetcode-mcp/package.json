@@ -36,5 +36,8 @@
     "coding",
     "interview",
     "problems"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "monitoring",
     "tls",
     "status"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -15,6 +15,9 @@ import {
   getRandomAsset,
   searchAssets,
 } from "./scraper.js"
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
+const WRITE = { readOnlyHint: false, openWorldHint: true } as const
 
 const resourceEnum = z.enum(["sprites", "models", "textures", "sounds"])
 
@@ -153,135 +156,190 @@ function textResult(text: string) {
 export function createServer(): McpServer {
   const server = new McpServer({ name: "vg-resource", version: "1.0.0" })
 
-  server.tool(
+  server.registerTool(
     "search_assets",
-    "Search for assets across The VG Resource network. Returns matching sprites, models, textures, or sounds.",
-    { query: z.string().describe("Search term"), resource: resourceEnum.optional().describe("Resource type") },
+    {
+      title: "Search assets",
+      description: "Search for assets across The VG Resource network. Returns matching sprites, models, textures, or sounds.",
+      inputSchema: z.object(
+    { query: z.string().describe("Search term"), resource: resourceEnum.optional().describe("Resource type") }),
+      annotations: READ_ONLY,
+    },
     // @ts-ignore - SDK overload resolution depth
     async (args: any) => {
       const text = await handleSearch(args.query, args.resource)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "browse_console",
-    "List all games for a specific console/platform on a resource.",
+    {
+      title: "Browse console",
+      description: "List all games for a specific console/platform on a resource.",
+      inputSchema: z.object(
     {
       console: z.string().describe("Console slug (e.g., 'playstation', 'snes')"),
       resource: resourceEnum.optional().describe("Resource type. Defaults to sprites."),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { console: string; resource?: ResourceType }) => {
       const text = await handleBrowseConsole(args.console, args.resource ?? "sprites")
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "browse_game",
-    "List all assets for a specific game.",
+    {
+      title: "Browse game",
+      description: "List all assets for a specific game.",
+      inputSchema: z.object(
     {
       console: z.string().describe("Console slug"),
       game: z.string().describe("Game slug"),
       resource: resourceEnum.optional().describe("Resource type. Defaults to sprites."),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { console: string; game: string; resource?: ResourceType }) => {
       const text = await handleBrowseGame(args.console, args.game, args.resource ?? "sprites")
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_asset_detail",
-    "Get detailed information about a specific asset including download URL.",
-    { url: z.string().describe("Full asset URL") },
+    {
+      title: "Get asset detail",
+      description: "Get detailed information about a specific asset including download URL.",
+      inputSchema: z.object(
+    { url: z.string().describe("Full asset URL") }),
+      annotations: READ_ONLY,
+    },
     async (args: { url: string }) => {
       const text = await handleAssetDetail(args.url)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_latest",
-    "Get the latest/recently uploaded assets across a resource.",
+    {
+      title: "Get latest",
+      description: "Get the latest/recently uploaded assets across a resource.",
+      inputSchema: z.object(
     {
       resource: resourceEnum.optional().describe("Resource type. Defaults to sprites."),
       limit: z.number().min(1).max(50).optional().describe("Number of results. Default 20."),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { resource?: ResourceType; limit?: number }) => {
       const text = await handleLatest(args.resource ?? "sprites", args.limit ?? 20)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "get_popular",
-    "Get the most popular/hit assets across a resource.",
+    {
+      title: "Get popular",
+      description: "Get the most popular/hit assets across a resource.",
+      inputSchema: z.object(
     {
       resource: resourceEnum.optional().describe("Resource type. Defaults to sprites."),
       limit: z.number().min(1).max(50).optional().describe("Number of results. Default 20."),
+    }),
+      annotations: READ_ONLY,
     },
     async (args: { resource?: ResourceType; limit?: number }) => {
       const text = await handlePopular(args.resource ?? "sprites", args.limit ?? 20)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "random_asset",
-    "Get a random asset from a resource. Rolls the dice on 100k+ assets.",
-    { resource: resourceEnum.optional().describe("Resource type. Defaults to sprites.") },
+    {
+      title: "Random asset",
+      description: "Get a random asset from a resource. Rolls the dice on 100k+ assets.",
+      inputSchema: z.object(
+    { resource: resourceEnum.optional().describe("Resource type. Defaults to sprites.") }),
+      annotations: READ_ONLY,
+    },
     async (args: { resource?: ResourceType }) => {
       const text = await handleRandom(args.resource ?? "sprites")
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "cross_reference",
-    "Find the same game across all 4 resources (sprites, models, textures, sounds).",
-    { game_name: z.string().describe("Game name to search for") },
+    {
+      title: "Cross reference",
+      description: "Find the same game across all 4 resources (sprites, models, textures, sounds).",
+      inputSchema: z.object(
+    { game_name: z.string().describe("Game name to search for") }),
+      annotations: READ_ONLY,
+    },
     async (args: { game_name: string }) => {
       const text = await handleCrossReference(args.game_name)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "list_consoles",
-    "List all available consoles/platforms for a resource.",
-    { resource: resourceEnum.optional().describe("Resource type. Defaults to sprites.") },
+    {
+      title: "List consoles",
+      description: "List all available consoles/platforms for a resource.",
+      inputSchema: z.object(
+    { resource: resourceEnum.optional().describe("Resource type. Defaults to sprites.") }),
+      annotations: READ_ONLY,
+    },
     async (args: { resource?: ResourceType }) => {
       const text = await handleConsoles(args.resource ?? "sprites")
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "download_asset",
-    "Download an asset from its page URL to a local file. Extracts the download link and saves the file.",
+    {
+      title: "Download asset",
+      description: "Download an asset from its page URL to a local file. Extracts the download link and saves the file.",
+      inputSchema: z.object(
     {
       asset_page_url: z.string().describe("The full URL of the asset page (from search/browse results)"),
       dest_path: z.string().describe("Local file path to save to (e.g., './downloads/mario.png')"),
+    }),
+      annotations: WRITE,
     },
     async (args: { asset_page_url: string; dest_path: string }) => {
       const text = await handleDownload(args.asset_page_url, args.dest_path)
       return textResult(text)
-    },
+    }
   )
 
-  server.tool(
+  server.registerTool(
     "batch_download",
-    "Download multiple assets from their page URLs to a directory. Useful for grabbing all assets from a game.",
+    {
+      title: "Batch download",
+      description: "Download multiple assets from their page URLs to a directory. Useful for grabbing all assets from a game.",
+      inputSchema: z.object(
     {
       asset_page_urls: z.array(z.string()).describe("List of asset page URLs to download"),
       dest_dir: z.string().describe("Directory to save files into (created if needed)"),
+    }),
+      annotations: WRITE,
     },
     // @ts-ignore - SDK overload resolution depth
     async (args: any) => {
       const text = await handleBatchDownload(args.asset_page_urls, args.dest_dir)
       return textResult(text)
-    },
+    }
   )
 
   return server

@@ -37,5 +37,8 @@
     "anime",
     "manga",
     "graphql"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "activity",
     "ideas",
     "suggestions"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

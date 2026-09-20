@@ -36,5 +36,8 @@
     "stocks",
     "quotes",
     "finance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -41,5 +41,8 @@
     "parse",
     "convert",
     "tools"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

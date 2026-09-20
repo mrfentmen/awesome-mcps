@@ -36,5 +36,8 @@
     "dns",
     "typosquatting",
     "domain"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

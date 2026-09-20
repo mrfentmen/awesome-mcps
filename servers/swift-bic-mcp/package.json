@@ -41,5 +41,8 @@
     "bic",
     "bank",
     "finance"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

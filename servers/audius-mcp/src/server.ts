@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,13 +20,18 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "trending_tracks",
-    "Trending tracks on Audius — underground/independent music that isn't " +
+    {
+      title: "Trending tracks",
+      description: "Trending tracks on Audius — underground/independent music that isn't " +
       "on the mainstream charts. Filter by genre.",
+      inputSchema: z.object(
     {
       genre: z.string().default("all").describe("Genre filter. Use exact Audius genre values, e.g. 'Hip-Hop/Rap', 'Electronic', 'Dubstep', 'Trap', or 'all' for every genre"),
       limit: z.number().int().min(1).max(25).default(8),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ genre, limit }) => {
       try {
@@ -35,52 +42,67 @@ export function createServer(): McpServer {
             tracks.map((t, i) => formatTrack(t, i)).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_tracks",
-    "Search tracks by title/artist keyword.",
-    { query: z.string().describe("Search terms"), limit: z.number().int().min(1).max(25).default(8) },
+    {
+      title: "Search tracks",
+      description: "Search tracks by title/artist keyword.",
+      inputSchema: z.object(
+    { query: z.string().describe("Search terms"), limit: z.number().int().min(1).max(25).default(8) }),
+      annotations: READ_ONLY,
+    },
     async ({ query, limit }) => {
       try {
         const tracks = await searchTracks(query, limit)
         if (tracks.length === 0) return text(`No tracks match "${query}".`)
         return text(`Tracks matching "${query}":\n\n${tracks.map((t, i) => formatTrack(t, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_artists",
-    "Search artists by handle or name.",
-    { query: z.string().describe("Artist name or handle"), limit: z.number().int().min(1).max(25).default(8) },
+    {
+      title: "Search artists",
+      description: "Search artists by handle or name.",
+      inputSchema: z.object(
+    { query: z.string().describe("Artist name or handle"), limit: z.number().int().min(1).max(25).default(8) }),
+      annotations: READ_ONLY,
+    },
     async ({ query, limit }) => {
       try {
         const users = await searchUsers(query, limit)
         if (users.length === 0) return text(`No artists match "${query}".`)
         return text(`Artists matching "${query}":\n\n${users.map((u, i) => formatUser(u, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_artist_tracks",
-    "Get an artist's uploaded tracks by user id.",
-    { userId: z.string().describe("User id from search_artists"), limit: z.number().int().min(1).max(25).default(8) },
+    {
+      title: "Get artist tracks",
+      description: "Get an artist's uploaded tracks by user id.",
+      inputSchema: z.object(
+    { userId: z.string().describe("User id from search_artists"), limit: z.number().int().min(1).max(25).default(8) }),
+      annotations: READ_ONLY,
+    },
     async ({ userId, limit }) => {
       try {
         const tracks = await getUserTracks(userId, limit)
         if (tracks.length === 0) return text(`No tracks for user ${userId}.`)
         return text(`Tracks from user ${userId}:\n\n${tracks.map((t, i) => formatTrack(t, i)).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

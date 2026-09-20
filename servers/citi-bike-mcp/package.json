@@ -37,5 +37,8 @@
     "transit",
     "new york",
     "stations"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

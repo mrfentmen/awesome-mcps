@@ -37,5 +37,8 @@
     "quizzes",
     "games",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

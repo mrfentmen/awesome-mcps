@@ -36,5 +36,8 @@
     "whisky",
     "auctions",
     "prices"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

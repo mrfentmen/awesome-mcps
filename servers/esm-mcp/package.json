@@ -37,5 +37,8 @@
     "npm",
     "modules",
     "javascript"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

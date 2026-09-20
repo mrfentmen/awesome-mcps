@@ -37,5 +37,8 @@
     "lyrics",
     "music",
     "search"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -36,5 +36,8 @@
     "hebrew",
     "calendar",
     "jewish"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

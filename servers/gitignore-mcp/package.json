@@ -37,5 +37,8 @@
     "git",
     "templates",
     "dev"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

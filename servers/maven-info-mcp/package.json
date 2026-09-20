@@ -37,5 +37,8 @@
     "java",
     "libraries",
     "artifacts"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

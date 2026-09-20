@@ -4,15 +4,35 @@ import { record } from "./api.js"
 import { search } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "digitalnz-mcp", version: "1.0.0" })
-  server.tool("search", "Search records.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await search(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("record", "Get a record by id.", { id: z.string().describe("Record id.") }, async (args) => {
-    try { return text(await record(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "search",
+    {
+      title: "Search",
+      description: "Search records.",
+      inputSchema: z.object( { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await search(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "record",
+    {
+      title: "Record",
+      description: "Get a record by id.",
+      inputSchema: z.object( { id: z.string().describe("Record id.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await record(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

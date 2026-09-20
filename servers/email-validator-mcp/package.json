@@ -41,5 +41,8 @@
     "validator",
     "mx",
     "disposable"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

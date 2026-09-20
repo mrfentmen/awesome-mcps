@@ -36,5 +36,8 @@
     "transit",
     "bus",
     "predictions"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

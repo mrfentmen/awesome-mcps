@@ -3,12 +3,23 @@ import { z } from "zod"
 import { ticker } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "mexc-mcp", version: "1.0.0" })
-  server.tool("ticker", "Current price for a trading pair.", { symbol: z.string().describe("Pair like BTCUSDT.") }, async (args) => {
-    try { return text(await ticker(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "ticker",
+    {
+      title: "Ticker",
+      description: "Current price for a trading pair.",
+      inputSchema: z.object( { symbol: z.string().describe("Pair like BTCUSDT.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await ticker(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

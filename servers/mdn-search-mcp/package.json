@@ -37,5 +37,8 @@
     "docs",
     "web",
     "javascript"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

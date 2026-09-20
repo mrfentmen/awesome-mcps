@@ -37,5 +37,8 @@
     "forex",
     "finance",
     "rates"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

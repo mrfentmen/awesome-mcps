@@ -10,6 +10,10 @@ export interface CoinHeightArgs {
   coin: string;
   height: string;
 }
+export interface CoinTxArgs {
+  coin: string;
+  txid: string;
+}
 
 export async function addressBalance(args: CoinAddressArgs): Promise<string> {
   const coin = String(args.coin || 'btc').toLowerCase();
@@ -37,10 +41,10 @@ export async function blockInfo(args: CoinHeightArgs): Promise<string> {
   return `Block ${d.height}\nHash: ${d.hash}\nTime: ${d.time ?? '?'}\nTransactions: ${d.n_tx ?? 0}\nSize: ${d.size ?? 0} bytes\nTotal moved: ${(d.total ?? 0) / 1e8} ${coin.toUpperCase()}`;
 }
 
-export async function txInfo(args: CoinAddressArgs): Promise<string> {
+export async function txInfo(args: CoinTxArgs): Promise<string> {
   const coin = String(args.coin || 'btc').toLowerCase();
   if (!COINS.has(coin)) throw new Error(`Unsupported coin ${coin}.`);
-  const res = await fetch(`https://api.blockcypher.com/v1/${coin}/main/txs/${encodeURIComponent(args.address)}`, {
+  const res = await fetch(`https://api.blockcypher.com/v1/${coin}/main/txs/${encodeURIComponent(args.txid)}`, {
     headers: { 'User-Agent': UA, Accept: 'application/json' },
     signal: AbortSignal.timeout(25000),
   });

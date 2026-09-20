@@ -4,15 +4,35 @@ import { instance } from "./api.js"
 import { trends } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "mastodon-mcp", version: "1.0.0" })
-  server.tool("instance", "Public info for one instance.", { domain: z.string().describe("Instance domain.").optional() }, async (args) => {
-    try { return text(await instance(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("trends", "Trending tags on one instance.", { domain: z.string().describe("Instance domain.").optional(), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await trends(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "instance",
+    {
+      title: "Instance",
+      description: "Public info for one instance.",
+      inputSchema: z.object( { domain: z.string().describe("Instance domain.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await instance(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "trends",
+    {
+      title: "Trends",
+      description: "Trending tags on one instance.",
+      inputSchema: z.object( { domain: z.string().describe("Instance domain.").optional(), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await trends(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

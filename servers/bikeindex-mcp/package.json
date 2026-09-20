@@ -37,5 +37,8 @@
     "bikes",
     "stolen",
     "recovery"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

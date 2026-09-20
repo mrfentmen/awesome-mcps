@@ -4,15 +4,35 @@ import { controllers } from "./api.js"
 import { pilots } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "vatsim-mcp", version: "1.0.0" })
-  server.tool("pilots", "Connected pilots.", { limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await pilots(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("controllers", "Connected ATC controllers.", { limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await controllers(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "pilots",
+    {
+      title: "Pilots",
+      description: "Connected pilots.",
+      inputSchema: z.object( { limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await pilots(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "controllers",
+    {
+      title: "Controllers",
+      description: "Connected ATC controllers.",
+      inputSchema: z.object( { limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await controllers(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

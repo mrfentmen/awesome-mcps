@@ -36,5 +36,8 @@
     "boston",
     "transit",
     "train"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

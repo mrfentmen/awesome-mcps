@@ -36,5 +36,8 @@
     "git",
     "repos",
     "forge"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

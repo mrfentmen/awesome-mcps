@@ -39,5 +39,8 @@
     "spreadsheet",
     "xlsx",
     "sheet"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

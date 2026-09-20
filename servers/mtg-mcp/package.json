@@ -36,5 +36,8 @@
     "magic",
     "cards",
     "game"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

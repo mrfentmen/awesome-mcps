@@ -37,5 +37,8 @@
     "radio",
     "music",
     "streams"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

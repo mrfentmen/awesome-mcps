@@ -3,6 +3,8 @@ import { z } from "zod"
 import { WikiError, getPage, searchPages, wikiTextToPlain } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -10,11 +12,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_pages",
-    "Search hiddenpalace.org — unreleased prototypes, beta builds, and " +
+    {
+      title: "Search pages",
+      description: "Search hiddenpalace.org — unreleased prototypes, beta builds, and " +
       "cut content documentation.",
-    { query: z.string().describe("Search terms, e.g. 'Super Mario 64 beta' or 'Sonic prototype'") },
+      inputSchema: z.object(
+    { query: z.string().describe("Search terms, e.g. 'Super Mario 64 beta' or 'Sonic prototype'") }),
+      annotations: READ_ONLY,
+    },
     async ({ query }) => {
       try {
         const pages = await searchPages(query)
@@ -29,17 +36,22 @@ export function createServer(): McpServer {
               .join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_page",
-    "Get a page's content as readable text.",
+    {
+      title: "Get page",
+      description: "Get a page's content as readable text.",
+      inputSchema: z.object(
     {
       title: z.string().describe("Exact page title from search_pages"),
       maxChars: z.number().int().min(500).max(30000).default(12000),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ title, maxChars }) => {
       try {
@@ -48,7 +60,7 @@ export function createServer(): McpServer {
         const plain = wikiTextToPlain(page.wikitext, maxChars)
         return text(`${page.title}\n${page.url}\n\n${plain || "(no readable content)"}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

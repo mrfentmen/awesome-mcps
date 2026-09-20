@@ -37,5 +37,8 @@
     "metar",
     "taf",
     "weather"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

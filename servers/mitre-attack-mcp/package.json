@@ -37,5 +37,8 @@
     "attack",
     "security",
     "threat"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

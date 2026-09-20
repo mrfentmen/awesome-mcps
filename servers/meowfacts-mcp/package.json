@@ -36,5 +36,8 @@
     "cats",
     "facts",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

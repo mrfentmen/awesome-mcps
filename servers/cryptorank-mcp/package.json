@@ -37,5 +37,8 @@
     "crypto",
     "rankings",
     "market"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

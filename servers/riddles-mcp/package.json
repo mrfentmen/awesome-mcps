@@ -37,5 +37,8 @@
     "puzzles",
     "fun",
     "brain"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

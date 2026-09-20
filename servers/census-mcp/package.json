@@ -37,5 +37,8 @@
     "population",
     "demographics",
     "acs"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

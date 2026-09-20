@@ -36,5 +36,8 @@
     "email",
     "temp-mail",
     "domains"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -8,6 +8,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -15,13 +17,18 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_words",
-    "Search the Jisho Japanese-English dictionary. Accepts Japanese text, " +
+    {
+      title: "Search words",
+      description: "Search the Jisho Japanese-English dictionary. Accepts Japanese text, " +
       "romaji, or English keywords.",
+      inputSchema: z.object(
     {
       keyword: z.string().describe("e.g. 'daijoubu', '大丈夫', or 'friendship'"),
       limit: z.number().int().min(1).max(15).default(10).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ keyword, limit }) => {
       try {
@@ -32,19 +39,24 @@ export function createServer(): McpServer {
             words.map((w, i) => formatWord(w, i + 1)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_by_tag",
-    "Search Jisho by feature or tag: '#common' for common words, " +
+    {
+      title: "Search by tag",
+      description: "Search Jisho by feature or tag: '#common' for common words, " +
       "'jlpt-n5' through 'jlpt-n1' for JLPT levels, 'wanikani5' etc., " +
       "or any English meaning.",
+      inputSchema: z.object(
     {
       keyword: z.string().describe("e.g. '#common', 'jlpt-n4', 'wanikani10', or 'friendship'"),
       limit: z.number().int().min(1).max(15).default(10).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ keyword, limit }) => {
       try {
@@ -55,7 +67,7 @@ export function createServer(): McpServer {
             words.map((w, i) => formatWord(w, i + 1)).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

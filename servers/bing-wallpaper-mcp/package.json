@@ -37,5 +37,8 @@
     "wallpaper",
     "images",
     "daily"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

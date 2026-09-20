@@ -37,5 +37,8 @@
     "wttr",
     "forecast",
     "cli"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

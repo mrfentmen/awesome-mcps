@@ -37,5 +37,8 @@
     "statistics",
     "europe",
     "data"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

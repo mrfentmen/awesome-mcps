@@ -36,5 +36,8 @@
     "health",
     "data",
     "socrata"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

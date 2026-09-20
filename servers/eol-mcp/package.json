@@ -36,5 +36,8 @@
     "species",
     "biology",
     "nature"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

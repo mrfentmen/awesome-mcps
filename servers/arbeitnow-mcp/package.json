@@ -36,5 +36,8 @@
     "germany",
     "jobs",
     "work"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

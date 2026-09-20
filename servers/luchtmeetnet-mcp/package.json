@@ -36,5 +36,8 @@
     "netherlands",
     "air-quality",
     "pollution"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

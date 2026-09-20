@@ -36,5 +36,8 @@
     "iss",
     "astronauts",
     "space"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "fx",
     "rates",
     "currency"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

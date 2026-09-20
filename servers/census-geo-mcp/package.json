@@ -36,5 +36,8 @@
     "geocoding",
     "address",
     "fips"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

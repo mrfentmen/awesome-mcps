@@ -37,5 +37,8 @@
     "crypto",
     "rpc",
     "chain"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

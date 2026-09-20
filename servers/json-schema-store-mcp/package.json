@@ -37,5 +37,8 @@
     "schemas",
     "validation",
     "devtools"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

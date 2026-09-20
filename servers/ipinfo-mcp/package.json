@@ -36,5 +36,8 @@
     "ip",
     "geolocation",
     "asn"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

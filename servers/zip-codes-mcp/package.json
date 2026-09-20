@@ -37,5 +37,8 @@
     "postal",
     "location",
     "address"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

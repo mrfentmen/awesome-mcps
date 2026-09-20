@@ -36,5 +36,8 @@
     "trade",
     "imports",
     "exports"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

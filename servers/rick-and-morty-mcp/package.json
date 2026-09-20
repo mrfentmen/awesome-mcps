@@ -36,5 +36,8 @@
     "rick and morty",
     "tv",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

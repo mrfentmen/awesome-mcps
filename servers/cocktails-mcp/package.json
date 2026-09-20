@@ -37,5 +37,8 @@
     "drinks",
     "recipes",
     "bartending"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

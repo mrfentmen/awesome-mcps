@@ -39,5 +39,8 @@
     "breeds",
     "photos",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

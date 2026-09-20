@@ -3,6 +3,8 @@ import { z } from "zod"
 import { BitError, formatRelease, getRelease, listReleases } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -10,11 +12,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "list_releases",
-    "Browse the 8bitpeoples catalog. Chiptune and chip-hop releases, " +
+    {
+      title: "List releases",
+      description: "Browse the 8bitpeoples catalog. Chiptune and chip-hop releases, " +
       "mostly free to download.",
-    { page: z.number().int().min(1).default(1).describe("Catalog page (about 24 releases each)") },
+      inputSchema: z.object(
+    { page: z.number().int().min(1).default(1).describe("Catalog page (about 24 releases each)") }),
+      annotations: READ_ONLY,
+    },
     async ({ page }) => {
       try {
         const releases = await listReleases(page)
@@ -24,22 +31,27 @@ export function createServer(): McpServer {
             releases.map((r, i) => formatRelease(r, i)).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_release",
-    "Get details for one release: artist, description, price.",
-    { slug: z.string().describe("Release slug, e.g. '520414-sievert-chips-dips-and-facerips'") },
+    {
+      title: "Get release",
+      description: "Get details for one release: artist, description, price.",
+      inputSchema: z.object(
+    { slug: z.string().describe("Release slug, e.g. '520414-sievert-chips-dips-and-facerips'") }),
+      annotations: READ_ONLY,
+    },
     async ({ slug }) => {
       try {
         const r = await getRelease(slug)
         if (!r) return text(`No release at ${slug}.`)
         return text(formatRelease(r))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

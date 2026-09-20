@@ -40,5 +40,8 @@
     "bank",
     "finance",
     "validator"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

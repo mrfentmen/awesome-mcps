@@ -36,5 +36,8 @@
     "holidays",
     "calendar",
     "countries"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

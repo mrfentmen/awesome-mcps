@@ -41,5 +41,8 @@
     "qrcode",
     "barcode",
     "image"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

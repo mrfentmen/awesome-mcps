@@ -37,5 +37,8 @@
     "blockchain",
     "btc",
     "crypto"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

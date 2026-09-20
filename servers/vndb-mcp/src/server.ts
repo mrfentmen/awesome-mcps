@@ -12,6 +12,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -19,10 +21,13 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "search_vns",
-    "Search the Visual Novel Database for visual novels. " +
+    {
+      title: "Search vns",
+      description: "Search the Visual Novel Database for visual novels. " +
       "Sortable by rating (default), popularity, released date, or title.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Search query, e.g. 'Muv-Luv' or 'nukige'"),
       sort: z
@@ -30,6 +35,8 @@ export function createServer(): McpServer {
         .default("rating")
         .describe("Sort order"),
       results: z.number().int().min(1).max(15).default(8).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ query, sort, results }) => {
       try {
@@ -38,32 +45,42 @@ export function createServer(): McpServer {
         const header = `Visual novels matching "${query}" (sorted by ${sort}):\n`
         return text(header + vns.map((v, i) => `${i + 1}. ${formatVn(v)}`).join("\n\n"))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_vn",
-    "Get full details for a visual novel by its VNDB id (e.g. 'v17').",
-    { id: z.string().describe("VNDB id like 'v17' or 'v311'") },
+    {
+      title: "Get vn",
+      description: "Get full details for a visual novel by its VNDB id (e.g. 'v17').",
+      inputSchema: z.object(
+    { id: z.string().describe("VNDB id like 'v17' or 'v311'") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const vn = await getVn(id)
         if (!vn) return text(`No visual novel with id "${id}".`)
         return text(formatVn(vn))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_characters",
-    "Search VNDB for characters by name or description text.",
+    {
+      title: "Search characters",
+      description: "Search VNDB for characters by name or description text.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Character name or trait, e.g. 'Sakura' or 'tsundere'"),
       results: z.number().int().min(1).max(15).default(8).describe("Max results"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ query, results }) => {
       try {
@@ -74,15 +91,20 @@ export function createServer(): McpServer {
             chars.map((c, i) => `${i + 1}. ${formatCharacter(c)}`).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_vn_releases",
-    "List all releases (platforms, languages, catalog numbers) for a visual novel.",
-    { vnId: z.string().describe("VNDB id like 'v17'") },
+    {
+      title: "Get vn releases",
+      description: "List all releases (platforms, languages, catalog numbers) for a visual novel.",
+      inputSchema: z.object(
+    { vnId: z.string().describe("VNDB id like 'v17'") }),
+      annotations: READ_ONLY,
+    },
     async ({ vnId }) => {
       try {
         const releases = await getReleases(vnId)
@@ -92,7 +114,7 @@ export function createServer(): McpServer {
             releases.map((r, i) => `${i + 1}. ${formatRelease(r)}`).join("\n\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

@@ -37,5 +37,8 @@
     "games",
     "store",
     "gaming"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

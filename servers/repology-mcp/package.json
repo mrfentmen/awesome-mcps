@@ -36,5 +36,8 @@
     "packages",
     "versions",
     "repositories"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

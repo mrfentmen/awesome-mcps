@@ -4,15 +4,35 @@ import { doi } from "./api.js"
 import { search } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "datacite-mcp", version: "1.0.0" })
-  server.tool("search", "Search DOIs by query.", { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }, async (args) => {
-    try { return text(await search(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("doi", "Details for one DOI.", { doi: z.string().describe("DOI like 10.5281/zenodo.20501604.") }, async (args) => {
-    try { return text(await doi(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "search",
+    {
+      title: "Search",
+      description: "Search DOIs by query.",
+      inputSchema: z.object( { query: z.string().describe("Search terms."), limit: z.number().describe("Max results.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await search(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "doi",
+    {
+      title: "Doi",
+      description: "Details for one DOI.",
+      inputSchema: z.object( { doi: z.string().describe("DOI like 10.5281/zenodo.20501604.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await doi(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

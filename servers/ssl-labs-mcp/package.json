@@ -37,5 +37,8 @@
     "tls",
     "security",
     "grades"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

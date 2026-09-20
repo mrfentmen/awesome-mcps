@@ -37,5 +37,8 @@
     "research",
     "datasets",
     "science"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "victoria-albert",
     "museum",
     "art"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -38,5 +38,8 @@
     "schedule",
     "scheduler",
     "devops"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

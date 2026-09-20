@@ -38,5 +38,8 @@
     "chemistry",
     "chembl",
     "science"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

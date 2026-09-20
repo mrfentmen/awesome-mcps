@@ -3,6 +3,8 @@ import { z } from "zod"
 import { findInText, LEXICON, lookupExact, searchLexicon } from "./lexicon.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 function formatEntry(e: {
   term: string
@@ -25,11 +27,16 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "decode_term",
-    "Look up a single slang / brainrot / niche internet term. " +
+    {
+      title: "Decode term",
+      description: "Look up a single slang / brainrot / niche internet term. " +
       "Fully offline. Returns meaning, origin, example, and vibe.",
-    { term: z.string().describe("The term to decode, e.g. 'rizz' or 'fanum tax'") },
+      inputSchema: z.object(
+    { term: z.string().describe("The term to decode, e.g. 'rizz' or 'fanum tax'") }),
+      annotations: READ_ONLY,
+    },
     async ({ term }) => {
       const entry = lookupExact(term) ?? searchLexicon(term)[0]
       if (!entry) {
@@ -41,11 +48,16 @@ export function createServer(): McpServer {
     }
   )
 
-  server.tool(
+  server.registerTool(
     "search_terms",
-    "Fuzzy-search the lexicon by term, meaning, or vibe.",
+    {
+      title: "Search terms",
+      description: "Fuzzy-search the lexicon by term, meaning, or vibe.",
+      inputSchema: z.object(
     {
       query: z.string().describe("Search text, e.g. 'praise' or 'underground rap'"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ query }) => {
       const hits = searchLexicon(query)
@@ -59,11 +71,16 @@ export function createServer(): McpServer {
     }
   )
 
-  server.tool(
+  server.registerTool(
     "decode_text",
-    "Scan a block of text and decode every known slang term in it. " +
+    {
+      title: "Decode text",
+      description: "Scan a block of text and decode every known slang term in it. " +
       "Great for captions, tweets, or comments you don't fully get.",
-    { text: z.string().describe("The text to scan, e.g. a caption or comment") },
+      inputSchema: z.object(
+    { text: z.string().describe("The text to scan, e.g. a caption or comment") }),
+      annotations: READ_ONLY,
+    },
     async ({ text: input }) => {
       const hits = findInText(input)
       if (hits.length === 0) {
@@ -75,20 +92,28 @@ export function createServer(): McpServer {
     }
   )
 
-  server.tool(
+  server.registerTool(
     "random_term",
-    "Return a random term from the lexicon — good for expanding your brainrot.",
-    {},
+    {
+      title: "Random term",
+      description: "Return a random term from the lexicon — good for expanding your brainrot.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       const entry = LEXICON[Math.floor(Math.random() * LEXICON.length)]
       return text(formatEntry(entry))
     }
   )
 
-  server.tool(
+  server.registerTool(
     "lexicon_stats",
-    "Get stats about the lexicon: term count and vibe breakdown.",
-    {},
+    {
+      title: "Lexicon stats",
+      description: "Get stats about the lexicon: term count and vibe breakdown.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       const vibes = new Map<string, number>()
       for (const e of LEXICON) {

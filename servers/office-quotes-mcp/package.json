@@ -37,5 +37,8 @@
     "quotes",
     "tv",
     "fun"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -37,5 +37,8 @@
     "chrome",
     "automation",
     "screenshot"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

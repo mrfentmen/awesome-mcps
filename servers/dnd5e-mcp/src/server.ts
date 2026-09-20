@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,40 +20,55 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "get_monster",
-    "Get a D&D 5e monster by index slug (e.g. 'aboleth', 'adult-red-dragon', 'goblin').",
-    { index: z.string().describe("Monster index slug") },
+    {
+      title: "Get monster",
+      description: "Get a D&D 5e monster by index slug (e.g. 'aboleth', 'adult-red-dragon', 'goblin').",
+      inputSchema: z.object(
+    { index: z.string().describe("Monster index slug") }),
+      annotations: READ_ONLY,
+    },
     async ({ index }) => {
       try {
         const m = await getMonster(index)
         if (!m) return text(`No monster "${index}". Try list_monsters for valid slugs.`)
         return text(formatMonster(m))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_spell",
-    "Get a D&D 5e spell by index slug (e.g. 'fireball', 'magic-missile', 'wish').",
-    { index: z.string().describe("Spell index slug") },
+    {
+      title: "Get spell",
+      description: "Get a D&D 5e spell by index slug (e.g. 'fireball', 'magic-missile', 'wish').",
+      inputSchema: z.object(
+    { index: z.string().describe("Spell index slug") }),
+      annotations: READ_ONLY,
+    },
     async ({ index }) => {
       try {
         const s = await getSpell(index)
         if (!s) return text(`No spell "${index}".`)
         return text(formatSpell(s))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "list_monsters",
-    "List D&D 5e SRD monsters by name (a-z), useful for finding valid slugs.",
-    { limit: z.number().int().min(5).max(100).default(30) },
+    {
+      title: "List monsters",
+      description: "List D&D 5e SRD monsters by name (a-z), useful for finding valid slugs.",
+      inputSchema: z.object(
+    { limit: z.number().int().min(5).max(100).default(30) }),
+      annotations: READ_ONLY,
+    },
     async ({ limit }) => {
       try {
         const monsters = await listMonsters(limit)
@@ -60,15 +77,20 @@ export function createServer(): McpServer {
             monsters.map((m, i) => `${i + 1}. ${m.name} [${m.index}]`).join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_class",
-    "Get a D&D 5e class overview — hit die, proficiencies, starting equipment.",
-    { index: z.string().describe("Class index slug, e.g. 'barbarian', 'wizard'") },
+    {
+      title: "Get class",
+      description: "Get a D&D 5e class overview — hit die, proficiencies, starting equipment.",
+      inputSchema: z.object(
+    { index: z.string().describe("Class index slug, e.g. 'barbarian', 'wizard'") }),
+      annotations: READ_ONLY,
+    },
     async ({ index }) => {
       try {
         const c = await getClassInfo(index)
@@ -98,7 +120,7 @@ export function createServer(): McpServer {
         ].filter(Boolean)
         return text(lines.join("\n"))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

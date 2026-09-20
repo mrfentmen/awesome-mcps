@@ -36,5 +36,8 @@
     "links",
     "preview",
     "metadata"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

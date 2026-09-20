@@ -3,46 +3,63 @@ import { z } from 'zod'
 import { m0_formatForecast, m0_formatPlace, m0_geocode, m0_getForecast, m0_MeteoError, m1_elevation, m2_uvForecast } from './api.js'
 
 const text = (value: string) => ({ content: [{ type: 'text' as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 const errorMessage = error
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: 'open-meteo-mcp', version: '1.0.0' })
-server.tool(
+server.registerTool(
     "geocode",
-    "Find a place by name and get its coordinates.",
-    { place: z.string().describe("Place name, e.g. 'Tokyo' or 'Austin, TX'"), count: z.number().int().min(1).max(10).default(5) },
+    {
+      title: "Geocode",
+      description: "Find a place by name and get its coordinates.",
+      inputSchema: z.object(
+    { place: z.string().describe("Place name, e.g. 'Tokyo' or 'Austin, TX'"), count: z.number().int().min(1).max(10).default(5) }),
+      annotations: READ_ONLY,
+    },
     async ({ place, count }) => {
       try {
         const results = await m0_geocode(place, count)
         if (results.length === 0) return text(`No place found for "${place}".`)
         return text(`Places matching "${place}":\n\n${results.map((p, i) => `${i + 1}. ${m0_formatPlace(p)}`).join("\n\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
-server.tool(
+server.registerTool(
     "get_forecast",
-    "Weather forecast for coordinates.",
+    {
+      title: "Get forecast",
+      description: "Weather forecast for coordinates.",
+      inputSchema: z.object(
     {
       latitude: z.number().describe("Latitude, e.g. 40.71"),
       longitude: z.number().describe("Longitude, e.g. -74.0"),
       days: z.number().int().min(1).max(14).default(5),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ latitude, longitude, days }) => {
       try {
         const f = await m0_getForecast(latitude, longitude, days)
         return text(m0_formatForecast(f, `${latitude}, ${longitude}`))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
-server.tool(
+server.registerTool(
     "get_forecast_for_place",
-    "Weather forecast for a named place, geocoded for you.",
-    { place: z.string().describe("Place name, e.g. 'Reykjavik'"), days: z.number().int().min(1).max(14).default(5) },
+    {
+      title: "Get forecast for place",
+      description: "Weather forecast for a named place, geocoded for you.",
+      inputSchema: z.object(
+    { place: z.string().describe("Place name, e.g. 'Reykjavik'"), days: z.number().int().min(1).max(14).default(5) }),
+      annotations: READ_ONLY,
+    },
     async ({ place, days }) => {
       try {
         const results = await m0_geocode(place, 1)
@@ -52,15 +69,33 @@ server.tool(
         const f = await m0_getForecast(p.latitude, p.longitude, days)
         return text(m0_formatForecast(f, `${p.name}${p.country ? `, ${p.country}` : ""}`))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
-server.tool("elevation", "Get the elevation for coordinates.", { lat: z.number().describe("Latitude."), lon: z.number().describe("Longitude.") }, async (args) => {
-    try { return text(await m1_elevation(args)) } catch (e) { return text(error(e)) }
-  })
-server.tool("uv_forecast", "Get the daily UV index forecast for coordinates.", { lat: z.number().describe("Latitude."), lon: z.number().describe("Longitude."), days: z.number().describe("Days ahead.").optional() }, async (args) => {
-    try { return text(await m2_uvForecast(args)) } catch (e) { return text(error(e)) }
-  })
+server.registerTool(
+    "elevation",
+    {
+      title: "Elevation",
+      description: "Get the elevation for coordinates.",
+      inputSchema: z.object( { lat: z.number().describe("Latitude."), lon: z.number().describe("Longitude.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m1_elevation(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+server.registerTool(
+    "uv_forecast",
+    {
+      title: "Uv forecast",
+      description: "Get the daily UV index forecast for coordinates.",
+      inputSchema: z.object( { lat: z.number().describe("Latitude."), lon: z.number().describe("Longitude."), days: z.number().describe("Days ahead.").optional() }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m2_uvForecast(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

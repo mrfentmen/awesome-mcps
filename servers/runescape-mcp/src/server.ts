@@ -3,6 +3,8 @@ import { z } from 'zod'
 import { m0_hiscore, m1_OsrsError, m1_formatStats, m1_getHotItems, m1_getItemPrice, m1_getPlayerStats } from './api.js'
 
 const text = (value: string) => ({ content: [{ type: 'text' as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 const errorMessage = error
 
@@ -10,30 +12,49 @@ const m1_MODES = ["normal", "ironman", "ultimate", "hardcore", "deadman"] as con
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: 'runescape-mcp', version: '1.0.0' })
-server.tool("hiscore", "Hiscore for a player.", { player: z.string().describe("Player name.") }, async (args) => {
-    try { return text(await m0_hiscore(args)) } catch (e) { return text(error(e)) }
-  })
-server.tool(
+server.registerTool(
+    "hiscore",
+    {
+      title: "Hiscore",
+      description: "Hiscore for a player.",
+      inputSchema: z.object( { player: z.string().describe("Player name.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await m0_hiscore(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+server.registerTool(
     "get_player_stats",
-    "Get an OSRS player's hiscores: levels, XP, clue scrolls, and boss " +
+    {
+      title: "Get player stats",
+      description: "Get an OSRS player's hiscores: levels, XP, clue scrolls, and boss " +
       "kill counts. Modes: normal / ironman / ultimate / hardcore / deadman.",
+      inputSchema: z.object(
     {
       username: z.string().describe("RuneScape username, e.g. 'Zezima'"),
       mode: z.enum(m1_MODES).default("normal").describe("Account type"),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ username, mode }) => {
       try {
         const stats = await m1_getPlayerStats(username, mode)
         return text(m1_formatStats(stats))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
-server.tool(
+server.registerTool(
     "get_item_price",
-    "Get the current Grand Exchange price of an item (buy/sell spread).",
-    { name: z.string().describe("Item name, e.g. 'Bandos chestplate' or 'Rune scimitar'") },
+    {
+      title: "Get item price",
+      description: "Get the current Grand Exchange price of an item (buy/sell spread).",
+      inputSchema: z.object(
+    { name: z.string().describe("Item name, e.g. 'Bandos chestplate' or 'Rune scimitar'") }),
+      annotations: READ_ONLY,
+    },
     async ({ name }) => {
       try {
         const p = await m1_getItemPrice(name)
@@ -46,15 +67,20 @@ server.tool(
         ]
         return text(lines.join("\n"))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
-server.tool(
+server.registerTool(
     "get_hot_items",
-    "What's trading the most on the Grand Exchange right now — ranked by " +
+    {
+      title: "Get hot items",
+      description: "What's trading the most on the Grand Exchange right now — ranked by " +
       "trade volume in the last hour, with current buy/sell averages.",
-    { limit: z.number().int().min(3).max(15).default(10).describe("How many items to show") },
+      inputSchema: z.object(
+    { limit: z.number().int().min(3).max(15).default(10).describe("How many items to show") }),
+      annotations: READ_ONLY,
+    },
     async ({ limit }) => {
       try {
         const items = await m1_getHotItems(limit)
@@ -69,7 +95,7 @@ server.tool(
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

@@ -41,5 +41,8 @@
     "tls",
     "certificate",
     "security"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -38,5 +38,8 @@
     "facilities",
     "environment",
     "usa"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

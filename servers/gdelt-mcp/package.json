@@ -41,5 +41,8 @@
     "gdelt",
     "media",
     "articles"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

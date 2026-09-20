@@ -37,5 +37,8 @@
     "poems",
     "literature",
     "verse"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

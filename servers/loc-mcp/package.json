@@ -37,5 +37,8 @@
     "search",
     "archives",
     "history"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

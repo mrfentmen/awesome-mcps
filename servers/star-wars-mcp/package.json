@@ -37,5 +37,8 @@
     "swapi",
     "scifi",
     "space"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

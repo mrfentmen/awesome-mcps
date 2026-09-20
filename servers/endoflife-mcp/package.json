@@ -41,5 +41,8 @@
     "versions",
     "support",
     "devops"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

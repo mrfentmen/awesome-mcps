@@ -37,5 +37,8 @@
     "news",
     "articles",
     "science"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

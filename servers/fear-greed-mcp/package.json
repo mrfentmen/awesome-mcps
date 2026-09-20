@@ -37,5 +37,8 @@
     "sentiment",
     "fear",
     "greed"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

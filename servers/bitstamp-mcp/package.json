@@ -36,5 +36,8 @@
     "crypto",
     "prices",
     "exchange"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

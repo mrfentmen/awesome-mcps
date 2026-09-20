@@ -42,5 +42,8 @@
     "2fa",
     "security",
     "auth"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

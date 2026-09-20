@@ -36,5 +36,8 @@
     "france",
     "open-data",
     "datasets"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

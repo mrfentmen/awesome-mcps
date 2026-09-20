@@ -37,5 +37,8 @@
     "vehicle",
     "car",
     "decode"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

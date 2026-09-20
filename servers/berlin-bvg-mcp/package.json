@@ -37,5 +37,8 @@
     "bvg",
     "transit",
     "transport"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

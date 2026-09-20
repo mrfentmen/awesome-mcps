@@ -11,6 +11,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -18,60 +20,79 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "get_daily_puzzle",
-    "Get today's daily chess puzzle from Lichess with the FEN and solution.",
-    {},
+    {
+      title: "Get daily puzzle",
+      description: "Get today's daily chess puzzle from Lichess with the FEN and solution.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const p = await getDailyPuzzle()
         if (!p) return text("No daily puzzle available right now.")
         return text(formatPuzzle(p))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_puzzle",
-    "Get a specific Lichess puzzle by id.",
-    { id: z.string().describe("Puzzle id, e.g. 'd4q3x'") },
+    {
+      title: "Get puzzle",
+      description: "Get a specific Lichess puzzle by id.",
+      inputSchema: z.object(
+    { id: z.string().describe("Puzzle id, e.g. 'd4q3x'") }),
+      annotations: READ_ONLY,
+    },
     async ({ id }) => {
       try {
         const p = await getPuzzleById(id)
         if (!p) return text(`No puzzle "${id}".`)
         return text(formatPuzzle(p))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_player",
-    "Get a Lichess player's stats — best rating, games played, account age.",
-    { username: z.string().describe("Lichess username") },
+    {
+      title: "Get player",
+      description: "Get a Lichess player's stats — best rating, games played, account age.",
+      inputSchema: z.object(
+    { username: z.string().describe("Lichess username") }),
+      annotations: READ_ONLY,
+    },
     async ({ username }) => {
       try {
         const u = await getPlayer(username)
         if (!u) return text(`No Lichess user "${username}".`)
         return text(formatPlayer(u))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_top_players",
-    "Top players by performance (blitz, bullet, classical, puzzle, etc.).",
+    {
+      title: "Get top players",
+      description: "Top players by performance (blitz, bullet, classical, puzzle, etc.).",
+      inputSchema: z.object(
     {
       perf: z
         .string()
         .default("blitz")
         .describe("Performance type: blitz, bullet, rapid, classical, puzzle, etc."),
       limit: z.number().int().min(1).max(20).default(10),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ perf, limit }) => {
       try {
@@ -84,7 +105,7 @@ export function createServer(): McpServer {
               .join("\n")
         )
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

@@ -37,5 +37,8 @@
     "network",
     "identity",
     "tools"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

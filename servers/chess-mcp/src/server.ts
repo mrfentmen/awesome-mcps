@@ -14,6 +14,8 @@ import {
 } from "./api.js"
 
 const text = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 
 export function createServer(): McpServer {
   const server = new McpServer({
@@ -21,44 +23,59 @@ export function createServer(): McpServer {
     version: "1.0.0",
   })
 
-  server.tool(
+  server.registerTool(
     "get_player",
-    "Get a chess.com player profile.",
-    { username: z.string().describe("chess.com username, e.g. 'hikaru'") },
+    {
+      title: "Get player",
+      description: "Get a chess.com player profile.",
+      inputSchema: z.object(
+    { username: z.string().describe("chess.com username, e.g. 'hikaru'") }),
+      annotations: READ_ONLY,
+    },
     async ({ username }) => {
       try {
         const p = await getPlayer(username)
         if (!p) return text(`No chess.com player "${username}".`)
         return text(formatPlayer(p))
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_player_stats",
-    "Get a player's ratings across time controls.",
-    { username: z.string().describe("chess.com username") },
+    {
+      title: "Get player stats",
+      description: "Get a player's ratings across time controls.",
+      inputSchema: z.object(
+    { username: z.string().describe("chess.com username") }),
+      annotations: READ_ONLY,
+    },
     async ({ username }) => {
       try {
         const stats = await getPlayerStats(username)
         const out = formatStats(stats)
         return text(out || `No rated stats for "${username}".`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_player_games",
-    "Get a player's games for a month.",
+    {
+      title: "Get player games",
+      description: "Get a player's games for a month.",
+      inputSchema: z.object(
     {
       username: z.string().describe("chess.com username"),
       year: z.number().int().min(2005).max(2100).describe("Year, e.g. 2026"),
       month: z.number().int().min(1).max(12).describe("Month, e.g. 6"),
       limit: z.number().int().min(1).max(50).default(10),
+    }),
+      annotations: READ_ONLY,
     },
     async ({ username, year, month, limit }) => {
       try {
@@ -66,15 +83,19 @@ export function createServer(): McpServer {
         if (games.length === 0) return text(`No games for ${username} in ${year}-${String(month).padStart(2, "0")}.`)
         return text(`Games for ${username} in ${year}-${String(month).padStart(2, "0")}:\n${games.slice(0, limit).map((g, i) => formatGame(g, i)).join("\n")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_leaderboards",
-    "Top players on chess.com by rating.",
-    {},
+    {
+      title: "Get leaderboards",
+      description: "Top players on chess.com by rating.",
+      inputSchema: z.object({}),
+      annotations: READ_ONLY,
+    },
     async () => {
       try {
         const boards = await getLeaderboards()
@@ -85,21 +106,26 @@ export function createServer(): McpServer {
         }
         return text(parts.join("\n\n") || "No leaderboard data.")
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )
 
-  server.tool(
+  server.registerTool(
     "get_titled_players",
-    "List players with a title like GM or IM.",
-    { title: z.enum(["GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM"]).describe("Title abbreviation") },
+    {
+      title: "Get titled players",
+      description: "List players with a title like GM or IM.",
+      inputSchema: z.object(
+    { title: z.enum(["GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM"]).describe("Title abbreviation") }),
+      annotations: READ_ONLY,
+    },
     async ({ title }) => {
       try {
         const users = await getTitledPlayers(title)
         return text(`${title} players on chess.com (${users.length} total):\n${users.slice(0, 40).join(", ")}`)
       } catch (e) {
-        return text(errorMessage(e))
+        return textError(errorMessage(e))
       }
     }
   )

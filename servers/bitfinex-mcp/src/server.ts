@@ -4,15 +4,35 @@ import { price } from "./api.js"
 import { ticker } from "./api.js"
 
 const text = (value: string) => ({ content: [{ type: "text" as const, text: value }] })
+const textError = (t: string) => ({ content: [{ type: "text" as const, text: t }], isError: true as const })
+const READ_ONLY = { readOnlyHint: true, openWorldHint: true } as const
 const error = (e: unknown) => `Error: ${e instanceof Error ? e.message : String(e)}`
 
 export function createServer(): McpServer {
   const server = new McpServer({ name: "bitfinex-mcp", version: "1.0.0" })
-  server.tool("ticker", "Ticker for a symbol.", { symbol: z.string().describe("Symbol like tBTCUSD.") }, async (args) => {
-    try { return text(await ticker(args)) } catch (e) { return text(error(e)) }
-  })
-  server.tool("price", "Current price for a symbol.", { symbol: z.string().describe("Symbol like tBTCUSD.") }, async (args) => {
-    try { return text(await price(args)) } catch (e) { return text(error(e)) }
-  })
+  server.registerTool(
+    "ticker",
+    {
+      title: "Ticker",
+      description: "Ticker for a symbol.",
+      inputSchema: z.object( { symbol: z.string().describe("Symbol like tBTCUSD.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await ticker(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
+  server.registerTool(
+    "price",
+    {
+      title: "Price",
+      description: "Current price for a symbol.",
+      inputSchema: z.object( { symbol: z.string().describe("Symbol like tBTCUSD.") }),
+      annotations: READ_ONLY,
+    },
+    async (args) => {
+    try { return text(await price(args)) } catch (e) { return textError(error(e)) }
+  }
+  )
   return server
 }

@@ -36,5 +36,8 @@
     "variant",
     "genomics",
     "snps"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

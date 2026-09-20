@@ -37,5 +37,8 @@
     "mojang",
     "players",
     "servers"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }
