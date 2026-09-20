@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **585 MCP servers** in [`servers/`](./servers)
+- **590 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -35,6 +35,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`avatar-mcp`](./servers/avatar-mcp)
 - [`aviation-weather-mcp`](./servers/aviation-weather-mcp)
 - [`baconipsum-mcp`](./servers/baconipsum-mcp)
+- [`bandcamp-mcp`](./servers/bandcamp-mcp)
 - [`bankofcanada-mcp`](./servers/bankofcanada-mcp)
 - [`barcode-mcp`](./servers/barcode-mcp)
 - [`bart-mcp`](./servers/bart-mcp)
@@ -86,6 +87,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`checksum-mcp`](./servers/checksum-mcp)
 - [`chembl-mcp`](./servers/chembl-mcp)
 - [`chess-mcp`](./servers/chess-mcp)
+- [`chesscom-mcp`](./servers/chesscom-mcp)
 - [`chocolatey-mcp`](./servers/chocolatey-mcp)
 - [`chord-mcp`](./servers/chord-mcp)
 - [`chuck-norris-mcp`](./servers/chuck-norris-mcp)
@@ -115,6 +117,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`countriesnow-mcp`](./servers/countriesnow-mcp)
 - [`countryflags-mcp`](./servers/countryflags-mcp)
 - [`court-records-mcp`](./servers/court-records-mcp)
+- [`courtlistener-mcp`](./servers/courtlistener-mcp)
 - [`coverartarchive-mcp`](./servers/coverartarchive-mcp)
 - [`covid-data-mcp`](./servers/covid-data-mcp)
 - [`crates-io-mcp`](./servers/crates-io-mcp)
@@ -243,6 +246,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`gopher-mcp`](./servers/gopher-mcp)
 - [`got-mcp`](./servers/got-mcp)
 - [`govtrack-mcp`](./servers/govtrack-mcp)
+- [`gpodder-mcp`](./servers/gpodder-mcp)
 - [`greenhouse-mcp`](./servers/greenhouse-mcp)
 - [`guardian-mcp`](./servers/guardian-mcp)
 - [`gutendex-mcp`](./servers/gutendex-mcp)
@@ -374,6 +378,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`oecd-mcp`](./servers/oecd-mcp)
 - [`oeis-mcp`](./servers/oeis-mcp)
 - [`office-quotes-mcp`](./servers/office-quotes-mcp)
+- [`ogs-mcp`](./servers/ogs-mcp)
 - [`okx-mcp`](./servers/okx-mcp)
 - [`on-this-day-mcp`](./servers/on-this-day-mcp)
 - [`open-food-facts-mcp`](./servers/open-food-facts-mcp)
