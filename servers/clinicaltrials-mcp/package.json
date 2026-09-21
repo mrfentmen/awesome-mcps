@@ -1,5 +1,5 @@
 {
-  "name": "clinicaltrials-mcp",
+  "name": "@mrfentmen/clinicaltrials-mcp",
   "version": "1.0.0",
   "description": "ClinicalTrials.gov search and PubMed.",
   "type": "module",

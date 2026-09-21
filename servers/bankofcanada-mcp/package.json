@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "bankofcanada-mcp",
+  "name": "@mrfentmen/bankofcanada-mcp",
   "description": "Canadian exchange rates from Bank of Canada. No key required.",
   "mcpName": "io.github.mrfentmen/bankofcanada-mcp",
   "keywords": [

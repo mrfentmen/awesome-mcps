@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "core-mcp",
+  "name": "@mrfentmen/core-mcp",
   "description": "Academic search from CORE. No key required.",
   "mcpName": "io.github.mrfentmen/core-mcp",
   "keywords": [
