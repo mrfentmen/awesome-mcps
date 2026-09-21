@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/reactome-mcp",
-  "description": "Keyless MCP server for Reactome: search biological pathways, get pathway details, species, hierarchy.",
+  "description": "Keyless MCP server for Reactome: search biological pathways, get pathway details, species,...",
   "repository": {
     "url": "https://github.com/mrfentmen/awesome-mcps",
     "source": "github"

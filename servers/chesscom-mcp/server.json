@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/chesscom-mcp",
-  "description": "Keyless MCP server for Chess.com: player profiles, ratings by time control, daily puzzle, leaderboards, titled players.",
+  "description": "Keyless MCP server for Chess.com: player profiles, ratings by time control, daily puzzle,...",
   "repository": {
     "url": "https://github.com/mrfentmen/awesome-mcps",
     "source": "github"

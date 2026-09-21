@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/schema-compatibility-mcp",
-  "description": "Compare local JSON schema shape fingerprints without returning property names, values, paths, or schema text.",
+  "description": "Compare local JSON schema shape fingerprints without returning property names, values, paths, or...",
   "repository": {
     "url": "https://github.com/mrfentmen/schema-compatibility-mcp",
     "source": "github"

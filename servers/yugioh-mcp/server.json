@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/yugioh-mcp",
-  "description": "Use this MCP server to YGOPRODeck, Yu Gi Oh! cards, archetypes, and banlists. Tools include search cards, search by archetype, get card",
+  "description": "Use this MCP server to YGOPRODeck, Yu Gi Oh! cards, archetypes, and banlists. Tools include...",
   "repository": {
     "url": "https://github.com/mrfentmen/yugioh-mcp",
     "source": "github"

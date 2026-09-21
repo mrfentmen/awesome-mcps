@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/brainrot-mcp",
-  "description": "Use this MCP server to decodes internet slang, brainrot terms, and niche subculture vocabulary. Tools include decode term, search terms, decode text",
+  "description": "Use this MCP server to decodes internet slang, brainrot terms, and niche subculture vocabulary....",
   "repository": {
     "url": "https://github.com/mrfentmen/brainrot-mcp",
     "source": "github"

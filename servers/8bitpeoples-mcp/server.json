@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/8bitpeoples-mcp",
-  "description": "Use this MCP server to 8bitpeoples, the free chiptune record label, browse the full release catalog. Tools include list releases, get release",
+  "description": "Use this MCP server to 8bitpeoples, the free chiptune record label, browse the full release...",
   "repository": {
     "url": "https://github.com/mrfentmen/8bitpeoples-mcp",
     "source": "github"

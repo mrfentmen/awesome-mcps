@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/telnetbbs-mcp",
-  "description": "Use this MCP server to Telnet BBS Guide, the directory of live retro BBSes you can still dial into. Tools include list bbses, get bbs, random bbs",
+  "description": "Use this MCP server to Telnet BBS Guide, the directory of live retro BBSes you can still dial...",
   "repository": {
     "url": "https://github.com/mrfentmen/telnetbbs-mcp",
     "source": "github"

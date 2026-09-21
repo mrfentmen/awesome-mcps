@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/lostmedia-mcp",
-  "description": "Keyless MCP server for the Lost Media Wiki: search lost TV, film, music and games, track found / partially-found status.",
+  "description": "Keyless MCP server for the Lost Media Wiki: search lost TV, film, music and games, track found /...",
   "repository": {
     "url": "https://github.com/mrfentmen/awesome-mcps",
     "source": "github"

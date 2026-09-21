@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/schema-sieve-mcp",
-  "description": "Local JSON Schema structure inspection and privacy-safe fixture planning. Tools include inspect schema, plan fixture",
+  "description": "Local JSON Schema structure inspection and privacy-safe fixture planning. Tools include inspect...",
   "repository": {
     "url": "https://github.com/mrfentmen/schema-sieve-mcp",
     "source": "github"

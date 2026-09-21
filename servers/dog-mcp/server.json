@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfentmen/dog-mcp",
-  "description": "Dogs in one place: breed list, random photos by breed, breed image sets, facts, and random media. No key required.",
+  "description": "Dogs in one place: breed list, random photos by breed, breed image sets, facts, and random...",
   "repository": {
     "url": "https://github.com/mrfentmen/dog-mcp",
     "source": "github"
