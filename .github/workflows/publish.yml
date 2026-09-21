@@ -49,7 +49,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             if [ -n "${{ inputs.servers }}" ]; then
-              printf '%s\n' "${{ inputs.servers }}" > /tmp/todo.txt
+              printf '%s' "${{ inputs.servers }}" | tr -s '[:space:]' '\n' | grep . > /tmp/todo.txt
             else
               START="${{ inputs.start }}"
               END="${{ inputs.end }}"
