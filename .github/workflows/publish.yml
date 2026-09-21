@@ -44,7 +44,13 @@ jobs:
         id: list
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            ls -d servers/*/ | sed 's|servers/||;s|/||' | sort | sed -n "${{ inputs.start }},${{ inputs.end == '0' && '$' || inputs.end }}p" > /tmp/todo.txt
+            START="${{ inputs.start }}"
+            END="${{ inputs.end }}"
+            if [ "$END" = "0" ]; then
+              ls -d servers/*/ | sed 's|servers/||;s|/||' | sort | sed -n "${START},\$p" > /tmp/todo.txt
+            else
+              ls -d servers/*/ | sed 's|servers/||;s|/||' | sort | sed -n "${START},${END}p" > /tmp/todo.txt
+            fi
           else
             git diff --name-only HEAD~1 -- servers/ | cut -d/ -f2 | sort -u > /tmp/todo.txt
           fi
