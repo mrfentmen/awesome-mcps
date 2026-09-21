@@ -1,5 +1,5 @@
 {
-  "name": "metmuseum-mcp",
+  "name": "@mrfentmen/metmuseum-mcp",
   "version": "1.0.0",
   "description": "Metropolitan Museum collection search.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/metmuseum-mcp"
 }

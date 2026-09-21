@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "mitre-attack-mcp",
+  "name": "@mrfentmen/mitre-attack-mcp",
   "description": "Search the MITRE ATT&CK enterprise knowledge base for adversary techniques and tactics.",
   "mcpName": "io.github.mrfentmen/mitre-attack-mcp",
   "keywords": [

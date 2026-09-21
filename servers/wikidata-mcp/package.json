@@ -1,5 +1,5 @@
 {
-  "name": "wikidata-mcp",
+  "name": "@mrfentmen/wikidata-mcp",
   "version": "1.0.0",
   "description": "Wikidata entity search, lookup, and bounded SPARQL.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/wikidata-mcp"
 }

@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "greenhouse-mcp",
+      "identifier": "@mrfentmen/greenhouse-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

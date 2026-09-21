@@ -1,5 +1,5 @@
 {
-  "name": "meme-generator-mcp",
+  "name": "@mrfentmen/meme-generator-mcp",
   "version": "1.0.0",
   "description": "ImgFlip meme templates and captions.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/meme-generator-mcp"
 }

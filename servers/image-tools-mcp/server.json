@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "image-tools-mcp",
+      "identifier": "@mrfentmen/image-tools-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "guardian-mcp",
+  "name": "@mrfentmen/guardian-mcp",
   "description": "News and article search from The Guardian. No key required.",
   "mcpName": "io.github.mrfentmen/guardian-mcp",
   "keywords": [

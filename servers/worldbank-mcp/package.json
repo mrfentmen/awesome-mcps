@@ -1,5 +1,5 @@
 {
-  "name": "worldbank-mcp",
+  "name": "@mrfentmen/worldbank-mcp",
   "version": "1.0.0",
   "description": "World Bank indicators, countries, and EIA energy series.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/worldbank-mcp"
 }

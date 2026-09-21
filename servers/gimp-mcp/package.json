@@ -1,5 +1,5 @@
 {
-  "name": "gimp-mcp",
+  "name": "@mrfentmen/gimp-mcp",
   "version": "1.0.1",
   "description": "MCP server for GIMP image editing via Python-Fu scripting.",
   "type": "module",

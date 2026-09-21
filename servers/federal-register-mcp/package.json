@@ -1,5 +1,5 @@
 {
-  "name": "federal-register-mcp",
+  "name": "@mrfentmen/federal-register-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to Federal Register documents, rules, notices, and agencies. Tools include search documents, get document, list agencies",
   "type": "module",

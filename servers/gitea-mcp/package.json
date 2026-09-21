@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "gitea-mcp",
+  "name": "@mrfentmen/gitea-mcp",
   "description": "Gitea.com public API: search repos and users.",
   "keywords": [
     "mcp",
@@ -39,5 +39,6 @@
   ],
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/gitea-mcp"
 }

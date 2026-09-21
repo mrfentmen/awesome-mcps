@@ -34,7 +34,7 @@
     "@types/turndown": "^5.0.6",
     "typescript": "^5.6.0"
   },
-  "name": "html-to-markdown-mcp",
+  "name": "@mrfentmen/html-to-markdown-mcp",
   "description": "Convert HTML to clean markdown locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/html-to-markdown-mcp",
   "keywords": [

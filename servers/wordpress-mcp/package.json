@@ -1,5 +1,5 @@
 {
-  "name": "wordpress-mcp",
+  "name": "@mrfentmen/wordpress-mcp",
   "version": "1.0.0",
   "description": "WordPress plugin and theme search from wordpress.org.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/wordpress-mcp"
 }

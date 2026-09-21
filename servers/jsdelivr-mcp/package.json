@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "jsdelivr-mcp",
+  "name": "@mrfentmen/jsdelivr-mcp",
   "description": "Package versions and CDN statistics from jsDelivr. No key required.",
   "mcpName": "io.github.mrfentmen/jsdelivr-mcp",
   "keywords": [

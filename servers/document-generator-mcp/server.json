@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "document-generator-mcp",
+      "identifier": "@mrfentmen/document-generator-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

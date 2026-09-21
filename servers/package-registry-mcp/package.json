@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "package-registry-mcp",
+  "name": "@mrfentmen/package-registry-mcp",
   "description": "Look up npm and PyPI packages: versions, descriptions, and metadata. No key required.",
   "mcpName": "io.github.mrfentmen/package-registry-mcp",
   "keywords": [

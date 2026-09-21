@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "endoflife-mcp",
+  "name": "@mrfentmen/endoflife-mcp",
   "description": "Check software end of life dates from endoflife.date. No key required.",
   "mcpName": "io.github.mrfentmen/endoflife-mcp",
   "keywords": [

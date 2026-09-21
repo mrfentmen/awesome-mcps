@@ -30,7 +30,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "excel-mcp",
+  "name": "@mrfentmen/excel-mcp",
   "description": "Create and edit Excel workbooks locally with rows and sheets. No network and no key.",
   "mcpName": "io.github.mrfentmen/excel-mcp",
   "keywords": [

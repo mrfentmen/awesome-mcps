@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "algorand-mcp",
+      "identifier": "@mrfentmen/algorand-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

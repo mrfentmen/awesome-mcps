@@ -35,7 +35,7 @@
     "@types/turndown": "^5.0.6",
     "typescript": "^5.6.0"
   },
-  "name": "diff-mcp",
+  "name": "@mrfentmen/diff-mcp",
   "description": "Compare two texts or files and show line changes locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/diff-mcp",
   "keywords": [

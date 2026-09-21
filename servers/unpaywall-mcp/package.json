@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "unpaywall-mcp",
+  "name": "@mrfentmen/unpaywall-mcp",
   "description": "Open access links from Unpaywall. No key required.",
   "mcpName": "io.github.mrfentmen/unpaywall-mcp",
   "keywords": [

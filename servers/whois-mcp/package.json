@@ -1,5 +1,5 @@
 {
-  "name": "whois-mcp",
+  "name": "@mrfentmen/whois-mcp",
   "version": "1.0.0",
   "description": "RDAP whois records for domains and IPs.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/whois-mcp"
 }

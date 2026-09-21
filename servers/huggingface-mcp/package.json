@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "huggingface-mcp",
+  "name": "@mrfentmen/huggingface-mcp",
   "description": "Hugging Face models and datasets. No key required for public data.",
   "mcpName": "io.github.mrfentmen/huggingface-mcp",
   "keywords": [

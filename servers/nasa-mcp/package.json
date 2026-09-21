@@ -1,5 +1,5 @@
 {
-  "name": "nasa-mcp",
+  "name": "@mrfentmen/nasa-mcp",
   "version": "1.0.0",
   "description": "Unified NASA server: APOD, asteroids (NEO), Mars rover photos, InSight weather, and TechPort projects.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/nasa-mcp"
 }

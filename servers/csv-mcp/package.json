@@ -31,7 +31,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "csv-mcp",
+  "name": "@mrfentmen/csv-mcp",
   "description": "Parse, filter, and inspect CSV data locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/csv-mcp",
   "keywords": [

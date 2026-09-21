@@ -1,5 +1,5 @@
 {
-  "name": "gopher-mcp",
+  "name": "@mrfentmen/gopher-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to the Gopher protocol, browse gopherspace, the pre HTTP internet. Menus, text files, Veronica search",
   "type": "module",

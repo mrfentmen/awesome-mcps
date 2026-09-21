@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "markdown-mcp",
+      "identifier": "@mrfentmen/markdown-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

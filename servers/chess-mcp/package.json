@@ -1,5 +1,5 @@
 {
-  "name": "chess-mcp",
+  "name": "@mrfentmen/chess-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to chess.com. Player profiles, ratings, game archives, leaderboards, and titled players",
   "type": "module",

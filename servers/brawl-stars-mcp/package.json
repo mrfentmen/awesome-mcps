@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "brawl-stars-mcp",
+  "name": "@mrfentmen/brawl-stars-mcp",
   "description": "Brawl Stars brawler data from BrawlAPI. No key required.",
   "mcpName": "io.github.mrfentmen/brawl-stars-mcp",
   "keywords": [

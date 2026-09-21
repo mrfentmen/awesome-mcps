@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "tarot-mcp",
+  "name": "@mrfentmen/tarot-mcp",
   "description": "Draw tarot cards and read card meanings from the Tarot API. No key required.",
   "mcpName": "io.github.mrfentmen/tarot-mcp",
   "keywords": [

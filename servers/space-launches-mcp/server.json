@@ -1,11 +1,20 @@
 {
-  "name": "space-launches-mcp",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mrfentmen/space-launches-mcp",
   "description": "Spaceflight launches, next launch, and astronauts.",
-  "tools": [
-    "upcomingLaunches",
-    "nextLaunch",
-    "upcoming",
-    "previous",
-    "astronautList"
+  "repository": {
+    "url": "https://github.com/mrfentmen/awesome-mcps",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "space-launches-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
   ]
 }

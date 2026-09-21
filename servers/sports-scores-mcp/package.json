@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "sports-scores-mcp",
+  "name": "@mrfentmen/sports-scores-mcp",
   "description": "Live scores and game summaries for NBA, NFL, and MLB from ESPN public data. No key required.",
   "mcpName": "io.github.mrfentmen/sports-scores-mcp",
   "keywords": [

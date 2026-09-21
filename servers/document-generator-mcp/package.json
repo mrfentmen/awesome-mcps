@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "document-generator-mcp",
+  "name": "@mrfentmen/document-generator-mcp",
   "description": "Generate Word documents locally with headings, paragraphs, and tables. No network and no key.",
   "mcpName": "io.github.mrfentmen/document-generator-mcp",
   "keywords": [

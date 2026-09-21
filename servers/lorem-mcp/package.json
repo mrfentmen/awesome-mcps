@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "lorem-mcp",
+  "name": "@mrfentmen/lorem-mcp",
   "description": "Generate lorem ipsum and filler text locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/lorem-mcp",
   "keywords": [

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "discogs-mcp",
+  "name": "@mrfentmen/discogs-mcp",
   "description": "Music releases from Discogs. No key required.",
   "mcpName": "io.github.mrfentmen/discogs-mcp",
   "keywords": [

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "pubchem-mcp",
+  "name": "@mrfentmen/pubchem-mcp",
   "description": "Look up chemical compound properties and synonyms from PubChem. No key required.",
   "mcpName": "io.github.mrfentmen/pubchem-mcp",
   "keywords": [

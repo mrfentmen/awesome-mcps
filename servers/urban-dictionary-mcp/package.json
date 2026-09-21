@@ -1,5 +1,5 @@
 {
-  "name": "urban-dictionary-mcp",
+  "name": "@mrfentmen/urban-dictionary-mcp",
   "version": "1.0.0",
   "description": "Urban Dictionary definitions.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/urban-dictionary-mcp"
 }

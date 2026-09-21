@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "oecd-mcp",
+      "identifier": "@mrfentmen/oecd-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "coinbase-mcp",
+  "name": "@mrfentmen/coinbase-mcp",
   "description": "Crypto prices from Coinbase. No key required.",
   "mcpName": "io.github.mrfentmen/coinbase-mcp",
   "keywords": [

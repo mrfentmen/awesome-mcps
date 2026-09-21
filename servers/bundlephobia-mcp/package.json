@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "bundlephobia-mcp",
+  "name": "@mrfentmen/bundlephobia-mcp",
   "description": "npm bundle sizes from Bundlephobia. No key required.",
   "mcpName": "io.github.mrfentmen/bundlephobia-mcp",
   "keywords": [

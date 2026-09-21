@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "edgar-mcp",
+  "name": "@mrfentmen/edgar-mcp",
   "description": "SEC EDGAR company filings, XBRL facts, and full text search for public companies. No key required.",
   "mcpName": "io.github.mrfentmen/edgar-mcp",
   "keywords": [

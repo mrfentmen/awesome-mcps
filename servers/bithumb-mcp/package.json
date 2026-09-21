@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "bithumb-mcp",
+  "name": "@mrfentmen/bithumb-mcp",
   "description": "Korean crypto prices from Bithumb. No key required.",
   "keywords": [
     "mcp",
@@ -39,5 +39,6 @@
   ],
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/bithumb-mcp"
 }

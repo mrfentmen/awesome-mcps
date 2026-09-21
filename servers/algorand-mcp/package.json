@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "algorand-mcp",
+  "name": "@mrfentmen/algorand-mcp",
   "description": "Algorand chain status from the public indexer. No key required.",
   "mcpName": "io.github.mrfentmen/algorand-mcp",
   "keywords": [

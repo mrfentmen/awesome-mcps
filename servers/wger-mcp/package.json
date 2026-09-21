@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "wger-mcp",
+  "name": "@mrfentmen/wger-mcp",
   "description": "Exercises, muscles, and workout data from the open wger database. No key required.",
   "mcpName": "io.github.mrfentmen/wger-mcp",
   "keywords": [

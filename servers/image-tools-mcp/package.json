@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "image-tools-mcp",
+  "name": "@mrfentmen/image-tools-mcp",
   "description": "Resize, compress, and inspect local images. No network and no key.",
   "mcpName": "io.github.mrfentmen/image-tools-mcp",
   "keywords": [

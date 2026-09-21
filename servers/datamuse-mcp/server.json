@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "datamuse-mcp",
+      "identifier": "@mrfentmen/datamuse-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

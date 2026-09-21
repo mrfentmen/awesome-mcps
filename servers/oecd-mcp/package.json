@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "oecd-mcp",
+  "name": "@mrfentmen/oecd-mcp",
   "description": "OECD economic data via SDMX. No key required.",
   "mcpName": "io.github.mrfentmen/oecd-mcp",
   "keywords": [

@@ -32,7 +32,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "unit-converter-mcp",
+  "name": "@mrfentmen/unit-converter-mcp",
   "description": "Convert between units of length, weight, temperature, speed, and data size locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/unit-converter-mcp",
   "keywords": [

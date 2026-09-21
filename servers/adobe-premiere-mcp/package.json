@@ -1,5 +1,5 @@
 {
-  "name": "adobe-premiere-mcp",
+  "name": "@mrfentmen/adobe-premiere-mcp",
   "version": "1.0.1",
   "description": "MCP server for Adobe Premiere Pro video editing via ExtendScript.",
   "type": "module",

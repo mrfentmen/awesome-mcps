@@ -1,5 +1,5 @@
 {
-  "name": "musicbrainz-mcp",
+  "name": "@mrfentmen/musicbrainz-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to MusicBrainz artists, releases, recordings, and open music metadata. Tools include search artists, search releases, search recordings",
   "type": "module",

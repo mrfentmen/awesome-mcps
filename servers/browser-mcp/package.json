@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "browser-mcp",
+  "name": "@mrfentmen/browser-mcp",
   "description": "Control a local headless Chrome browser: open pages, read titles, and take screenshots.",
   "mcpName": "io.github.mrfentmen/browser-mcp",
   "keywords": [

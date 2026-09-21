@@ -1,5 +1,5 @@
 {
-  "name": "yfinance-mcp",
+  "name": "@mrfentmen/yfinance-mcp",
   "version": "1.0.0",
   "description": "Yahoo Finance quotes and symbol search.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/yfinance-mcp"
 }

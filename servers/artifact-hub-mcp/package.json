@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "artifact-hub-mcp",
+  "name": "@mrfentmen/artifact-hub-mcp",
   "description": "Helm charts and cloud native packages from Artifact Hub. No key required.",
   "mcpName": "io.github.mrfentmen/artifact-hub-mcp",
   "keywords": [

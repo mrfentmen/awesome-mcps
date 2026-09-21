@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "job-search-mcp",
+  "name": "@mrfentmen/job-search-mcp",
   "description": "Search remote job listings from the Remotive public feed. No key required.",
   "mcpName": "io.github.mrfentmen/job-search-mcp",
   "keywords": [

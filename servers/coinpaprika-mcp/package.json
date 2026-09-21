@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "coinpaprika-mcp",
+  "name": "@mrfentmen/coinpaprika-mcp",
   "description": "CoinPaprika coin data. No key required.",
   "mcpName": "io.github.mrfentmen/coinpaprika-mcp",
   "keywords": [

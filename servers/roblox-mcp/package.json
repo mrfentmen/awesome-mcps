@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "roblox-mcp",
+  "name": "@mrfentmen/roblox-mcp",
   "description": "Roblox user profiles from the public API. No key required.",
   "mcpName": "io.github.mrfentmen/roblox-mcp",
   "keywords": [

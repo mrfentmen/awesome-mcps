@@ -1,8 +1,20 @@
 {
-  "name": "yr-metno-mcp",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mrfentmen/yr-metno-mcp",
   "description": "Norwegian Meteorological Institute forecasts.",
-  "tools": [
-    "forecast",
-    "nowcast"
+  "repository": {
+    "url": "https://github.com/mrfentmen/awesome-mcps",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "yr-metno-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
   ]
 }

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "leetcode-mcp",
+  "name": "@mrfentmen/leetcode-mcp",
   "description": "LeetCode problem database: list problems by difficulty, search by title.",
   "keywords": [
     "mcp",
@@ -39,5 +39,6 @@
   ],
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/leetcode-mcp"
 }

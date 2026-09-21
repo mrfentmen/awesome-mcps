@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "kanye-mcp",
+  "name": "@mrfentmen/kanye-mcp",
   "description": "Kanye West quotes from the Kanye Rest API. No key required.",
   "mcpName": "io.github.mrfentmen/kanye-mcp",
   "keywords": [

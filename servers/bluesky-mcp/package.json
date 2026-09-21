@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "bluesky-mcp",
+  "name": "@mrfentmen/bluesky-mcp",
   "description": "Bluesky actor search from the public AT Protocol API. No key required.",
   "mcpName": "io.github.mrfentmen/bluesky-mcp",
   "keywords": [

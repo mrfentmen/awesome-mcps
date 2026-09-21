@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "wger-mcp",
+      "identifier": "@mrfentmen/wger-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

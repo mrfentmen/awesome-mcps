@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "wikipedia-mcp",
+  "name": "@mrfentmen/wikipedia-mcp",
   "description": "Search Wikipedia, fetch article summaries, and get random articles from the Wikimedia REST API. No key required.",
   "mcpName": "io.github.mrfentmen/wikipedia-mcp",
   "keywords": [

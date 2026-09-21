@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "inaturalist-mcp",
+      "identifier": "@mrfentmen/inaturalist-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

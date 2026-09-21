@@ -1,5 +1,5 @@
 {
-  "name": "meilisearch-mcp",
+  "name": "@mrfentmen/meilisearch-mcp",
   "version": "1.0.1",
   "description": "MCP server for MeiliSearch. Search indexes, manage documents, check health and stats.",
   "type": "module",

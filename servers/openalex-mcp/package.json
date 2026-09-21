@@ -1,5 +1,5 @@
 {
-  "name": "openalex-mcp",
+  "name": "@mrfentmen/openalex-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to OpenAlex scholarly works, authors, institutions, and citations. Tools include search works, get work, search authors",
   "type": "module",

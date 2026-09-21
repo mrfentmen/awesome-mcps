@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "dexscreener-mcp",
+      "identifier": "@mrfentmen/dexscreener-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

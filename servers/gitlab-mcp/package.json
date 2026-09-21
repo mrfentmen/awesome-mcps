@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "gitlab-mcp",
+  "name": "@mrfentmen/gitlab-mcp",
   "description": "Public GitLab projects and users. No key required.",
   "mcpName": "io.github.mrfentmen/gitlab-mcp",
   "keywords": [

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "chuck-norris-mcp",
+  "name": "@mrfentmen/chuck-norris-mcp",
   "description": "Chuck Norris jokes from the Chuck Norris API. No key required.",
   "mcpName": "io.github.mrfentmen/chuck-norris-mcp",
   "keywords": [

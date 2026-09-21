@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "devto-mcp",
+  "name": "@mrfentmen/devto-mcp",
   "description": "Read articles and posts from the dev.to community. No key required.",
   "mcpName": "io.github.mrfentmen/devto-mcp",
   "keywords": [

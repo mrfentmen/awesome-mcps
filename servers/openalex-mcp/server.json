@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "openalex-mcp",
+      "identifier": "@mrfentmen/openalex-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

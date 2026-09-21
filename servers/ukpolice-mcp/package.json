@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "ukpolice-mcp",
+  "name": "@mrfentmen/ukpolice-mcp",
   "description": "UK crime data from data.police.uk. No key required.",
   "mcpName": "io.github.mrfentmen/ukpolice-mcp",
   "keywords": [

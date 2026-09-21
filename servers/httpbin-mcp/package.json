@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "httpbin-mcp",
+  "name": "@mrfentmen/httpbin-mcp",
   "description": "HTTP request testing from HTTPBin. No key required.",
   "mcpName": "io.github.mrfentmen/httpbin-mcp",
   "keywords": [

@@ -1,5 +1,5 @@
 {
-  "name": "screenplaywriter-mcp",
+  "name": "@mrfentmen/screenplaywriter-mcp",
   "version": "1.0.2",
   "description": "MCP server for reading, writing, and analyzing screenplays in Fountain format",
   "type": "module",

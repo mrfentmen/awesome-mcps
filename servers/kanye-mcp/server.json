@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "kanye-mcp",
+      "identifier": "@mrfentmen/kanye-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

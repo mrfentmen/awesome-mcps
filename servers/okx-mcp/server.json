@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "okx-mcp",
+      "identifier": "@mrfentmen/okx-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "court-records-mcp",
+  "name": "@mrfentmen/court-records-mcp",
   "description": "Search published US court opinions from the Caselaw Access Project. No key required.",
   "mcpName": "io.github.mrfentmen/court-records-mcp",
   "keywords": [

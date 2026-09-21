@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "solana-mcp",
+  "name": "@mrfentmen/solana-mcp",
   "description": "Solana chain status from the public RPC. No key required.",
   "mcpName": "io.github.mrfentmen/solana-mcp",
   "keywords": [

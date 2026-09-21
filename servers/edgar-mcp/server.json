@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "edgar-mcp",
+      "identifier": "@mrfentmen/edgar-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

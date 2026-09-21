@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "aviation-weather-mcp",
+  "name": "@mrfentmen/aviation-weather-mcp",
   "description": "METAR and TAF aviation weather reports from the FAA and NWS. No key required.",
   "mcpName": "io.github.mrfentmen/aviation-weather-mcp",
   "keywords": [

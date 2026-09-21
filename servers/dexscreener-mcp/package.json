@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "dexscreener-mcp",
+  "name": "@mrfentmen/dexscreener-mcp",
   "description": "DEX pair data from DexScreener. No key required.",
   "mcpName": "io.github.mrfentmen/dexscreener-mcp",
   "keywords": [

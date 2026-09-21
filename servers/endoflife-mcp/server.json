@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "endoflife-mcp",
+      "identifier": "@mrfentmen/endoflife-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

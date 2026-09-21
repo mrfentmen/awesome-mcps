@@ -29,7 +29,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "pdf-generator-mcp",
+  "name": "@mrfentmen/pdf-generator-mcp",
   "description": "Generate PDF documents locally with text, headings, and pages. No network and no key.",
   "mcpName": "io.github.mrfentmen/pdf-generator-mcp",
   "keywords": [

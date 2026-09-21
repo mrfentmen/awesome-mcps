@@ -1,5 +1,5 @@
 {
-  "name": "usaspending-mcp",
+  "name": "@mrfentmen/usaspending-mcp",
   "version": "1.0.0",
   "description": "USAspending federal agencies and awards, plus nonprofit filings.",
   "type": "module",
@@ -19,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=20"
-  }
+  },
+  "mcpName": "io.github.mrfentmen/usaspending-mcp"
 }

@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "tmdb-mcp",
+  "name": "@mrfentmen/tmdb-mcp",
   "description": "Search movies, TV shows, and trending titles from The Movie Database. Free TMDB key required.",
   "mcpName": "io.github.mrfentmen/tmdb-mcp",
   "keywords": [

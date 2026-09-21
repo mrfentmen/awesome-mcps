@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "aviation-weather-mcp",
+      "identifier": "@mrfentmen/aviation-weather-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

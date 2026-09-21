@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "unit-converter-mcp",
+      "identifier": "@mrfentmen/unit-converter-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

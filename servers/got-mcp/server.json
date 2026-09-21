@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "got-mcp",
+      "identifier": "@mrfentmen/got-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

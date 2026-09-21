@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "duckduckgo-mcp",
+  "name": "@mrfentmen/duckduckgo-mcp",
   "description": "Instant answers, definitions, and topic summaries from DuckDuckGo. No key required.",
   "mcpName": "io.github.mrfentmen/duckduckgo-mcp",
   "keywords": [

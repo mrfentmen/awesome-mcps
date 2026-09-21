@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "regex-mcp",
+  "name": "@mrfentmen/regex-mcp",
   "description": "Test, describe, and validate regular expressions locally. No network and no key.",
   "mcpName": "io.github.mrfentmen/regex-mcp",
   "keywords": [

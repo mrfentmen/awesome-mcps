@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "federal-register-mcp",
+      "identifier": "@mrfentmen/federal-register-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

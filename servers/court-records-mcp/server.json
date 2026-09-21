@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "court-records-mcp",
+      "identifier": "@mrfentmen/court-records-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

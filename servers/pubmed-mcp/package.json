@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "pubmed-mcp",
+  "name": "@mrfentmen/pubmed-mcp",
   "description": "Search PubMed biomedical literature and fetch article summaries. No key required.",
   "mcpName": "io.github.mrfentmen/pubmed-mcp",
   "keywords": [

@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "bluesky-mcp",
+      "identifier": "@mrfentmen/bluesky-mcp",
       "version": "1.0.0",
       "transport": {
         "type": "stdio"

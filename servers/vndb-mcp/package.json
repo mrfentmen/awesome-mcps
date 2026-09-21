@@ -1,5 +1,5 @@
 {
-  "name": "vndb-mcp",
+  "name": "@mrfentmen/vndb-mcp",
   "version": "1.0.0",
   "description": "Use this MCP server to VNDB, the Visual Novel Database. Search VNs, characters, releases, tags, ratings. Tools include search vns, get vn, search characters",
   "type": "module",

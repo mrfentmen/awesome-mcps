@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "stellar-mcp",
+  "name": "@mrfentmen/stellar-mcp",
   "description": "Stellar ledger and account data from Horizon. No key required.",
   "mcpName": "io.github.mrfentmen/stellar-mcp",
   "keywords": [
