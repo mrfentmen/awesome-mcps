@@ -1,5 +1,5 @@
 {
-  "name": "iss-mcp",
+  "name": "@mrfentmen/iss-mcp",
   "version": "1.0.0",
   "description": "ISS live position and passes.",
   "type": "module",

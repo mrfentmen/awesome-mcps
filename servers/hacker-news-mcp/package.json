@@ -28,7 +28,7 @@
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
-  "name": "hacker-news-mcp",
+  "name": "@mrfentmen/hacker-news-mcp",
   "description": "Hacker News in one place: top, jobs, ask, item lookup, and Algolia search. No key required.",
   "mcpName": "io.github.mrfentmen/hacker-news-mcp",
   "keywords": [
