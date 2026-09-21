@@ -25,6 +25,17 @@ echo "$ALL" | sed -n "${START},${END}p" | while read -r s; do
   d="servers/$s"
   NAME=$(python3 -c "import json; print(json.load(open('$d/package.json'))['name'])")
   VER=$(python3 -c "import json; print(json.load(open('$d/package.json'))['version'])")
+  REGNAME="io.github.mrfentmen/$s"
+  REGVER=$(curl -s -m 15 "https://registry.modelcontextprotocol.io/v0/servers?search=$s" | python3 -c "
+import json,sys
+try:
+    d = json.load(sys.stdin)
+    vs = [x['server']['version'] for x in d.get('servers',[]) if x['server']['name'] == '$REGNAME']
+    print(max(vs) if vs else '')
+except Exception:
+    print('')
+" 2>/dev/null)
+  if [ -n "$REGVER" ] && [ "$(printf '%s\n%s' "$REGVER" "$VER" | sort -V | tail -1)" = "$REGVER" ]; then echo "OK:$s:already-live"; continue; fi
   ENC=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$NAME")
   HAVE=$(curl -s -m 15 "https://registry.npmjs.org/$ENC" | python3 -c "import json,sys; print(' '.join(json.load(sys.stdin).get('versions',{}).keys()))" 2>/dev/null)
   if ! echo " $HAVE " | grep -q " $VER "; then
