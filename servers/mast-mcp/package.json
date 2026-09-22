@@ -1,5 +1,5 @@
 {
-  "name": "mast-mcp",
+  "name": "@mrfentmen/mast-mcp",
   "version": "1.0.0",
   "description": "Keyless MCP server for MAST: Hubble, Webb, TESS observations by sky position.",
   "type": "module",
