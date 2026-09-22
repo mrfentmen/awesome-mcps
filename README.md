@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **705 MCP servers** in [`servers/`](./servers)
+- **706 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -626,6 +626,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`timeapi-mcp`](./servers/timeapi-mcp)
 - [`tmdb-mcp`](./servers/tmdb-mcp)
 - [`toolchain-lens-mcp`](./servers/toolchain-lens-mcp)
+- [`torah-mcp`](./servers/torah-mcp)
 - [`trakt-mcp`](./servers/trakt-mcp)
 - [`translation-mcp`](./servers/translation-mcp)
 - [`treasury-rates-mcp`](./servers/treasury-rates-mcp)
