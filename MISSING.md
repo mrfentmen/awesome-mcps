@@ -7,18 +7,10 @@ Updated: 2026-09-22. Repo count at time of writing: 706.
 
 ## Verified missing — build next
 
-| Server | API | Auth | Evidence |
-|---|---|---|---|
-| `weatherbit-mcp` | api.weatherbit.io/v2.0 (current, forecast, alerts, air quality) | free-tier key, 403 live | registry 0 hits, npm FREE |
-| `marketstack-mcp` | api.marketstack.com/v1 (EOD prices, tickers, exchanges) | free-tier key, 401 live | registry 0 hits, npm FREE |
-| `kucoin-mcp` | api.kucoin.com (orderbook, prices, symbols, stats, klines) | keyless public market data | registry 0 hits; sibling exchanges all covered locally |
-| `bitwarden-mcp` | Bitwarden public REST API / CLI (vault, ciphers, folders) | self-hosted or cloud API key | registry 0 hits |
-| `suunto-mcp` | Suunto partner API (workouts, activity) | free dev app | registry 0 hits |
-| `netatmo-mcp` | Netatmo/LeGrand API (weather stations, thermostat, cameras) | free dev app | registry 0 hits |
-| `switchbot-mcp` | SwitchBot API v1.1 (devices, status, control) | free token | registry 0 hits |
-| `doppler-mcp` | Doppler secrets API (configs, secrets, activity) | free key | registry 0 hits |
-| `infisical-mcp` | Infisical API (secrets, folders, machine identities) | free cloud / self-host | registry 0 hits |
-| `youtrack-mcp` | YouTrack REST API (issues, projects, agile boards) | instance token | registry 0 hits |
+(none pending — all 10 below built 2026-09-22: `weatherbit-mcp`, `marketstack-mcp`,
+`kucoin-mcp`, `bitwarden-mcp`, `suunto-mcp`, `netatmo-mcp`, `switchbot-mcp`,
+`doppler-mcp`, `infisical-mcp`, `youtrack-mcp`. Scoped on npm: bitwarden, suunto,
+youtrack — plain names were taken.)
 
 ## Skipped — already a thing
 
