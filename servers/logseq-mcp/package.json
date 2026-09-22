@@ -1,5 +1,5 @@
 {
-  "name": "logseq-mcp",
+  "name": "@mrfentmen/logseq-mcp",
   "version": "1.0.0",
   "description": "MCP server for Logseq: graphs, pages, blocks via the local HTTP API plugin.",
   "type": "module",
