@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **606 MCP servers** in [`servers/`](./servers)
+- **611 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -155,6 +155,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`digimon-mcp`](./servers/digimon-mcp)
 - [`digitalnz-mcp`](./servers/digitalnz-mcp)
 - [`discogs-mcp`](./servers/discogs-mcp)
+- [`discord-mcp`](./servers/discord-mcp)
 - [`disify-mcp`](./servers/disify-mcp)
 - [`disney-mcp`](./servers/disney-mcp)
 - [`dnd5e-mcp`](./servers/dnd5e-mcp)
@@ -189,6 +190,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`esm-mcp`](./servers/esm-mcp)
 - [`espn-core-mcp`](./servers/espn-core-mcp)
 - [`ethplorer-mcp`](./servers/ethplorer-mcp)
+- [`etsy-mcp`](./servers/etsy-mcp)
 - [`europepmc-mcp`](./servers/europepmc-mcp)
 - [`eurostat-mcp`](./servers/eurostat-mcp)
 - [`evidence-diff-mcp`](./servers/evidence-diff-mcp)
@@ -428,6 +430,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`phone-validator-mcp`](./servers/phone-validator-mcp)
 - [`photon-mcp`](./servers/photon-mcp)
 - [`picsum-mcp`](./servers/picsum-mcp)
+- [`pinterest-mcp`](./servers/pinterest-mcp)
 - [`pixelfed-mcp`](./servers/pixelfed-mcp)
 - [`placehold-mcp`](./servers/placehold-mcp)
 - [`placeholder-images-mcp`](./servers/placeholder-images-mcp)
@@ -457,6 +460,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`randomuser-mcp`](./servers/randomuser-mcp)
 - [`rcsb-pdb-mcp`](./servers/rcsb-pdb-mcp)
 - [`reactome-mcp`](./servers/reactome-mcp)
+- [`reddit-mcp`](./servers/reddit-mcp)
 - [`regex-mcp`](./servers/regex-mcp)
 - [`release-notes-forge-mcp`](./servers/release-notes-forge-mcp)
 - [`remoteok-mcp`](./servers/remoteok-mcp)
@@ -599,6 +603,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`wikitrending-mcp`](./servers/wikitrending-mcp)
 - [`wikivoyage-mcp`](./servers/wikivoyage-mcp)
 - [`wiktionary-mcp`](./servers/wiktionary-mcp)
+- [`wise-mcp`](./servers/wise-mcp)
 - [`wordle-helper-mcp`](./servers/wordle-helper-mcp)
 - [`wordpress-mcp`](./servers/wordpress-mcp)
 - [`workable-mcp`](./servers/workable-mcp)
