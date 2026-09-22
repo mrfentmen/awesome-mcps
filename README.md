@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **716 MCP servers** in [`servers/`](./servers)
+- **718 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -355,6 +355,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`kanye-mcp`](./servers/kanye-mcp)
 - [`kitsu-mcp`](./servers/kitsu-mcp)
 - [`kiwi-mcp`](./servers/kiwi-mcp)
+- [`knmi-mcp`](./servers/knmi-mcp)
 - [`kraken-mcp`](./servers/kraken-mcp)
 - [`kucoin-mcp`](./servers/kucoin-mcp)
 - [`languagetool-mcp`](./servers/languagetool-mcp)
@@ -445,6 +446,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`npm-search-mcp`](./servers/npm-search-mcp)
 - [`npms-mcp`](./servers/npms-mcp)
 - [`nps-mcp`](./servers/nps-mcp)
+- [`ns-mcp`](./servers/ns-mcp)
 - [`nuget-mcp`](./servers/nuget-mcp)
 - [`number-tools-mcp`](./servers/number-tools-mcp)
 - [`nutritionix-mcp`](./servers/nutritionix-mcp)
