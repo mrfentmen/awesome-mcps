@@ -38,8 +38,12 @@ Do not build; covered by others or by this repo.
 - Uptime: UptimeRobot (official), Better Stack
 - Incidents: PagerDuty (official), incident.io (official remote MCP), FireHydrant (official), Squadcast, Rootly
 - Secrets: 1Password, Vault (official)
-- Rail/transit: Deutsche Bahn (3x community), ÖBB, Amtrak (pipeworx), TfNSW (3x), HSL (devusvulgaris), PTV (malamutemayhem), NS (this repo)
+- Rail/transit: Deutsche Bahn (3x community), ÖBB, Amtrak (pipeworx), TfNSW (3x), HSL (devusvulgaris), PTV (malamutemayhem), NS (this repo), SBB, GBFS (Gnist hosted)
 - Weather: FMI (pipeworx), AEMET, Met Office (this repo)
+- Games/anime/comics: RAWG (pipeworx/Pipedream), IGDB (official + bielacki), GiantBomb (pipeworx), AniList (smithery), ComicVine (pipeworx), Jikan + MangaDex + OpenBrewery (this repo), Kitsu (official docs MCP + pipeworx)
+- Books/music/podcasts: Google Books (pipeworx/Vinkius), Hardcover (3x), Listen Notes (pipeworx/Pipedream/Composio), AcoustID (Vinkius/cynosure), setlist.fm (chrischall/pipeworx), Bandsintown (pipeworx), TVMaze (cyanheads), CocktailDB (pipeworx)
+- Energy: EIA (cyanheads + GSA-TTS + missionsquad)
+- Space: Launch Library (official + pipeworx)
 
 ## Dropped — no usable public API or dead endpoints
 
@@ -53,6 +57,10 @@ Do not build; covered by others or by this repo.
 - DMI Denmark — dmigw.govcloud.dk + api.dmi.dk unreachable from here
 - Météo-France — public API base unverified (404)
 - Tado / Hue / VIA Rail / Indian Railways / DSB — unofficial, pairing-gated, or no public API
+- Marvel API — RETIRED by Marvel, unusable
+- JPL Horizons — ssd.jpl.nasa.gov unreachable from here (5 attempts; other .gov works, so likely bot-filtering)
+- Copernicus (marine/climate) — guessed paths 404, needs account + docs
+- Auckland Transport — api.at.govt.nz routes unverifiable from here (portal docs are JS-driven, no swagger found)
 
 ## To research (untouched territory)
 
