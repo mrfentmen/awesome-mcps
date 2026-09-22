@@ -1,7 +1,7 @@
 {
   "name": "@mrfentmen/discord-mcp",
   "version": "1.0.0",
-  "description": "Keyless MCP server for Discord: invite lookup with guild info and member counts, server widget status.",
+  "description": "Keyless MCP server for Discord invites and server widgets. No bot token needed.",
   "type": "module",
   "mcpName": "io.github.mrfentmen/discord-mcp",
   "repository": {
