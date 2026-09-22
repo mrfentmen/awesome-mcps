@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **718 MCP servers** in [`servers/`](./servers)
+- **722 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -74,6 +74,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`bls-mcp`](./servers/bls-mcp)
 - [`bluesky-mcp`](./servers/bluesky-mcp)
 - [`boardgamegeek-mcp`](./servers/boardgamegeek-mcp)
+- [`bom-mcp`](./servers/bom-mcp)
 - [`books-mcp`](./servers/books-mcp)
 - [`bored-mcp`](./servers/bored-mcp)
 - [`brainrot-mcp`](./servers/brainrot-mcp)
@@ -193,6 +194,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`duolingo-mcp`](./servers/duolingo-mcp)
 - [`dwarffortress-mcp`](./servers/dwarffortress-mcp)
 - [`ebi-search-mcp`](./servers/ebi-search-mcp)
+- [`eccc-mcp`](./servers/eccc-mcp)
 - [`ecobee-mcp`](./servers/ecobee-mcp)
 - [`edgar-mcp`](./servers/edgar-mcp)
 - [`electricitymap-mcp`](./servers/electricitymap-mcp)
@@ -569,6 +571,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`seismicportal-mcp`](./servers/seismicportal-mcp)
 - [`semantic-scholar-mcp`](./servers/semantic-scholar-mcp)
 - [`semver-mcp`](./servers/semver-mcp)
+- [`seoul-mcp`](./servers/seoul-mcp)
 - [`septa-mcp`](./servers/septa-mcp)
 - [`setlist-mcp`](./servers/setlist-mcp)
 - [`shebang-sherpa-mcp`](./servers/shebang-sherpa-mcp)
@@ -615,6 +618,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`switchbot-mcp`](./servers/switchbot-mcp)
 - [`tarot-mcp`](./servers/tarot-mcp)
 - [`tasmota-mcp`](./servers/tasmota-mcp)
+- [`tdx-mcp`](./servers/tdx-mcp)
 - [`techcrunch-mcp`](./servers/techcrunch-mcp)
 - [`telnetbbs-mcp`](./servers/telnetbbs-mcp)
 - [`terraform-registry-mcp`](./servers/terraform-registry-mcp)

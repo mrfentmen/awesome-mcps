@@ -11,7 +11,9 @@ Updated: 2026-09-22. Repo count at time of writing: 706.
 `kucoin-mcp`, `bitwarden-mcp`, `suunto-mcp`, `netatmo-mcp`, `switchbot-mcp`,
 `doppler-mcp`, `infisical-mcp`, `youtrack-mcp`. Scoped on npm: bitwarden, suunto,
 youtrack — plain names were taken. Plus built 2026-09-23: `ns-mcp` (NS Dutch
-Railways, Ocp-Apim key), `knmi-mcp` (KNMI open data, raw-key auth).)
+Railways, Ocp-Apim key), `knmi-mcp` (KNMI open data, raw-key auth), `eccc-mcp`
+(Canada GeoMet, keyless), `bom-mcp` (Australia BOM, keyless + geohash encoder),
+`seoul-mcp` (Seoul air quality), `tdx-mcp` (Taiwan transport, OAuth).)
 
 ## Skipped — already a thing
 
