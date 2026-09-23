@@ -19,7 +19,8 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `chmi-mcp` (Czech open-data browser, keyless). Plus built overnight: `statuscake-mcp`,
 `pingdom-mcp`, `ohdear-mcp`, `dpla-mcp`, `odysee-mcp` (Lighthouse), `delinea-mcp`,
 `cyberark-mcp`, `openpanel-mcp`, `swetrix-mcp`, `split-mcp`, `goatcounter-mcp`,
-`deviantart-mcp`, `nanoleaf-mcp`.)
+`deviantart-mcp`, `nanoleaf-mcp`.) Plus built overnight: `ackee-mcp`, `shynet-mcp`,
+`rybbit-mcp`.)
 
 ## Skipped — already a thing
 

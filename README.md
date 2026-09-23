@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **741 MCP servers** in [`servers/`](./servers)
+- **744 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -12,6 +12,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`7timer-mcp`](./servers/7timer-mcp)
 - [`8bitpeoples-mcp`](./servers/8bitpeoples-mcp)
 - [`abuseipdb-mcp`](./servers/abuseipdb-mcp)
+- [`ackee-mcp`](./servers/ackee-mcp)
 - [`adobe-premiere-mcp`](./servers/adobe-premiere-mcp)
 - [`advice-mcp`](./servers/advice-mcp)
 - [`affirmations-mcp`](./servers/affirmations-mcp)
@@ -573,6 +574,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`runescape-mcp`](./servers/runescape-mcp)
 - [`runtime-support-mcp`](./servers/runtime-support-mcp)
 - [`rxnav-mcp`](./servers/rxnav-mcp)
+- [`rybbit-mcp`](./servers/rybbit-mcp)
 - [`satnogs-mcp`](./servers/satnogs-mcp)
 - [`schema-compatibility-mcp`](./servers/schema-compatibility-mcp)
 - [`schema-sieve-mcp`](./servers/schema-sieve-mcp)
@@ -591,6 +593,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`setlist-mcp`](./servers/setlist-mcp)
 - [`shebang-sherpa-mcp`](./servers/shebang-sherpa-mcp)
 - [`shields-mcp`](./servers/shields-mcp)
+- [`shynet-mcp`](./servers/shynet-mcp)
 - [`simbad-mcp`](./servers/simbad-mcp)
 - [`smartrecruiters-mcp`](./servers/smartrecruiters-mcp)
 - [`smithsonian-mcp`](./servers/smithsonian-mcp)
