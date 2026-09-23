@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **722 MCP servers** in [`servers/`](./servers)
+- **723 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -593,6 +593,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`sports-scores-mcp`](./servers/sports-scores-mcp)
 - [`spotify-mcp`](./servers/spotify-mcp)
 - [`sql-formatter-mcp`](./servers/sql-formatter-mcp)
+- [`sqlite-mcp`](./servers/sqlite-mcp)
 - [`squarespace-mcp`](./servers/squarespace-mcp)
 - [`ssl-cert-mcp`](./servers/ssl-cert-mcp)
 - [`ssl-labs-mcp`](./servers/ssl-labs-mcp)
