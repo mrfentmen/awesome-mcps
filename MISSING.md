@@ -16,7 +16,10 @@ Railways, Ocp-Apim key), `knmi-mcp` (KNMI open data, raw-key auth), `eccc-mcp`
 `seoul-mcp` (Seoul air quality), `tdx-mcp` (Taiwan transport, OAuth). Plus built
 2026-09-23: `mgm-mcp` (Turkey keyless + Origin header), `bmkg-mcp` (Indonesia
 keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
-`chmi-mcp` (Czech open-data browser, keyless).)
+`chmi-mcp` (Czech open-data browser, keyless). Plus built overnight: `statuscake-mcp`,
+`pingdom-mcp`, `ohdear-mcp`, `dpla-mcp`, `odysee-mcp` (Lighthouse), `delinea-mcp`,
+`cyberark-mcp`, `openpanel-mcp`, `swetrix-mcp`, `split-mcp`, `goatcounter-mcp`,
+`deviantart-mcp`, `nanoleaf-mcp`.)
 
 ## Skipped — already a thing
 
@@ -49,6 +52,13 @@ Do not build; covered by others or by this repo.
 - Books/music/podcasts: Google Books (pipeworx/Vinkius), Hardcover (3x), Listen Notes (pipeworx/Pipedream/Composio), AcoustID (Vinkius/cynosure), setlist.fm (chrischall/pipeworx), Bandsintown (pipeworx), TVMaze (cyanheads), CocktailDB (pipeworx)
 - Energy: EIA (cyanheads + GSA-TTS + missionsquad)
 - Space: Launch Library (official + pipeworx)
+- Hosting: Vercel (official), Netlify (official), Render (official), Railway (official), Fly.io (official flyctl), Heroku, DigitalOcean, Hetzner, OVH, Scaleway, Linode (takashito), Vultr (rsp2k, 335 tools), Jenkins (kud 38 tools + official plugin), Drone CI (3x), TeamCity (Daghis), Bamboo (hmdmph), CircleCI (official), SonarQube (official), Bitrise (official), Azure DevOps
+- HR: HiBob (official), Deel (official), BambooHR, Personio (gyopiazza), Fathom (fathomdx), Linear (official), Notion, Jira, Confluence, Airtable (official), Asana, ClickUp, Monday (official), Smartsheet, Coda (official), Redmine, Shortcut, Bugzilla (kud), YouTrack (this repo)
+- Analytics: PostHog (official), Mixpanel (local), Amplitude (official), Matomo, GrowthBook (official), Plausible, Umami, Unleash (official), Flagsmith (official), LaunchDarkly, Statsig (official), Checkly, Honeybadger (official), StatusCake (this repo via Composio alt), Pingdom (this repo via Composio alt), Oh Dear (this repo)
+- Secrets: Vault (official), 1Password, Bitwarden (this repo), Doppler (this repo), Infisical (this repo), Akeyless (community RTA)
+- Video/social: Odysee (this repo; Apify/oanor alts), Tumblr (viaSocket/Zapier/Bright Data), Rumble (no API), Flickr (local), Vimeo (pipeworx), Twitch (local), YouTube (no verified local)
+- Patents: EPO (pipeworx/navisbio/JIBSN), USPTO (cyanheads+), WIPO (no public REST found)
+- Culture: Gallica (Galica-MCP), Coursera (3x), Papers Past (API uncertain)
 
 ## Dropped — no usable public API or dead endpoints
 
@@ -62,6 +72,11 @@ Do not build; covered by others or by this repo.
 - DMI Denmark — dmigw.govcloud.dk + api.dmi.dk unreachable from here
 - Météo-France — public API base unverified (404)
 - Tado / Hue / VIA Rail / Indian Railways / DSB — unofficial, pairing-gated, or no public API
+- Counter.dev, Bucket.co — API hosts dead
+- Maze.co, WIPO, Papers Past — API shapes unverifiable
+- Rumble, Contra, Zumper, Remote.com (ambiguous squat) — no usable API or unclear ownership
+- Shynet, Rybbit, Ackee — self-hosted API schemas need instance docs to verify
+- Daikin, Viessmann, NIBE — vendor hosts unreachable from here, retry later
 - Marvel API — RETIRED by Marvel, unusable
 - JPL Horizons — ssd.jpl.nasa.gov unreachable from here (5 attempts; other .gov works, so likely bot-filtering)
 - Copernicus (marine/climate) — guessed paths 404, needs account + docs
