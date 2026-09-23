@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **723 MCP servers** in [`servers/`](./servers)
+- **728 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -66,6 +66,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`bitso-mcp`](./servers/bitso-mcp)
 - [`bitstamp-mcp`](./servers/bitstamp-mcp)
 - [`bitwarden-mcp`](./servers/bitwarden-mcp)
+- [`bkk-mcp`](./servers/bkk-mcp)
 - [`blizzard-mcp`](./servers/blizzard-mcp)
 - [`blockchain-info-mcp`](./servers/blockchain-info-mcp)
 - [`blockchain-mcp`](./servers/blockchain-mcp)
@@ -73,6 +74,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`blockcypher-mcp`](./servers/blockcypher-mcp)
 - [`bls-mcp`](./servers/bls-mcp)
 - [`bluesky-mcp`](./servers/bluesky-mcp)
+- [`bmkg-mcp`](./servers/bmkg-mcp)
 - [`boardgamegeek-mcp`](./servers/boardgamegeek-mcp)
 - [`bom-mcp`](./servers/bom-mcp)
 - [`books-mcp`](./servers/books-mcp)
@@ -103,6 +105,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`chembl-mcp`](./servers/chembl-mcp)
 - [`chess-mcp`](./servers/chess-mcp)
 - [`chesscom-mcp`](./servers/chesscom-mcp)
+- [`chmi-mcp`](./servers/chmi-mcp)
 - [`chocolatey-mcp`](./servers/chocolatey-mcp)
 - [`chord-mcp`](./servers/chord-mcp)
 - [`chuck-norris-mcp`](./servers/chuck-norris-mcp)
@@ -357,6 +360,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`kanye-mcp`](./servers/kanye-mcp)
 - [`kitsu-mcp`](./servers/kitsu-mcp)
 - [`kiwi-mcp`](./servers/kiwi-mcp)
+- [`kma-mcp`](./servers/kma-mcp)
 - [`knmi-mcp`](./servers/knmi-mcp)
 - [`kraken-mcp`](./servers/kraken-mcp)
 - [`kucoin-mcp`](./servers/kucoin-mcp)
@@ -410,6 +414,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`metoffice-mcp`](./servers/metoffice-mcp)
 - [`metronome-mcp`](./servers/metronome-mcp)
 - [`mexc-mcp`](./servers/mexc-mcp)
+- [`mgm-mcp`](./servers/mgm-mcp)
 - [`microlink-mcp`](./servers/microlink-mcp)
 - [`midi-tools-mcp`](./servers/midi-tools-mcp)
 - [`migration-map-mcp`](./servers/migration-map-mcp)

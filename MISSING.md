@@ -13,7 +13,10 @@ Updated: 2026-09-22. Repo count at time of writing: 706.
 youtrack — plain names were taken. Plus built 2026-09-23: `ns-mcp` (NS Dutch
 Railways, Ocp-Apim key), `knmi-mcp` (KNMI open data, raw-key auth), `eccc-mcp`
 (Canada GeoMet, keyless), `bom-mcp` (Australia BOM, keyless + geohash encoder),
-`seoul-mcp` (Seoul air quality), `tdx-mcp` (Taiwan transport, OAuth).)
+`seoul-mcp` (Seoul air quality), `tdx-mcp` (Taiwan transport, OAuth). Plus built
+2026-09-23: `mgm-mcp` (Turkey keyless + Origin header), `bmkg-mcp` (Indonesia
+keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
+`chmi-mcp` (Czech open-data browser, keyless).)
 
 ## Skipped — already a thing
 
@@ -40,8 +43,8 @@ Do not build; covered by others or by this repo.
 - Uptime: UptimeRobot (official), Better Stack
 - Incidents: PagerDuty (official), incident.io (official remote MCP), FireHydrant (official), Squadcast, Rootly
 - Secrets: 1Password, Vault (official)
-- Rail/transit: Deutsche Bahn (3x community), ÖBB, Amtrak (pipeworx), TfNSW (3x), HSL (devusvulgaris), PTV (malamutemayhem), NS (this repo), SBB, GBFS (Gnist hosted)
-- Weather: FMI (pipeworx), AEMET, Met Office (this repo)
+- Rail/transit: Deutsche Bahn (3x community), ÖBB, Amtrak (pipeworx), TfNSW (3x), HSL (devusvulgaris), PTV (malamutemayhem), NS (this repo), SBB, GBFS (Gnist hosted), BKK (this repo)
+- Weather: FMI (pipeworx), AEMET, Met Office (this repo), HKO (imjac0b + pongiotdevelop), JMA (pipeworx + sasonoda), NEA Singapore (vdineshk), IMGW (bartosz-kuc), KNMI (this repo), MGM (this repo), BMKG (this repo), KMA (this repo), CHMI (this repo), ECCC (this repo), BOM (this repo)
 - Games/anime/comics: RAWG (pipeworx/Pipedream), IGDB (official + bielacki), GiantBomb (pipeworx), AniList (smithery), ComicVine (pipeworx), Jikan + MangaDex + OpenBrewery (this repo), Kitsu (official docs MCP + pipeworx)
 - Books/music/podcasts: Google Books (pipeworx/Vinkius), Hardcover (3x), Listen Notes (pipeworx/Pipedream/Composio), AcoustID (Vinkius/cynosure), setlist.fm (chrischall/pipeworx), Bandsintown (pipeworx), TVMaze (cyanheads), CocktailDB (pipeworx)
 - Energy: EIA (cyanheads + GSA-TTS + missionsquad)
