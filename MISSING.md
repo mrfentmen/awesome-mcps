@@ -74,3 +74,41 @@ Do not build; covered by others or by this repo.
 - **Transit leftovers**: VIA Rail, Indian Railways (no public API found yet — recheck)
 - **Weather leftovers**: (none — all covered or dropped)
 - **Dev extras**: (none — all covered)
+
+## Build backlog (fresh leads, free APIs known — verify then build)
+
+Auth = free key unless noted keyless. Verify registry+npm+web before building.
+
+- **Culture**: Europeana (free), DPLA (free), LoC loc.gov (keyless JSON), Internet Archive (keyless), Gallica BnF (?), DigitalNZ (?), Papers Past (?)
+- **Health**: RxNorm NIH (keyless), CDC WONDER (?), WHO (?)
+- **Education**: NCES (?), Coursera (?), edX (?), GreatSchools (?)
+- **Patents**: WIPO PATENTSCOPE (free), J-PlatPat (free), KIPRIS (?), IP Australia AusPat (?), CIPO (?), EUIPO (free), Lens (?)
+- **Standards**: IETF Datatracker (free), ETSI (?), W3C (keyless), OGC (?), FIDO (?), OpenID (?), HL7 FHIR test servers (keyless)
+- **Oceans/earth**: OBIS (free), PSMSL sea level (free), IOOS glider DAC (free), Argo/Argovis (free), GEBCO (download), EMODnet (free), EMSC (covered via INGV server), GFZ (?), GeoNet NZ (pipeworx), FIRMS (covered), EONET NASA (free key), FIRMS taken
+- **Biodiversity**: GBIF taken, iNaturalist taken, eBird taken — leftovers: Observation.org (?), Movebank (?), Motus (?)
+- **Air**: OpenAQ taken, WAQI (local), DEFRA (unreachable — retry), RIVM (unreachable — retry), EEA (?), UBA (?), PurpleAir/IQAir (keys)
+- **Outdoors**: Trailforks (free key), Hiking Project (free key), Outdooractive (free key), Komoot (OAuth — hard), AllTrails (no API)
+- **Fuel**: Tankerkoenig taken, prix-carburants (Apify only — local build still open!), FuelWatch taken, Spritpreis AT (?), Spain datos.gob.es (?)
+- **EV**: ABRP (has API), Tronity (?), evcc (?)
+- **Space**: Space-Track taken (3x), JPL Horizons (unreachable — retry), SatNOGS (ours), CelesTrak (ours), N2YO (pipeworx), Launch Library taken
+- **Registries**: Docker Hub (free public), RubyGems (free), Packagist (free), NuGet (free), Maven Central (free), Cargo (free), Hex (free), CRAN (?), MELPA (?), Chrome Web Store (?), Firefox Add-ons (?), Obsidian (?), Raycast (?)
+- **Social/video**: YouTube (key), TikTok (approval), Rumble (?), Odysee (?), PeerTube per-instance (keyless), Tumblr taken, Flickr (local), 500px (?), DeviantArt (?), ArtStation (?), Behance (?), Dribbble (?), BeReal (?), Nextdoor (?), Slack (key), Signal (no), WhatsApp (no), Viber (?), Line (?), Kakao (?)
+- **Music/audio**: Apple Music (key), Tidal (key), Qobuz (?), Napster (?), Pandora (?), SiriusXM (?), Libby (?), Hoopla (?), Kanopy (?), SomaFM (keyless), Radio Garden (no API), ISBNdb (free tier), Literal (free), Goodreads (dead)
+- **Jobs**: Workable (key), SmartRecruiters (key), BambooHR (key), Personio (key), HiBob (key), Deel (key), Remote (key), Oyster (key), Upwork GraphQL (key — moxlade is niche only), Contra (?), Toptal (no)
+- **Salaries**: Levels.fyi (no API), Glassdoor (partner), Payscale (no)
+- **Real estate**: Zoopla (member), Idealista (paid), Zumper (?), Apartments (?)
+- **Legal**: CaseLaw Access Project (free), Justia (?), Google Scholar (no API)
+- **Analytics**: Fathom (?), Counter (?), GoatCounter (free), Ackee (?), Shynet (?), Pirsch (?), Swetrix (free tier), OpenPanel (?), Rybbit (?)
+- **Uptime**: OhDear (key), StatusCake (key), Pingdom (key)
+- **Secrets**: Akeyless (?), Delinea (?), CyberArk (?), Keeper (paid)
+- **Flags**: ConfigCat (free tier), Split (?), Harness (?), Bucket (?)
+- **Bugs/observability**: Bugsnag (key), Rollbar (key), Airbrake (key), Raygun (key), LogRocket (?), Hotjar (?), Maze (?), Applause (?), Rainforest (?), Mabl (?), Ghost Inspector (?)
+- **CI/CD**: CircleCI (key), Jenkins (?), TeamCity (?), Bamboo (?), Azure DevOps (key), Bitbucket (key), Drone (?), Woodpecker (?), Buildkite (key), Semaphore (?), Bitrise (key), Codemagic (?), Codecov (?), Coveralls (?), SonarQube (?), DeepSource (?)
+- **Hosting**: Vercel (key), Netlify (key), Cloudflare (key), Render (key), Railway (key), Fly (key), Heroku (key), DigitalOcean (key), Hetzner (key), OVH (?), Scaleway (key), Vultr (key), Linode (key)
+- **Logistics**: Global Fishing Watch (free key), SeaRates (?), project44 (?), FourKites (?)
+- **Universities**: QS (?), THE (?), ARWU (?), Study.eu (?)
+- **Lotteries**: Powerball (?), Mega Millions (?), EuroMillions (?), UK Lotto (?)
+- **Space agencies data**: EONET (free key), Earthdata CMR (free), NSIDC (free), GHCN (free), MesoWest/Synoptic (free)
+- **Smart home**: Daikin Onecta (free account), Viessmann (free API), NIBE myUplink (free), Samsung SmartThings taken, Nanoleaf LAN (keyless), Tapo/Kasa/Wyze/Eufy/Ring (unofficial), Resideo Honeywell (free), LG ThinQ (unofficial), IKEA Dirigera (no API)
+- **Auto**: NHTSA (local), Carfax (no), Copart (member), IAAI (?), BringATrailer (no API), Classic.com (?)
+- **Classifieds**: Craigslist RSS (keyless), OLX (no), Mercari (no), Poshmark (no), Depop (no), Vinted (no), ThredUp (no), Reverb taken-ish
