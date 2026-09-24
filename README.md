@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **764 MCP servers** in [`servers/`](./servers)
+- **766 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -195,6 +195,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`doab-mcp`](./servers/doab-mcp)
 - [`doaj-mcp`](./servers/doaj-mcp)
 - [`docker-hub-mcp`](./servers/docker-hub-mcp)
+- [`docspell-mcp`](./servers/docspell-mcp)
 - [`documenso-mcp`](./servers/documenso-mcp)
 - [`document-generator-mcp`](./servers/document-generator-mcp)
 - [`dog-mcp`](./servers/dog-mcp)
@@ -594,6 +595,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`scrabble-mcp`](./servers/scrabble-mcp)
 - [`screenplaywriter-mcp`](./servers/screenplaywriter-mcp)
 - [`scryfall-mcp`](./servers/scryfall-mcp)
+- [`seafile-mcp`](./servers/seafile-mcp)
 - [`seatgeek-mcp`](./servers/seatgeek-mcp)
 - [`secret-hygiene-mcp`](./servers/secret-hygiene-mcp)
 - [`sefaria-mcp`](./servers/sefaria-mcp)
