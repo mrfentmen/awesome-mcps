@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **748 MCP servers** in [`servers/`](./servers)
+- **754 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -30,6 +30,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`apexlegends-mcp`](./servers/apexlegends-mcp)
 - [`api-deprecation-radar-mcp`](./servers/api-deprecation-radar-mcp)
 - [`apis-guru-mcp`](./servers/apis-guru-mcp)
+- [`appveyor-mcp`](./servers/appveyor-mcp)
 - [`arbeitnow-mcp`](./servers/arbeitnow-mcp)
 - [`archive-org-mcp`](./servers/archive-org-mcp)
 - [`archlinux-mcp`](./servers/archlinux-mcp)
@@ -189,6 +190,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`dnd5e-mcp`](./servers/dnd5e-mcp)
 - [`dns-lookup-mcp`](./servers/dns-lookup-mcp)
 - [`dnstwister-mcp`](./servers/dnstwister-mcp)
+- [`doab-mcp`](./servers/doab-mcp)
 - [`doaj-mcp`](./servers/doaj-mcp)
 - [`docker-hub-mcp`](./servers/docker-hub-mcp)
 - [`documenso-mcp`](./servers/documenso-mcp)
@@ -349,6 +351,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`ipma-mcp`](./servers/ipma-mcp)
 - [`ipwhois-mcp`](./servers/ipwhois-mcp)
 - [`irail-mcp`](./servers/irail-mcp)
+- [`isbndb-mcp`](./servers/isbndb-mcp)
 - [`iss-mcp`](./servers/iss-mcp)
 - [`itis-mcp`](./servers/itis-mcp)
 - [`itunes-mcp`](./servers/itunes-mcp)
@@ -386,6 +389,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`link-shortener-mcp`](./servers/link-shortener-mcp)
 - [`liquipedia-mcp`](./servers/liquipedia-mcp)
 - [`listenbrainz-mcp`](./servers/listenbrainz-mcp)
+- [`literal-mcp`](./servers/literal-mcp)
 - [`lobsters-mcp`](./servers/lobsters-mcp)
 - [`loc-mcp`](./servers/loc-mcp)
 - [`lockstep-mcp`](./servers/lockstep-mcp)
@@ -642,6 +646,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`swift-bic-mcp`](./servers/swift-bic-mcp)
 - [`swiss-sbb-mcp`](./servers/swiss-sbb-mcp)
 - [`switchbot-mcp`](./servers/switchbot-mcp)
+- [`synoptic-mcp`](./servers/synoptic-mcp)
 - [`tarot-mcp`](./servers/tarot-mcp)
 - [`tasmota-mcp`](./servers/tasmota-mcp)
 - [`tdx-mcp`](./servers/tdx-mcp)
@@ -744,6 +749,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`workable-mcp`](./servers/workable-mcp)
 - [`worktree-orbit-mcp`](./servers/worktree-orbit-mcp)
 - [`worldbank-mcp`](./servers/worldbank-mcp)
+- [`wpengine-mcp`](./servers/wpengine-mcp)
 - [`wttr-mcp`](./servers/wttr-mcp)
 - [`wynncraft-mcp`](./servers/wynncraft-mcp)
 - [`xkcd-mcp`](./servers/xkcd-mcp)
