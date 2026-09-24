@@ -159,3 +159,4 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - A2A: no central marketplace found (agent cards + awesome lists only) — sell via same direct channels.
 - ACP = two protocols: Zed Agent Client Protocol (registry via GitHub PR, free, curated, auth required) vs IBM BeeAI ACP (self-hosted /agents + BeeAI Platform). Confirm which before listing.
 - NEXT BUILDS (demand cats): jobs wave (Greenhouse/Lever/Ashby/SmartRecruiters public keyless ATS APIs), sports odds (The Odds API free NBA+MLB / BetStack free-forever), MoMA (gated, secondary), more Shopify streetwear (Supreme/Flight Club/Ben Baller unchecked).
+- Wave-2 money move (2026-09-24): 34 more to premium-mcps (crypto/data, dev SaaS, monitoring, analytics, validation, books, business SaaS, security, podcast hosting). Public 727 -> 693, premium 70 -> 104. All republished w/ premium repo URLs (34 OK 0 FAIL).
