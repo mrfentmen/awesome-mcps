@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **791 MCP servers** in [`servers/`](./servers)
+- **795 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -17,6 +17,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`advice-mcp`](./servers/advice-mcp)
 - [`affirmations-mcp`](./servers/affirmations-mcp)
 - [`agify-mcp`](./servers/agify-mcp)
+- [`aimeleondore-mcp`](./servers/aimeleondore-mcp)
 - [`air-quality-mcp`](./servers/air-quality-mcp)
 - [`albiononline-mcp`](./servers/albiononline-mcp)
 - [`algorand-mcp`](./servers/algorand-mcp)
@@ -306,6 +307,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`gitignore-mcp`](./servers/gitignore-mcp)
 - [`gitlab-mcp`](./servers/gitlab-mcp)
 - [`gleif-mcp`](./servers/gleif-mcp)
+- [`glossier-mcp`](./servers/glossier-mcp)
 - [`go-proxy-mcp`](./servers/go-proxy-mcp)
 - [`goatcounter-mcp`](./servers/goatcounter-mcp)
 - [`godot-mcp`](./servers/godot-mcp)
@@ -388,6 +390,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`jsonplaceholder-mcp`](./servers/jsonplaceholder-mcp)
 - [`jwt-tools-mcp`](./servers/jwt-tools-mcp)
 - [`kanye-mcp`](./servers/kanye-mcp)
+- [`kith-mcp`](./servers/kith-mcp)
 - [`kitsu-mcp`](./servers/kitsu-mcp)
 - [`kiwi-mcp`](./servers/kiwi-mcp)
 - [`kma-mcp`](./servers/kma-mcp)
@@ -657,6 +660,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`ssl-cert-mcp`](./servers/ssl-cert-mcp)
 - [`ssl-labs-mcp`](./servers/ssl-labs-mcp)
 - [`stackexchange-mcp`](./servers/stackexchange-mcp)
+- [`stadiumgoods-mcp`](./servers/stadiumgoods-mcp)
 - [`stapi-mcp`](./servers/stapi-mcp)
 - [`star-wars-mcp`](./servers/star-wars-mcp)
 - [`stardew-wiki-mcp`](./servers/stardew-wiki-mcp)
