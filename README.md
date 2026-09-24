@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **761 MCP servers** in [`servers/`](./servers)
+- **762 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -685,6 +685,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`trivia-mcp`](./servers/trivia-mcp)
 - [`trove-mcp`](./servers/trove-mcp)
 - [`tunein-mcp`](./servers/tunein-mcp)
+- [`turbosquid-mcp`](./servers/turbosquid-mcp)
 - [`tvdb-mcp`](./servers/tvdb-mcp)
 - [`tvmaze-mcp`](./servers/tvmaze-mcp)
 - [`twelvedata-mcp`](./servers/twelvedata-mcp)
