@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **762 MCP servers** in [`servers/`](./servers)
+- **764 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -104,6 +104,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`certspotter-mcp`](./servers/certspotter-mcp)
 - [`cex-mcp`](./servers/cex-mcp)
 - [`cfpb-mcp`](./servers/cfpb-mcp)
+- [`cgtrader-mcp`](./servers/cgtrader-mcp)
 - [`cheapshark-mcp`](./servers/cheapshark-mcp)
 - [`checksum-mcp`](./servers/checksum-mcp)
 - [`chembl-mcp`](./servers/chembl-mcp)
@@ -533,6 +534,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`pixelfed-mcp`](./servers/pixelfed-mcp)
 - [`placehold-mcp`](./servers/placehold-mcp)
 - [`placeholder-images-mcp`](./servers/placeholder-images-mcp)
+- [`playcanvas-mcp`](./servers/playcanvas-mcp)
 - [`plos-mcp`](./servers/plos-mcp)
 - [`pocketbase-mcp`](./servers/pocketbase-mcp)
 - [`poetry-mcp`](./servers/poetry-mcp)
