@@ -23,7 +23,16 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`, `supernotes-mcp`, `guru-mcp`, `godot-mcp`, `kopia-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`, `supernotes-mcp`, `guru-mcp`, `godot-mcp`, `kopia-mcp`, `hermes-mcp`, `chanel-mcp`,
+`louisvuitton-mcp`, `gucci-mcp`, `prada-mcp`, `rolex-mcp`, `cartier-mcp`,
+`dior-mcp`, `saintlaurent-mcp`, `balenciaga-mcp`, `fendi-mcp`,
+`bottegaveneta-mcp`.)
+
+**Luxury brand servers (built 2026-09-24, Fashionphile + Rebag public Shopify JSON):**
+hermes, chanel, louisvuitton, gucci, prada, rolex, cartier, dior,
+saintlaurent, balenciaga, fendi, bottegaveneta (all `-mcp`). Brand-owned
+sites excluded: edge bot-walls (LV Akamai 403, Hermès Cloudflare 403,
+Gucci fingerprint-drop), no public APIs.
 
 ## Skipped — already a thing
 
