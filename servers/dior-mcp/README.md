@@ -1,13 +1,16 @@
 # dior-mcp
 
-Dior resale listings aggregated from Fashionphile and Rebag public catalogs (prices in USD). No API key required. Not affiliated with or endorsed by Dior; prices are asking prices, not appraisals.
+Dior resale listings aggregated from Fashionphile and Rebag public catalogs (prices in USD). No API key required. Condition/color/material attributes are parsed from Rebag catalog data (Fashionphile does not publish them); condition filters apply to Rebag data only. Not affiliated with or endorsed by Dior; prices are asking prices, not appraisals.
 
 ## Tools
 
-- `search_listings` — Search resale listings by keyword across Fashionphile and Rebag.
-- `list_newest` — Newest catalog listings from both resale sources.
-- `get_listing` — Full listing details by handle.
-- `price_overview` — Ask-price distribution (min/p25/median/p75/max). Asks, not appraisals.
+- `search_listings` — Keyword search across Fashionphile and Rebag. Condition filter is Rebag-data only.
+- `list_newest` — Newest catalog listings, sorted by publish date.
+- `get_listing` — Full details: variants, images, parsed condition/color/material, description.
+- `price_overview` — Ask-price stats overall + by condition.
+- `compare_prices` — Group same-model listings across sources with min/max/spread.
+- `find_deals` — Available listings priced below the brand median.
+- `brand_overview` — Catalog sample counts by source, type and condition.
 
 ## Source
 

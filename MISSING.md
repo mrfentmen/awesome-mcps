@@ -28,7 +28,9 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `dior-mcp`, `saintlaurent-mcp`, `balenciaga-mcp`, `fendi-mcp`,
 `bottegaveneta-mcp`.)
 
-**Luxury brand servers (built 2026-09-24, Fashionphile + Rebag public Shopify JSON):**
+**Luxury brand servers (built 2026-09-24, Fashionphile + Rebag public Shopify JSON;
+upgraded to 7 tools: search/list/get/price-overview/compare/find-deals/overview,
+with condition/color/material parsing from Rebag data):**
 hermes, chanel, louisvuitton, gucci, prada, rolex, cartier, dior,
 saintlaurent, balenciaga, fendi, bottegaveneta (all `-mcp`). Brand-owned
 sites excluded: edge bot-walls (LV Akamai 403, Hermès Cloudflare 403,
