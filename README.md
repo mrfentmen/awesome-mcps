@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **768 MCP servers** in [`servers/`](./servers)
+- **770 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -514,6 +514,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`otp-mcp`](./servers/otp-mcp)
 - [`otx-mcp`](./servers/otx-mcp)
 - [`overpass-mcp`](./servers/overpass-mcp)
+- [`owncloud-mcp`](./servers/owncloud-mcp)
 - [`oyez-mcp`](./servers/oyez-mcp)
 - [`package-registry-mcp`](./servers/package-registry-mcp)
 - [`packagist-mcp`](./servers/packagist-mcp)
@@ -553,6 +554,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`pubchem-mcp`](./servers/pubchem-mcp)
 - [`pubg-mcp`](./servers/pubg-mcp)
 - [`pubmed-mcp`](./servers/pubmed-mcp)
+- [`pydio-mcp`](./servers/pydio-mcp)
 - [`pypi-mcp`](./servers/pypi-mcp)
 - [`qr-code-mcp`](./servers/qr-code-mcp)
 - [`quip-mcp`](./servers/quip-mcp)

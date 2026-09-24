@@ -23,7 +23,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`.)
 
 ## Skipped — already a thing
 
@@ -115,7 +115,7 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Photo: Zenfolio (SOAP .asmx API only, skip), Pixieset (unofficial only, skip), ShootProof (built), PicTime (no public API — Zapier/partners only, skip)
 - 3D: TurboSquid (built — Token header required on all calls), CGTrader (built), Godot assets, PlayCanvas (built), Verge3D, Vectary
 - EDA: OSH Park (API access by support request only, skip), Aisler, SnapEDA/SnapMagic (API on request via form, no public docs, skip), Ultra Librarian, SamacSys
-- Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud, Seafile (built), Pydio, Resilio, Kopia
+- Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud (built), Seafile (built), Pydio (built), Resilio, Kopia
 - Research: Mendeley (taken), SciFlow (enterprise, skip), Curvenote (CLI only, skip), PubPub (SDK only, skip)
 - Scheduling: Amie, Ellie, Sunsama, SavvyCal
 - Design/social: Penpot (paths uncertain, skip), Canva (official, skip), VK (taken 2x, skip), Minds (uncertain, skip), Framer (dead host, skip)
