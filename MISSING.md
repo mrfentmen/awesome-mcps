@@ -22,7 +22,8 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `deviantart-mcp`, `nanoleaf-mcp`.) Plus built overnight: `ackee-mcp`, `shynet-mcp`,
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
-`synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`.)
+`synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
+`simplecast-mcp`.)
 
 ## Skipped — already a thing
 

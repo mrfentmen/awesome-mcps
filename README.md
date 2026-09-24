@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **756 MCP servers** in [`servers/`](./servers)
+- **758 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -550,6 +550,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`pubmed-mcp`](./servers/pubmed-mcp)
 - [`pypi-mcp`](./servers/pypi-mcp)
 - [`qr-code-mcp`](./servers/qr-code-mcp)
+- [`quip-mcp`](./servers/quip-mcp)
 - [`quotes-mcp`](./servers/quotes-mcp)
 - [`quran-mcp`](./servers/quran-mcp)
 - [`radio-browser-mcp`](./servers/radio-browser-mcp)
@@ -604,6 +605,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`shields-mcp`](./servers/shields-mcp)
 - [`shynet-mcp`](./servers/shynet-mcp)
 - [`simbad-mcp`](./servers/simbad-mcp)
+- [`simplecast-mcp`](./servers/simplecast-mcp)
 - [`smartrecruiters-mcp`](./servers/smartrecruiters-mcp)
 - [`smithsonian-mcp`](./servers/smithsonian-mcp)
 - [`smogon-mcp`](./servers/smogon-mcp)
