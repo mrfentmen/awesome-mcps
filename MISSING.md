@@ -102,11 +102,24 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Jobs/HR: HiBob, Deel, Remote.com, Oyster, Zumper, Personio HR API, Contra
 - Legal: CaseLaw Access Project (cap.law)
 - Social/video: Rumble, Odysee, DeviantArt
-- Registries: Maven Central, crates.io, CRAN, Daikin, Viessmann, NIBE, Nanoleaf
+- Registries/IoT: Maven Central, crates.io, CRAN, Daikin, Viessmann, NIBE, Nanoleaf
 - Patents: WIPO PATENTSCOPE
 - Oceans: OBIS
 - Outdoors: Trailforks
 - Culture: Gallica BnF, Papers Past NZ, Coursera
+- Programs (genres 1-12 sweep): Quip (built), Simplecast (built), Gab (Cloudflare-walled, drop), Dreamwidth (host dead, drop), plus unverified backlog below
+
+**Still to verify (registry not yet probed):**
+- Docs/notes: Guru, HedgeDoc, RemNote, SuperNotes, Craft, CommaFeed
+- Podcast: Podbean, Libsyn, Blubrry, Spreaker, RedCircle, RSS.com, Acast, Restream, Zencastr, BBC, Radiotopia, PRX
+- Photo: Zenfolio, Pixieset (unofficial only, skip), ShootProof, PicTime
+- 3D: TurboSquid, CGTrader, Godot assets, PlayCanvas, Verge3D, Vectary
+- EDA: OSH Park, Aisler, SnapEDA, Ultra Librarian, SamacSys
+- Self-hosted docs: Docspell, Teedy, FileRun, ownCloud, Seafile, Pydio, Resilio, Kopia
+- Research: Mendeley (taken), SciFlow (enterprise, skip), Curvenote (CLI only, skip), PubPub (SDK only, skip)
+- Scheduling: Amie, Ellie, Sunsama, SavvyCal
+- Design/social: Penpot (paths uncertain, skip), Canva (official, skip), VK (taken 2x, skip), Minds (uncertain, skip), Framer (dead host, skip)
+- CAD remainder (SketchUp, Rhino, Tekla, VectorWorks, BricsCAD, DraftSight, Shapr3D): desktop programs, no public cloud APIs — skip batch
 
 **Still to verify (registry not yet probed):**
 - Health/edu: CDC WONDER, NCES, GreatSchools, ISBNdb, Literal
