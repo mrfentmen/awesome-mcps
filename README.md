@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **758 MCP servers** in [`servers/`](./servers)
+- **760 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -76,6 +76,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`blockchair-mcp`](./servers/blockchair-mcp)
 - [`blockcypher-mcp`](./servers/blockcypher-mcp)
 - [`bls-mcp`](./servers/bls-mcp)
+- [`blubrry-mcp`](./servers/blubrry-mcp)
 - [`bluesky-mcp`](./servers/bluesky-mcp)
 - [`bmkg-mcp`](./servers/bmkg-mcp)
 - [`boardgamegeek-mcp`](./servers/boardgamegeek-mcp)
@@ -622,6 +623,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`spoonacular-mcp`](./servers/spoonacular-mcp)
 - [`sports-scores-mcp`](./servers/sports-scores-mcp)
 - [`spotify-mcp`](./servers/spotify-mcp)
+- [`spreaker-mcp`](./servers/spreaker-mcp)
 - [`sql-formatter-mcp`](./servers/sql-formatter-mcp)
 - [`sqlite-mcp`](./servers/sqlite-mcp)
 - [`squarespace-mcp`](./servers/squarespace-mcp)

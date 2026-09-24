@@ -23,7 +23,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`.)
 
 ## Skipped — already a thing
 
@@ -111,7 +111,7 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 
 **Still to verify (registry not yet probed):**
 - Docs/notes: Guru, HedgeDoc, RemNote, SuperNotes, Craft, CommaFeed
-- Podcast: Podbean, Libsyn, Blubrry, Spreaker, RedCircle, RSS.com, Acast, Restream, Zencastr, BBC, Radiotopia, PRX
+- Podcast: Podbean (taken), Libsyn (no community MCP found — verify API), Blubrry (built), Spreaker (built), RedCircle (api base 404, skip), RSS.com (Express 404 on guessed paths, skip), Acast (host blocked 000, skip), Restream, Zencastr, BBC, Radiotopia, PRX
 - Photo: Zenfolio, Pixieset (unofficial only, skip), ShootProof, PicTime
 - 3D: TurboSquid, CGTrader, Godot assets, PlayCanvas, Verge3D, Vectary
 - EDA: OSH Park, Aisler, SnapEDA, Ultra Librarian, SamacSys
