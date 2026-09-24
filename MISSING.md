@@ -26,7 +26,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`, `supernotes-mcp`, `guru-mcp`, `godot-mcp`, `kopia-mcp`, `hermes-mcp`, `chanel-mcp`,
 `louisvuitton-mcp`, `gucci-mcp`, `prada-mcp`, `rolex-mcp`, `cartier-mcp`,
 `dior-mcp`, `saintlaurent-mcp`, `balenciaga-mcp`, `fendi-mcp`,
-`bottegaveneta-mcp`.)
+`bottegaveneta-mcp`, `icebox-mcp`, `traxnyc-mcp`.)
 
 **Luxury brand servers (built 2026-09-24, Fashionphile + Rebag public Shopify JSON;
 upgraded to 7 tools: search/list/get/price-overview/compare/find-deals/overview,

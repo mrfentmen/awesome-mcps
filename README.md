@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **789 MCP servers** in [`servers/`](./servers)
+- **791 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -349,6 +349,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`huggingface-mcp`](./servers/huggingface-mcp)
 - [`iana-tld-mcp`](./servers/iana-tld-mcp)
 - [`iban-validator-mcp`](./servers/iban-validator-mcp)
+- [`icebox-mcp`](./servers/icebox-mcp)
 - [`ics-generator-mcp`](./servers/ics-generator-mcp)
 - [`ietf-mcp`](./servers/ietf-mcp)
 - [`image-tools-mcp`](./servers/image-tools-mcp)
@@ -708,6 +709,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`torah-mcp`](./servers/torah-mcp)
 - [`trakt-mcp`](./servers/trakt-mcp)
 - [`translation-mcp`](./servers/translation-mcp)
+- [`traxnyc-mcp`](./servers/traxnyc-mcp)
 - [`treasury-rates-mcp`](./servers/treasury-rates-mcp)
 - [`trivia-mcp`](./servers/trivia-mcp)
 - [`trove-mcp`](./servers/trove-mcp)
