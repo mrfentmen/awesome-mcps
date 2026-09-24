@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **773 MCP servers** in [`servers/`](./servers)
+- **775 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -315,6 +315,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`greynoise-mcp`](./servers/greynoise-mcp)
 - [`groq-mcp`](./servers/groq-mcp)
 - [`guardian-mcp`](./servers/guardian-mcp)
+- [`guru-mcp`](./servers/guru-mcp)
 - [`gutendex-mcp`](./servers/gutendex-mcp)
 - [`gw2-mcp`](./servers/gw2-mcp)
 - [`hacker-news-mcp`](./servers/hacker-news-mcp)
@@ -655,6 +656,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`sudoku-mcp`](./servers/sudoku-mcp)
 - [`sunrise-sunset-mcp`](./servers/sunrise-sunset-mcp)
 - [`supercell-mcp`](./servers/supercell-mcp)
+- [`supernotes-mcp`](./servers/supernotes-mcp)
 - [`surrealdb-mcp`](./servers/surrealdb-mcp)
 - [`suunto-mcp`](./servers/suunto-mcp)
 - [`svgl-mcp`](./servers/svgl-mcp)
