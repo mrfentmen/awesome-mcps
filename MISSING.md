@@ -20,7 +20,8 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `pingdom-mcp`, `ohdear-mcp`, `dpla-mcp`, `odysee-mcp` (Lighthouse), `delinea-mcp`,
 `cyberark-mcp`, `openpanel-mcp`, `swetrix-mcp`, `split-mcp`, `goatcounter-mcp`,
 `deviantart-mcp`, `nanoleaf-mcp`.) Plus built overnight: `ackee-mcp`, `shynet-mcp`,
-`rybbit-mcp`.)
+`rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
+`energinet-mcp`.)
 
 ## Skipped — already a thing
 

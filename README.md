@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **744 MCP servers** in [`servers/`](./servers)
+- **748 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -49,6 +49,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`barcode-mcp`](./servers/barcode-mcp)
 - [`bart-mcp`](./servers/bart-mcp)
 - [`baywheels-mcp`](./servers/baywheels-mcp)
+- [`beaconchain-mcp`](./servers/beaconchain-mcp)
 - [`beehiiv-mcp`](./servers/beehiiv-mcp)
 - [`berlin-bvg-mcp`](./servers/berlin-bvg-mcp)
 - [`bible-mcp`](./servers/bible-mcp)
@@ -126,6 +127,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`coinbase-mcp`](./servers/coinbase-mcp)
 - [`coingecko-mcp`](./servers/coingecko-mcp)
 - [`coinlore-mcp`](./servers/coinlore-mcp)
+- [`coinmetrics-mcp`](./servers/coinmetrics-mcp)
 - [`coinpaprika-mcp`](./servers/coinpaprika-mcp)
 - [`college-scorecard-mcp`](./servers/college-scorecard-mcp)
 - [`color-mcp`](./servers/color-mcp)
@@ -210,6 +212,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`emby-mcp`](./servers/emby-mcp)
 - [`emoji-mcp`](./servers/emoji-mcp)
 - [`endoflife-mcp`](./servers/endoflife-mcp)
+- [`energinet-mcp`](./servers/energinet-mcp)
 - [`enrico-mcp`](./servers/enrico-mcp)
 - [`ensembl-mcp`](./servers/ensembl-mcp)
 - [`ensideas-mcp`](./servers/ensideas-mcp)
@@ -313,6 +316,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`helius-mcp`](./servers/helius-mcp)
 - [`hex-mcp`](./servers/hex-mcp)
 - [`hiddenpalace-mcp`](./servers/hiddenpalace-mcp)
+- [`hikingproject-mcp`](./servers/hikingproject-mcp)
 - [`hipsum-mcp`](./servers/hipsum-mcp)
 - [`hn-reddit-mcp`](./servers/hn-reddit-mcp)
 - [`holidays-mcp`](./servers/holidays-mcp)
