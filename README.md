@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **772 MCP servers** in [`servers/`](./servers)
+- **773 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -134,6 +134,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`coinpaprika-mcp`](./servers/coinpaprika-mcp)
 - [`college-scorecard-mcp`](./servers/college-scorecard-mcp)
 - [`color-mcp`](./servers/color-mcp)
+- [`commafeed-mcp`](./servers/commafeed-mcp)
 - [`commoncrawl-mcp`](./servers/commoncrawl-mcp)
 - [`config-weather-mcp`](./servers/config-weather-mcp)
 - [`confluent-mcp`](./servers/confluent-mcp)

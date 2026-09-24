@@ -23,7 +23,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`.)
 
 ## Skipped — already a thing
 
@@ -110,11 +110,11 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Programs (genres 1-12 sweep): Quip (built), Simplecast (built), Gab (Cloudflare-walled, drop), Dreamwidth (host dead, drop), plus unverified backlog below
 
 **Still to verify (registry not yet probed):**
-- Docs/notes: Guru, HedgeDoc, RemNote, SuperNotes, Craft, CommaFeed
+- Docs/notes: Guru, HedgeDoc (taken 3x, skip), RemNote, SuperNotes, Craft, CommaFeed (built)
 - Podcast: Podbean (taken), Libsyn (no public podcast API — status-page API + cookie-scrape only, skip), Blubrry (built), Spreaker (built), RedCircle (api base 404, skip), RSS.com (Express 404 on guessed paths, skip), Acast (host blocked 000, skip), Restream (OFFICIAL MCP at developers.restream.io/mcp-server, skip), Zencastr (no public API, skip), BBC, Radiotopia, PRX (built)
 - Photo: Zenfolio (SOAP .asmx API only, skip), Pixieset (unofficial only, skip), ShootProof (built), PicTime (no public API — Zapier/partners only, skip)
 - 3D: TurboSquid (built — Token header required on all calls), CGTrader (built), Godot assets, PlayCanvas (built), Verge3D, Vectary
-- EDA: OSH Park (API access by support request only, skip), Aisler, SnapEDA/SnapMagic (API on request via form, no public docs, skip), Ultra Librarian, SamacSys
+- EDA: OSH Park (API access by support request only, skip), Aisler (Part API key on request via form, no public docs, skip), SnapEDA/SnapMagic (API on request via form, no public docs, skip), Ultra Librarian, SamacSys
 - Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud (built), Seafile (built), Pydio (built), Resilio, Kopia
 - Research: Mendeley (taken), SciFlow (enterprise, skip), Curvenote (CLI only, skip), PubPub (SDK only, skip)
 - Scheduling: Amie, Ellie, Sunsama, SavvyCal (built)
