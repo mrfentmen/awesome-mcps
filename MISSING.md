@@ -23,7 +23,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`.)
 
 ## Skipped — already a thing
 
@@ -98,7 +98,7 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Secrets/flags: Delinea, CyberArk, Split.io, Harness.io, Bucket.co
 - Analytics: GoatCounter, Ackee, Shynet, OpenPanel, Rybbit, Fathom Analytics, Counter.dev, Swetrix
 - Uptime: OhDear, StatusCake, Pingdom
-- Hosting/dev: Render.com, Railway.com, Fly.io, Vercel, Netlify, Linode, Vultr, Coveralls, DeepSource, Jenkins CI, Drone CI, Maze.co, DPLA, edX
+- Hosting/dev: Render.com, Railway.com, Fly.io, Vercel, Netlify, Linode, Vultr, Coveralls, DeepSource, Jenkins CI, Drone CI, Harness.io (OFFICIAL harness/mcp-server, skip), Maze.co, DPLA, edX
 - Jobs/HR: HiBob, Deel, Remote.com, Oyster, Zumper, Personio HR API, Contra
 - Legal: CaseLaw Access Project (cap.law)
 - Social/video: Rumble, Odysee, DeviantArt
@@ -111,8 +111,8 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 
 **Still to verify (registry not yet probed):**
 - Docs/notes: Guru, HedgeDoc, RemNote, SuperNotes, Craft, CommaFeed
-- Podcast: Podbean (taken), Libsyn (no community MCP found — verify API), Blubrry (built), Spreaker (built), RedCircle (api base 404, skip), RSS.com (Express 404 on guessed paths, skip), Acast (host blocked 000, skip), Restream, Zencastr, BBC, Radiotopia, PRX
-- Photo: Zenfolio, Pixieset (unofficial only, skip), ShootProof, PicTime
+- Podcast: Podbean (taken), Libsyn (no public podcast API — status-page API + cookie-scrape only, skip), Blubrry (built), Spreaker (built), RedCircle (api base 404, skip), RSS.com (Express 404 on guessed paths, skip), Acast (host blocked 000, skip), Restream (OFFICIAL MCP at developers.restream.io/mcp-server, skip), Zencastr (no public API, skip), BBC, Radiotopia, PRX
+- Photo: Zenfolio (SOAP .asmx API only, skip), Pixieset (unofficial only, skip), ShootProof (built), PicTime
 - 3D: TurboSquid, CGTrader, Godot assets, PlayCanvas, Verge3D, Vectary
 - EDA: OSH Park, Aisler, SnapEDA, Ultra Librarian, SamacSys
 - Self-hosted docs: Docspell, Teedy, FileRun, ownCloud, Seafile, Pydio, Resilio, Kopia

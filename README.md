@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **760 MCP servers** in [`servers/`](./servers)
+- **761 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -604,6 +604,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`setlist-mcp`](./servers/setlist-mcp)
 - [`shebang-sherpa-mcp`](./servers/shebang-sherpa-mcp)
 - [`shields-mcp`](./servers/shields-mcp)
+- [`shootproof-mcp`](./servers/shootproof-mcp)
 - [`shynet-mcp`](./servers/shynet-mcp)
 - [`simbad-mcp`](./servers/simbad-mcp)
 - [`simplecast-mcp`](./servers/simplecast-mcp)
