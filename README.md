@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **754 MCP servers** in [`servers/`](./servers)
+- **756 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -251,6 +251,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`figshare-mcp`](./servers/figshare-mcp)
 - [`finalspace-mcp`](./servers/finalspace-mcp)
 - [`financial-data-mcp`](./servers/financial-data-mcp)
+- [`fingrid-mcp`](./servers/fingrid-mcp)
 - [`finnhub-mcp`](./servers/finnhub-mcp)
 - [`firefox-addons-mcp`](./servers/firefox-addons-mcp)
 - [`flaky-history-mcp`](./servers/flaky-history-mcp)
@@ -633,6 +634,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`steamspy-mcp`](./servers/steamspy-mcp)
 - [`stellar-mcp`](./servers/stellar-mcp)
 - [`storj-mcp`](./servers/storj-mcp)
+- [`stormglass-mcp`](./servers/stormglass-mcp)
 - [`storyblok-mcp`](./servers/storyblok-mcp)
 - [`string-db-mcp`](./servers/string-db-mcp)
 - [`sudoku-mcp`](./servers/sudoku-mcp)
