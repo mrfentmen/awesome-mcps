@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **766 MCP servers** in [`servers/`](./servers)
+- **768 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -252,6 +252,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`federal-register-mcp`](./servers/federal-register-mcp)
 - [`fema-mcp`](./servers/fema-mcp)
 - [`figshare-mcp`](./servers/figshare-mcp)
+- [`filerun-mcp`](./servers/filerun-mcp)
 - [`finalspace-mcp`](./servers/finalspace-mcp)
 - [`financial-data-mcp`](./servers/financial-data-mcp)
 - [`fingrid-mcp`](./servers/fingrid-mcp)
@@ -662,6 +663,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`tasmota-mcp`](./servers/tasmota-mcp)
 - [`tdx-mcp`](./servers/tdx-mcp)
 - [`techcrunch-mcp`](./servers/techcrunch-mcp)
+- [`teedy-mcp`](./servers/teedy-mcp)
 - [`telnetbbs-mcp`](./servers/telnetbbs-mcp)
 - [`terraform-registry-mcp`](./servers/terraform-registry-mcp)
 - [`test-shape-mcp`](./servers/test-shape-mcp)
