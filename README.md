@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **776 MCP servers** in [`servers/`](./servers)
+- **777 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -383,6 +383,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`kiwi-mcp`](./servers/kiwi-mcp)
 - [`kma-mcp`](./servers/kma-mcp)
 - [`knmi-mcp`](./servers/knmi-mcp)
+- [`kopia-mcp`](./servers/kopia-mcp)
 - [`kraken-mcp`](./servers/kraken-mcp)
 - [`kucoin-mcp`](./servers/kucoin-mcp)
 - [`languagetool-mcp`](./servers/languagetool-mcp)

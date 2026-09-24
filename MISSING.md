@@ -23,7 +23,7 @@ keyless), `kma-mcp` (Korea data.go.kr key), `bkk-mcp` (Budapest Futar key),
 `rybbit-mcp`, `beaconchain-mcp`, `coinmetrics-mcp`, `hikingproject-mcp`,
 `energinet-mcp`, `wpengine-mcp`, `appveyor-mcp`, `isbndb-mcp`, `literal-mcp`,
 `synoptic-mcp`, `doab-mcp`, `fingrid-mcp`, `stormglass-mcp`, `quip-mcp`,
-`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`, `supernotes-mcp`, `guru-mcp`, `godot-mcp`.)
+`simplecast-mcp`, `blubrry-mcp`, `spreaker-mcp`, `shootproof-mcp`, `turbosquid-mcp`, `cgtrader-mcp`, `playcanvas-mcp`, `seafile-mcp`, `docspell-mcp`, `teedy-mcp`, `filerun-mcp`, `owncloud-mcp`, `pydio-mcp`, `prx-mcp`, `savvycal-mcp`, `commafeed-mcp`, `supernotes-mcp`, `guru-mcp`, `godot-mcp`, `kopia-mcp`.)
 
 ## Skipped — already a thing
 
@@ -113,11 +113,11 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Docs/notes: Guru (built), HedgeDoc (taken 3x, skip), RemNote (backend REST disabled, plugin SDK only, skip), SuperNotes (built), Craft (OFFICIAL MCP mcp.craft.do + community craft-mcp, skip), CommaFeed (built)
 - Podcast: Podbean (taken), Libsyn (no public podcast API — status-page API + cookie-scrape only, skip), Blubrry (built), Spreaker (built), RedCircle (api base 404, skip), RSS.com (Express 404 on guessed paths, skip), Acast (host blocked 000, skip), Restream (OFFICIAL MCP at developers.restream.io/mcp-server, skip), Zencastr (no public API, skip), BBC, Radiotopia, PRX (built)
 - Photo: Zenfolio (SOAP .asmx API only, skip), Pixieset (unofficial only, skip), ShootProof (built), PicTime (no public API — Zapier/partners only, skip)
-- 3D: TurboSquid (built — Token header required on all calls), CGTrader (built), Godot assets (built, scoped @mrfentmen — plain name taken), PlayCanvas (built), Verge3D, Vectary
-- EDA: OSH Park (API access by support request only, skip), Aisler (Part API key on request via form, no public docs, skip), SnapEDA/SnapMagic (API on request via form, no public docs, skip), Ultra Librarian (enterprise CAD-vendor integrations only, no public API, skip), SamacSys
-- Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud (built), Seafile (built), Pydio (built), Resilio, Kopia
+- 3D: TurboSquid (built — Token header required on all calls), CGTrader (built), Godot assets (built, scoped @mrfentmen — plain name taken), PlayCanvas (built), Verge3D (JS engine API only, no REST, skip), Vectary (embed postMessage API only, no REST, skip)
+- EDA: OSH Park (API access by support request only, skip), Aisler (Part API key on request via form, no public docs, skip), SnapEDA/SnapMagic (API on request via form, no public docs, skip), Ultra Librarian (enterprise CAD-vendor integrations only, no public API, skip), SamacSys/CSE (subscription API + community pcbparts-mcp, skip)
+- Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud (built), Seafile (built), Pydio (built), Resilio (Connect API enterprise-licensed, Sync no API, skip), Kopia (built)
 - Research: Mendeley (taken), SciFlow (enterprise, skip), Curvenote (CLI only, skip), PubPub (SDK only, skip)
-- Scheduling: Amie, Ellie, Sunsama, SavvyCal (built)
+- Scheduling: Amie (OFFICIAL MCP, skip), Ellie (first-party MCP beta, skip), Sunsama (no official API, unofficial wrappers only, skip), SavvyCal (built)
 - Design/social: Penpot (paths uncertain, skip), Canva (official, skip), VK (taken 2x, skip), Minds (uncertain, skip), Framer (dead host, skip)
 - CAD remainder (SketchUp, Rhino, Tekla, VectorWorks, BricsCAD, DraftSight, Shapr3D): desktop programs, no public cloud APIs — skip batch
 
