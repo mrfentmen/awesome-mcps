@@ -1,4 +1,4 @@
-# Missing MCP servers — research log
+# Missing MCP servers — research log (public; 68 monetizable servers moved to private premium-mcps 2026-09-24)
 
 Living list of MCP servers that do **not** exist yet (verified against the MCP
 registry, npm, GitHub and the web), plus what was checked and skipped and why.
