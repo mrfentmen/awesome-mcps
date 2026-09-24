@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **775 MCP servers** in [`servers/`](./servers)
+- **776 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -302,6 +302,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`gleif-mcp`](./servers/gleif-mcp)
 - [`go-proxy-mcp`](./servers/go-proxy-mcp)
 - [`goatcounter-mcp`](./servers/goatcounter-mcp)
+- [`godot-mcp`](./servers/godot-mcp)
 - [`gog-mcp`](./servers/gog-mcp)
 - [`gold-prices-mcp`](./servers/gold-prices-mcp)
 - [`google-autocomplete-mcp`](./servers/google-autocomplete-mcp)
