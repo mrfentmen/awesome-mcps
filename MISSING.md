@@ -151,3 +151,10 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Smart home: Tapo/Kasa/Wyze/Eufy/Ring (unofficial), Resideo, LG ThinQ (unofficial)
 - Salaries/others: Levels.fyi (no API), Glassdoor (partner-only), PayScale (no API), Zoopla (member), Idealista (paid), Justia (no API), Toptal (no API)
 - Transit: VIA Rail, Indian Railways (no public API found yet — recheck)
+
+## Monetization playbook (2026-09-24, $0 budget)
+- SELL WHERE: mcp-marketplace.io = only true marketplace (15% commission, keep 85%, Stripe Connect payouts, ~24h approval, free+paid tiers). Smithery = free listing + free 50K RPC hosting, NO revenue share (bring own billing; MCP Hive offers per-response metering). Free directories: official registry (done via CI, crawled by mcp.directory/Glama/PulseMCP), mcpservers.org (free form), mcp.so (free w/ review), LobeHub (free CLI but aggressive GitHub OAuth — caution), Awesome MCP Servers PR. Glama skipped (costs). PulseMCP paused.
+- EARN HOW: (1) marketplace paid tiers via Stripe (free account + payment links), (2) affiliate tags on shopping-server product URLs, (3) DEV article per server (free distribution; proven pattern: npm -> Smithery -> Stripe -> article).
+- A2A: no central marketplace found (agent cards + awesome lists only) — sell via same direct channels.
+- ACP = two protocols: Zed Agent Client Protocol (registry via GitHub PR, free, curated, auth required) vs IBM BeeAI ACP (self-hosted /agents + BeeAI Platform). Confirm which before listing.
+- NEXT BUILDS (demand cats): jobs wave (Greenhouse/Lever/Ashby/SmartRecruiters public keyless ATS APIs), sports odds (The Odds API free NBA+MLB / BetStack free-forever), MoMA (gated, secondary), more Shopify streetwear (Supreme/Flight Club/Ben Baller unchecked).
