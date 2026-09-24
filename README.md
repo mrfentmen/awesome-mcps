@@ -4,7 +4,7 @@ A monorepo of MCP servers from the `mrfentmen` account and local workspace.
 
 ## Contents
 
-- **770 MCP servers** in [`servers/`](./servers)
+- **772 MCP servers** in [`servers/`](./servers)
 
 Browser extensions are maintained separately in private repositories and are intentionally not included here.
 
@@ -551,6 +551,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`prayer-times-mcp`](./servers/prayer-times-mcp)
 - [`predictit-mcp`](./servers/predictit-mcp)
 - [`protondb-mcp`](./servers/protondb-mcp)
+- [`prx-mcp`](./servers/prx-mcp)
 - [`pubchem-mcp`](./servers/pubchem-mcp)
 - [`pubg-mcp`](./servers/pubg-mcp)
 - [`pubmed-mcp`](./servers/pubmed-mcp)
@@ -593,6 +594,7 @@ Browser extensions are maintained separately in private repositories and are int
 - [`rxnav-mcp`](./servers/rxnav-mcp)
 - [`rybbit-mcp`](./servers/rybbit-mcp)
 - [`satnogs-mcp`](./servers/satnogs-mcp)
+- [`savvycal-mcp`](./servers/savvycal-mcp)
 - [`schema-compatibility-mcp`](./servers/schema-compatibility-mcp)
 - [`schema-sieve-mcp`](./servers/schema-sieve-mcp)
 - [`scrabble-mcp`](./servers/scrabble-mcp)
