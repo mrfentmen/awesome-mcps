@@ -106,7 +106,7 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Patents: WIPO PATENTSCOPE
 - Oceans: OBIS
 - Outdoors: Trailforks
-- Culture: Gallica BnF, Papers Past NZ, Coursera, BBC (Nitro keys staff/partners only, skip), NPR (Story API retired; CDS gated to members, skip), Radiotopia
+- Culture: Gallica BnF, Papers Past NZ, Coursera, BBC (Nitro keys staff/partners only, skip), NPR (Story API retired; CDS gated to members, skip), Radiotopia (PRX network — covered by prx-mcp, no separate API)
 - Programs (genres 1-12 sweep): Quip (built), Simplecast (built), Gab (Cloudflare-walled, drop), Dreamwidth (host dead, drop), plus unverified backlog below
 
 **Still to verify (registry not yet probed):**
@@ -118,7 +118,7 @@ Auth = free key unless noted keyless. Verify registry+npm+web before building.
 - Self-hosted docs: Docspell (built), Teedy (built), FileRun (built), ownCloud (built), Seafile (built), Pydio (built), Resilio (Connect API enterprise-licensed, Sync no API, skip), Kopia (built)
 - Research: Mendeley (taken), SciFlow (enterprise, skip), Curvenote (CLI only, skip), PubPub (SDK only, skip)
 - Scheduling: Amie (OFFICIAL MCP, skip), Ellie (first-party MCP beta, skip), Sunsama (no official API, unofficial wrappers only, skip), SavvyCal (built)
-- Design/social: Penpot (paths uncertain, skip), Canva (official, skip), VK (taken 2x, skip), Minds (uncertain, skip), Framer (dead host, skip)
+- Design/social: Penpot (paths uncertain, skip), Canva (official, skip), VK (taken 2x, skip), Minds (no official public API — session/XSRF only, skip), Framer (dead host, skip)
 - CAD remainder (SketchUp, Rhino, Tekla, VectorWorks, BricsCAD, DraftSight, Shapr3D): desktop programs, no public cloud APIs — skip batch
 
 **Still to verify (registry not yet probed):**
